@@ -1,2 +1,3 @@
 # text2cypher
-collection of text2cypher datasets
+
+Repository for all things related to text2cypher
