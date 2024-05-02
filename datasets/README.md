@@ -1,2 +1,3 @@
 # text2cypher datasets
-collection of text2cypher datasets
+
+Collection of text2cypher datasets

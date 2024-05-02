@@ -1,2 +1,3 @@
 # text2cypher evaluations
-collection of text2cypher datasets
+
+Collection of text2cypher evaluation approaches

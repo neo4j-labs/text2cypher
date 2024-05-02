@@ -1,2 +1,3 @@
 # text2cypher finetuning
-collection of text2cypher datasets
+
+Collection of text2cypher finetuning approaches
