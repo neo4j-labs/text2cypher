@@ -1,7 +1,8 @@
-# Synthetic dataset created with GPT-4-Turbo
+# Synthetic dataset created with Claude Opus
 
-Synthetic dataset of text2cypher over 16 different graph schemas.
-Both questions and cypher queries were generated using GPT-4-turbo.
+Synthetic dataset of text2cypher over 7 different graph schemas.
+
+Questions were generated using GPT-4-turbo, and the corresponding Cypher statements with `claude-3-opus-20240229`.
 The demo database is available at:
 
 ```
@@ -13,14 +14,13 @@ database: name of the database, for example 'movies'
 
 Notebooks:
 
-* `generate_text2cypher_questions.ipynb`: Generate questions and prepare input for OpenAI batch processing job
-* `process_batch_output.ipynb`: Process batch process output and validate the generate Cypher statements by examining if they return any values, have syntax errors, or do queries timeout.
+* `anthropic_text2cypher.ipynb`: Generate Cypher statements and validate them by examining if they return any values, have syntax errors, or do queries timeout.
 
-Dataset is available at `text2cypher_gpt4turbo.csv`. Columns are the following:
+Dataset is available at `text2cypher_claudeopus.csv`. Columns are the following:
 
 * `question`: Natural language question
 * `cypher`: Corresponding Cypher statement based on the provided question
-* `type`: Type of question, see `generate_text2cypher_questions.ipynb` for more information
+* `type`: Type of question, see `synthetic_gpt4turbo_demodbs/generate_text2cypher_questions.ipynb` for more information
 * `database`: Database that the questions is aimed at
 * `syntax_error`: Does the Cypher statement result in Cypher syntax error
 * `timeout`: Does the Cypher statement take more than 10 seconds to complete
@@ -36,3 +36,4 @@ This synthetic dataset can be utilized for various research and development task
 * Benchmarking LLM Performance: Use the dataset to evaluate the performance of different LLMs in generating valid Cypher queries, providing insights into model capabilities and limitations.
 * Finetuning LLMs: Leverage the dataset for finetuning LLMs on domain-specific languages like Cypher to enhance their accuracy and efficiency in generating database queries.
 * Prompt engineering: Determine which prompt produces the most accurate Cypher statements.
+* Comparing accuracy and limitations between Opus and GPT-4-Turbo
