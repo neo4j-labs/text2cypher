@@ -2,6 +2,7 @@
 
 Synthetic dataset of text2cypher over 16 different graph schemas.
 Both questions and cypher queries were generated using GPT-4-turbo.
+The Cypher queries are created using an OpenAI Batch API: https://platform.openai.com/docs/guides/batch
 The demo database is available at:
 
 ```
