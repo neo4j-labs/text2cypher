@@ -1,4 +1,4 @@
-# Cypher_Generator
+# Functional_Cypher_Generator
 
 
 This repository contains code for generating a supervised fine-tuning dataset consisting of question-Cypher query pairs. Each question is a function of node labels, properties, or relationship types along with their properties. While these questions may appear more mechanical, they can effectively complement naturally phrased questions in the fine-tuning datasets.
