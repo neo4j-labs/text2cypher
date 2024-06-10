@@ -1,33 +1,20 @@
-# Finetuning Llama3 using Unsloth
+# Finetuning Codestral using Unsloth
 
-We have two notebooks here:
+## Using instruct prompt template
 
-## Using simple prompt template
-
-* Filename: `llama3_text2cypher_simple.ipynb`
-* Contributed by: [Geraldus Wilsen](https://github.com/projectwilsen/)
-* Dataset: synthetic_gpt4turbo_demodbs
-* Originally published: https://github.com/projectwilsen/KnowledgeGraphLLM
-
-This notebook uses simple prompt completion template to finetune Llama3 to construct Cypher statements on a single database (recommendations).
-
-For more information, you could watch this video tutorial: https://www.youtube.com/watch?v=7VU-xWJ39ng
-
-## Using chat prompt template
-
-* Filename: `llama3_text2cypher_chat.ipynb`
+* Filename: `codestral_text2cypher_instruct.ipynb`
 * Contributed by: [Tomaz Bratanic](https://github.com/tomasonjo)
 * Dataset: https://huggingface.co/datasets/tomasonjo/text2cypher-gpt4o-clean
-* HuggingFace model: https://huggingface.co/collections/tomasonjo/llama3-text2cypher-demo-6647a9eae51e5310c9cfddcf
-* Ollama model: https://ollama.com/tomasonjo/llama3-text2cypher-demo
+* HuggingFace model: https://huggingface.co/collections/tomasonjo/codestral-text2cypher-6666636c113312a4a955e8af
+* Ollama model: https://ollama.com/tomasonjo/codestral-text2cypher
 
-This notebook uses chat prompt template (system,user,assistant) to finetune Llama3 to construct Cypher statements on 16 different graph databases available on demo server.
+This notebook uses instruct prompt template to finetune Codestral to construct Cypher statements on 16 different graph databases available on demo server.
 
 You can load use it in LangChain using the following code.
 First load the model using Ollama and install dependencies.
 
 ```bash
-ollama pull tomasonjo/llama3-text2cypher-demo
+ollama pull tomasonjo/codestral-text2cypher
 pip install langchain langchain-community neo4j
 ```
 
