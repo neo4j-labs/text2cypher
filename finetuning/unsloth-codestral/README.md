@@ -36,7 +36,7 @@ graph = Neo4jGraph(
     enhanced_schema=True,
     sanitize=True,
 )
-llm = ChatOllama(model="tomasonjo/llama3-text2cypher-demo")
+llm = ChatOllama(model="tomasonjo/codestral-text2cypher")
 prompt = ChatPromptTemplate.from_messages(
     [
         (
