@@ -1,5 +1,7 @@
 # text2cypher
 
+> This is an experimental Neo4j Labs project and not part of Neo4j's supported product lineup. See the [Neo4j Labs disclaimer](./LABS_DISCLAIMER.txt).
+
 Repository for resources related to translating natural language into Cypher queries.
 
 ## Datasets
