@@ -1,0 +1,43 @@
+question,cypher,type,database,syntax_error,timeout,returns_results,false_schema
+Name the top 3 organizations by revenue within the 'Financial Services' category.,"MATCH (o:Organization)-[:HAS_CATEGORY]->(ic:IndustryCategory {name: 'Financial Services'})
+WHERE o.revenue IS NOT NULL
+RETURN o.name, o.revenue
+ORDER BY o.revenue DESC
+LIMIT 3",Complex Aggregation Queries,companies,False,False,False,False
+List the first 3 tweets retweeted by users located in 'Graphs Are Everywhere'.,"MATCH (u:User {location: 'Graphs Are Everywhere'})-[:POSTS]->(t1:Tweet)<-[:RETWEETS]-(t2:Tweet)
+RETURN DISTINCT t2
+LIMIT 3",Simple Retrieval Queries,twitter,False,False,True,False
+What are the original titles of movies that have been translated into Spanish?,"MATCH (m:Movie)-[:SPOKEN_IN_LANGUAGE]->(l:Language {id: 'es'})
+RETURN DISTINCT m.original_title",Complex Retrieval Queries,neoflix,False,False,True,False
+Display the top 5 movies with the highest budget to revenue ratio.,"MATCH (m:Movie)
+WHERE m.budget > 0 AND m.revenue > 0
+RETURN m.title, m.budget, m.revenue, (m.budget / m.revenue) AS budget_to_revenue_ratio
+ORDER BY budget_to_revenue_ratio DESC
+LIMIT 5",Complex Retrieval Queries,neoflix,False,False,True,False
+List the industry categories of organizations that have a CEO with a summary mentioning 'executive'.,"MATCH (o:Organization)-[:HAS_CEO]->(p:Person)
+WHERE p.summary CONTAINS 'executive'
+MATCH (o)-[:HAS_CATEGORY]->(ic:IndustryCategory)
+RETURN DISTINCT ic.name",Complex Retrieval Queries,companies,False,False,True,False
+What are the first 3 highest budget movies that were released?,"MATCH (m:Movie)
+WHERE m.budget IS NOT NULL
+RETURN m
+ORDER BY m.budget DESC
+LIMIT 3",Complex Aggregation Queries,neoflix,False,False,True,False
+List the top 3 movies with a release date on or before '2000-01-01'.,"MATCH (m:Movie)
+WHERE m.released <= '2000-01-01'
+RETURN m
+ORDER BY m.imdbRating DESC
+LIMIT 3",Simple Retrieval Queries,recommendations,False,False,True,False
+List the top 5 users by number of followers.,"MATCH (u:User)
+WHERE u.followers IS NOT NULL
+RETURN u.screen_name, u.followers
+ORDER BY u.followers DESC
+LIMIT 5",Pathfinding Queries,twitter,False,False,True,False
+Which 3 movies have the keyword 'jealousy'?,"MATCH (m:Movie)-[:HAS_KEYWORD]->(k:Keyword {name: 'jealousy'})
+RETURN m.title
+LIMIT 3",Pathfinding Queries,neoflix,False,False,True,False
+List the first 3 packages that provide the longest duration of access to movies.,"MATCH (p:Package)-[:PROVIDES_ACCESS_TO]->(g:Genre)
+WITH p, p.duration AS duration
+ORDER BY duration DESC
+RETURN DISTINCT p.name, duration
+LIMIT 3",Pathfinding Queries,neoflix,False,False,True,False

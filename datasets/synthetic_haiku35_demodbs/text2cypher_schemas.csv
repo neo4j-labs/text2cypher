@@ -1,0 +1,868 @@
+database,schema,structured_schema
+recommendations,"Node properties:
+- **Movie**
+  - `url`: STRING Example: ""https://themoviedb.org/movie/862""
+  - `runtime`: INTEGER Min: 2, Max: 910
+  - `revenue`: INTEGER Min: 1, Max: 2787965087
+  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6
+  - `released`: STRING Example: ""1995-11-22""
+  - `countries`: LIST Min Size: 1, Max Size: 16
+  - `languages`: LIST Min Size: 1, Max Size: 19
+  - `plot`: STRING Example: ""A cowboy doll is profoundly threatened and jealous""
+  - `imdbVotes`: INTEGER Min: 13, Max: 1626900
+  - `imdbId`: STRING Example: ""0114709""
+  - `year`: INTEGER Min: 1902, Max: 2016
+  - `poster`: STRING Example: ""https://image.tmdb.org/t/p/w440_and_h660_face/uXDf""
+  - `movieId`: STRING Example: ""1""
+  - `tmdbId`: STRING Example: ""862""
+  - `title`: STRING Example: ""Toy Story""
+  - `budget`: INTEGER Min: 1, Max: 380000000
+- **Genre**
+  - `name`: STRING Example: ""Adventure""
+- **User**
+  - `userId`: STRING Example: ""1""
+  - `name`: STRING Example: ""Omar Huffman""
+- **Actor**
+  - `url`: STRING Example: ""https://themoviedb.org/person/1271225""
+  - `name`: STRING Example: ""François Lallement""
+  - `tmdbId`: STRING Example: ""1271225""
+  - `bornIn`: STRING Example: ""France""
+  - `bio`: STRING Example: ""​From Wikipedia, the free encyclopedia  Lillian Di""
+  - `died`: DATE Example: ""1954-01-01""
+  - `born`: DATE Example: ""1877-02-04""
+  - `imdbId`: STRING Example: ""2083046""
+  - `poster`: STRING Example: ""https://image.tmdb.org/t/p/w440_and_h660_face/6DCW""
+- **Director**
+  - `url`: STRING Example: ""https://themoviedb.org/person/88953""
+  - `bornIn`: STRING Example: ""Burchard, Nebraska, USA""
+  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01
+  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29
+  - `tmdbId`: STRING Example: ""88953""
+  - `imdbId`: STRING Example: ""0516001""
+  - `name`: STRING Example: ""Harold Lloyd""
+  - `poster`: STRING Example: ""https://image.tmdb.org/t/p/w440_and_h660_face/er4Z""
+  - `bio`: STRING Example: ""Harold Lloyd has been called the cinema’s “first m""
+- **Person**
+  - `url`: STRING Example: ""https://themoviedb.org/person/1271225""
+  - `died`: DATE Example: ""1954-01-01""
+  - `bornIn`: STRING Example: ""France""
+  - `born`: DATE Example: ""1877-02-04""
+  - `imdbId`: STRING Example: ""2083046""
+  - `name`: STRING Example: ""François Lallement""
+  - `poster`: STRING Example: ""https://image.tmdb.org/t/p/w440_and_h660_face/6DCW""
+  - `tmdbId`: STRING Example: ""1271225""
+  - `bio`: STRING Example: ""​From Wikipedia, the free encyclopedia  Lillian Di""
+Relationship properties:
+- **RATED**
+  - `rating: FLOAT` Example: ""2.0""
+  - `timestamp: INTEGER` Example: ""1260759108""
+- **ACTED_IN**
+  - `role: STRING` Example: ""Officer of the Marines (uncredited)""
+- **DIRECTED**
+  - `role: STRING` 
+The relationships:
+(:Movie)-[:IN_GENRE]->(:Genre)
+(:User)-[:RATED]->(:Movie)
+(:Actor)-[:ACTED_IN]->(:Movie)
+(:Actor)-[:DIRECTED]->(:Movie)
+(:Director)-[:DIRECTED]->(:Movie)
+(:Director)-[:ACTED_IN]->(:Movie)
+(:Person)-[:ACTED_IN]->(:Movie)
+(:Person)-[:DIRECTED]->(:Movie)","{'node_props': {'Movie': [{'property': 'url', 'type': 'STRING', 'values': ['https://themoviedb.org/movie/862', 'https://themoviedb.org/movie/8844', 'https://themoviedb.org/movie/15602', 'https://themoviedb.org/movie/31357', 'https://themoviedb.org/movie/11862', 'https://themoviedb.org/movie/949', 'https://themoviedb.org/movie/11860', 'https://themoviedb.org/movie/45325', 'https://themoviedb.org/movie/9091', 'https://themoviedb.org/movie/710'], 'distinct_count': 9117}, {'property': 'runtime', 'type': 'INTEGER', 'min': '2', 'max': '910', 'distinct_count': 230}, {'property': 'revenue', 'type': 'INTEGER', 'min': '1', 'max': '2787965087', 'distinct_count': 4956}, {'property': 'plotEmbedding', 'type': 'LIST', 'max_size': 1536, 'min_size': 1536}, {'property': 'posterEmbedding', 'type': 'LIST', 'max_size': 512, 'min_size': 512}, {'property': 'imdbRating', 'type': 'FLOAT', 'min': '1.6', 'max': '9.6', 'distinct_count': 77}, {'property': 'released', 'type': 'STRING', 'values': ['1995-11-22', '1995-12-15', '1995-12-22', '1995-12-08', '1995-11-17', '1996-01-05', '1996-01-26', '1995-12-25', '1995-11-10', '1995-10-20'], 'distinct_count': 4824}, {'property': 'countries', 'type': 'LIST', 'max_size': 16, 'min_size': 1}, {'property': 'languages', 'type': 'LIST', 'max_size': 19, 'min_size': 1}, {'property': 'plot', 'type': 'STRING', 'values': ['A cowboy doll is profoundly threatened and jealous', 'When two kids find and play a magical board game, ', 'John and Max resolve to save their beloved bait sh', ""Based on Terry McMillan's novel, this film follows"", 'In this sequel, George Banks deals not only with t', 'A group of professional bank robbers start to feel', 'An ugly duckling having undergone a remarkable cha', ""Tom and Huck witness Injun Joe's killing of Doc Ro"", 'A former fireman takes on a group of terrorists ho', 'James Bond teams up with the lone survivor of a de'], 'distinct_count': 9072}, {'property': 'imdbVotes', 'type': 'INTEGER', 'min': '13', 'max': '1626900', 'distinct_count': 8190}, {'property': 'imdbId', 'type': 'STRING', 'values': ['0114709', '0113497', '0113228', '0114885', '0113041', '0113277', '0114319', '0112302', '0114576', '0113189'], 'distinct_count': 9125}, {'property': 'year', 'type': 'INTEGER', 'min': '1902', 'max': '2016', 'distinct_count': 103}, {'property': 'poster', 'type': 'STRING', 'values': ['https://image.tmdb.org/t/p/w440_and_h660_face/uXDf', 'https://image.tmdb.org/t/p/w440_and_h660_face/vgpX', 'https://image.tmdb.org/t/p/w440_and_h660_face/1FSX', 'https://image.tmdb.org/t/p/w440_and_h660_face/4wjG', 'https://image.tmdb.org/t/p/w440_and_h660_face/lf9R', 'https://image.tmdb.org/t/p/w440_and_h660_face/rrBu', 'https://image.tmdb.org/t/p/w440_and_h660_face/z1oN', 'https://image.tmdb.org/t/p/w440_and_h660_face/lOnb', 'https://image.tmdb.org/t/p/w440_and_h660_face/4Sni', 'https://image.tmdb.org/t/p/w440_and_h660_face/z0lj'], 'distinct_count': 8971}, {'property': 'movieId', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'distinct_count': 9125}, {'property': 'tmdbId', 'type': 'STRING', 'values': ['862', '8844', '15602', '31357', '11862', '949', '11860', '45325', '9091', '710'], 'distinct_count': 9121}, {'property': 'title', 'type': 'STRING', 'values': ['Toy Story', 'Jumanji', 'Grumpier Old Men', 'Waiting to Exhale', 'Father of the Bride Part II', 'Heat', 'Sabrina', 'Tom and Huck', 'Sudden Death', 'GoldenEye'], 'distinct_count': 8893}, {'property': 'budget', 'type': 'INTEGER', 'min': '1', 'max': '380000000', 'distinct_count': 662}], 'Genre': [{'property': 'name', 'type': 'STRING', 'values': ['Adventure', 'Animation', 'Children', 'Comedy', 'Fantasy', 'Romance', 'Drama', 'Action', 'Crime', 'Thriller'], 'distinct_count': 20}], 'User': [{'property': 'userId', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'distinct_count': 671}, {'property': 'name', 'type': 'STRING', 'values': ['Omar Huffman', 'Mr. Jason Love', 'Angela Thompson', 'Jessica Sherman', 'Oscar Harmon', 'Jessica Wilson', 'Kyle Bailey', 'John Henderson', 'Tracey Irwin', 'Margaret Allen'], 'distinct_count': 669}], 'Actor': [{'property': 'url', 'type': 'STRING', 'values': ['https://themoviedb.org/person/1271225', 'https://themoviedb.org/person/1602569', 'https://themoviedb.org/person/8828', 'https://themoviedb.org/person/8829', 'https://themoviedb.org/person/8830']}, {'property': 'name', 'type': 'STRING', 'values': ['François Lallement', 'Jules-Eugène Legris', 'Lillian Gish', 'Mae Marsh', 'Henry B. Walthall']}, {'property': 'tmdbId', 'type': 'STRING', 'values': ['1271225', '1602569', '8828', '8829', '8830']}, {'property': 'bornIn', 'type': 'STRING', 'values': ['France', 'Springfield, Ohio, USA', 'Madrid, New Mexico Territory , USA', 'Shelby County, Alabama, USA']}, {'property': 'bio', 'type': 'STRING', 'values': ['\u200bFrom Wikipedia, the free encyclopedia\n\nLillian Di', 'Mae Marsh (born Mary Wayne Marsh, November 9, 1894', '\u200bFrom Wikipedia, the free encyclopedia\n\nHenry Braz']}, {'property': 'died', 'type': 'DATE', 'values': ['1954-01-01', '1926-01-01', '1993-02-27', '1968-02-13', '1936-06-17']}, {'property': 'born', 'type': 'DATE', 'values': ['1877-02-04', '1862-01-01', '1893-10-14', '1894-11-09', '1878-03-16']}, {'property': 'imdbId', 'type': 'STRING', 'values': ['2083046', '6170115', '0001273', '0550615', '0910400']}, {'property': 'poster', 'type': 'STRING', 'values': ['https://image.tmdb.org/t/p/w440_and_h660_face/6DCW', 'https://image.tmdb.org/t/p/w440_and_h660_face/wEHH', 'https://image.tmdb.org/t/p/w440_and_h660_face/5RZt']}], 'Director': [{'property': 'url', 'type': 'STRING', 'values': ['https://themoviedb.org/person/88953', 'https://themoviedb.org/person/29123', 'https://themoviedb.org/person/8635', 'https://themoviedb.org/person/143998', 'https://themoviedb.org/person/13953', 'https://themoviedb.org/person/14481', 'https://themoviedb.org/person/8841', 'https://themoviedb.org/person/2106', 'https://themoviedb.org/person/13355', 'https://themoviedb.org/person/10921'], 'distinct_count': 4091}, {'property': 'bornIn', 'type': 'STRING', 'values': ['Burchard, Nebraska, USA', 'Arnoldsdorf, West Prussia, Germany [now Jarantowic', 'Piqua, Kansas, USA', 'Los Angeles, California, USA', 'Kenosha, Wisconsin, USA', 'Colorado Springs, Colorado, USA', 'Bow, London, England, UK', 'Hermosa, Chicago, Illinois, USA', 'West Newton, Massachusetts, United States', 'Scarborough, North Riding of Yorkshire, England, U'], 'distinct_count': 1606}, {'property': 'born', 'type': 'DATE', 'min': '1861-12-08', 'max': '2018-05-01', 'distinct_count': 2574}, {'property': 'died', 'type': 'DATE', 'min': '1930-08-26', 'max': '2976-09-29', 'distinct_count': 733}, {'property': 'tmdbId', 'type': 'STRING', 'values': ['88953', '29123', '8635', '143998', '13953', '14481', '8841', '2106', '13355', '10921'], 'distinct_count': 4091}, {'property': 'imdbId', 'type': 'STRING', 'values': ['0516001', '0917467', '0000036', '0820461', '0166836', '0151606', '0187981', '0000370', '0674019', '0001452'], 'distinct_count': 3988}, {'property': 'name', 'type': 'STRING', 'values': ['Harold Lloyd', 'Paul Wegener', 'Buster Keaton', 'Malcolm St. Clair', 'Edward F. Cline', 'Lon Chaney', 'Donald Crisp', 'Walt Disney', 'Osgood Perkins', 'Charles Laughton'], 'distinct_count': 4070}, {'property': 'poster', 'type': 'STRING', 'values': ['https://image.tmdb.org/t/p/w440_and_h660_face/er4Z', 'https://image.tmdb.org/t/p/w440_and_h660_face/6D04', 'https://image.tmdb.org/t/p/w440_and_h660_face/kEyb', 'https://image.tmdb.org/t/p/w440_and_h660_face/eeTY', 'https://image.tmdb.org/t/p/w440_and_h660_face/6lNC', 'https://image.tmdb.org/t/p/w440_and_h660_face/3wZ0', 'https://image.tmdb.org/t/p/w440_and_h660_face/rZHp', 'https://image.tmdb.org/t/p/w440_and_h660_face/rucT', 'https://image.tmdb.org/t/p/w440_and_h660_face/tU3s', 'https://image.tmdb.org/t/p/w440_and_h660_face/eRTD'], 'distinct_count': 2029}, {'property': 'bio', 'type': 'STRING', 'values': ['Harold Lloyd has been called the cinema’s “first m', 'Paul Wegener was a German actor known for his pion', 'Buster Keaton was an American comic actor, filmmak', 'Edward F.  Cline was an American screenwriter, act', 'Lon Chaney (born Leonidas Frank Chaney) - nickname', 'Donald Crisp was born George William Crisp at the ', '\u200bFrom Wikipedia, the free encyclopedia.  \xa0\n\nWalter', '\u200bFrom Wikipedia, the free encyclopedia.  \xa0\n\nOsgood', 'From Wikipedia, the free encyclopedia. \n\nCharles L', 'Marion Mitchell Morrison (born Marion Robert Morri'], 'distinct_count': 2641}], 'Person': [{'property': 'url', 'type': 'STRING', 'values': ['https://themoviedb.org/person/1271225', 'https://themoviedb.org/person/1602569', 'https://themoviedb.org/person/8828', 'https://themoviedb.org/person/8829', 'https://themoviedb.org/person/8830']}, {'property': 'died', 'type': 'DATE', 'values': ['1954-01-01', '1926-01-01', '1993-02-27', '1968-02-13', '1936-06-17']}, {'property': 'bornIn', 'type': 'STRING', 'values': ['France', 'Springfield, Ohio, USA', 'Madrid, New Mexico Territory , USA', 'Shelby County, Alabama, USA']}, {'property': 'born', 'type': 'DATE', 'values': ['1877-02-04', '1862-01-01', '1893-10-14', '1894-11-09', '1878-03-16']}, {'property': 'imdbId', 'type': 'STRING', 'values': ['2083046', '6170115', '0001273', '0550615', '0910400']}, {'property': 'name', 'type': 'STRING', 'values': ['François Lallement', 'Jules-Eugène Legris', 'Lillian Gish', 'Mae Marsh', 'Henry B. Walthall']}, {'property': 'poster', 'type': 'STRING', 'values': ['https://image.tmdb.org/t/p/w440_and_h660_face/6DCW', 'https://image.tmdb.org/t/p/w440_and_h660_face/wEHH', 'https://image.tmdb.org/t/p/w440_and_h660_face/5RZt']}, {'property': 'tmdbId', 'type': 'STRING', 'values': ['1271225', '1602569', '8828', '8829', '8830']}, {'property': 'bio', 'type': 'STRING', 'values': ['\u200bFrom Wikipedia, the free encyclopedia\n\nLillian Di', 'Mae Marsh (born Mary Wayne Marsh, November 9, 1894', '\u200bFrom Wikipedia, the free encyclopedia\n\nHenry Braz']}]}, 'rel_props': {'RATED': [{'property': 'rating', 'type': 'FLOAT', 'values': ['2.0', '2.5', '1.0', '3.0', '4.0']}, {'property': 'timestamp', 'type': 'INTEGER', 'values': ['1260759108', '1260759113', '1260759200', '1260759117', '1260759191']}], 'ACTED_IN': [{'property': 'role', 'type': 'STRING', 'values': ['Officer of the Marines (uncredited)', 'Parade Leader (uncredited)', 'Rachel Cooper', 'Hetty Seibert', 'The Woman Who Rocks the Cradle']}], 'DIRECTED': [{'property': 'role', 'type': 'STRING', 'values': []}]}, 'relationships': [{'start': 'Movie', 'type': 'IN_GENRE', 'end': 'Genre'}, {'start': 'User', 'type': 'RATED', 'end': 'Movie'}, {'start': 'Actor', 'type': 'ACTED_IN', 'end': 'Movie'}, {'start': 'Actor', 'type': 'DIRECTED', 'end': 'Movie'}, {'start': 'Director', 'type': 'DIRECTED', 'end': 'Movie'}, {'start': 'Director', 'type': 'ACTED_IN', 'end': 'Movie'}, {'start': 'Person', 'type': 'ACTED_IN', 'end': 'Movie'}, {'start': 'Person', 'type': 'DIRECTED', 'end': 'Movie'}], 'metadata': {'constraint': [{'id': 76, 'name': 'constraint_3b27b0', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['userId'], 'ownedIndex': 'constraint_3b27b0', 'propertyType': None}, {'id': 75, 'name': 'constraint_3d5fcb7f', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Movie'], 'properties': ['movieId'], 'ownedIndex': 'constraint_3d5fcb7f', 'propertyType': None}, {'id': 73, 'name': 'constraint_4499eae9', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Person'], 'properties': ['tmdbId'], 'ownedIndex': 'constraint_4499eae9', 'propertyType': None}, {'id': 77, 'name': 'constraint_737d9c1d', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Movie'], 'properties': ['tmdbId'], 'ownedIndex': 'constraint_737d9c1d', 'propertyType': None}, {'id': 3, 'name': 'constraint_f7832722', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['_Bloom_Perspective_'], 'properties': ['id'], 'ownedIndex': 'constraint_f7832722', 'propertyType': None}, {'id': 74, 'name': 'constraint_f8689281', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Genre'], 'properties': ['name'], 'ownedIndex': 'constraint_f8689281', 'propertyType': None}], 'index': [{'label': 'Genre', 'properties': ['name'], 'size': 20, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 20.0}, {'label': 'Movie', 'properties': ['title'], 'size': 9125, 'type': 'RANGE', 'valuesSelectivity': 0.9745753424657534, 'distinctValues': 8893.0}, {'label': 'Movie', 'properties': ['tagline'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'Movie', 'properties': ['year'], 'size': 9096, 'type': 'RANGE', 'valuesSelectivity': 0.011323658751099384, 'distinctValues': 103.0}, {'label': 'Movie', 'properties': ['imdbRating'], 'size': 9058, 'type': 'RANGE', 'valuesSelectivity': 0.008500772797527048, 'distinctValues': 77.0}, {'label': 'Movie', 'properties': ['released'], 'size': 9041, 'type': 'RANGE', 'valuesSelectivity': 0.5335692954319212, 'distinctValues': 4824.0}, {'label': 'Movie', 'properties': ['imdbId'], 'size': 9125, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 9125.0}, {'label': 'Movie', 'properties': ['movieId'], 'size': 9125, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 9125.0}, {'label': 'Movie', 'properties': ['tmdbId'], 'size': 9121, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 9121.0}, {'label': 'Person', 'properties': ['name'], 'size': 19047, 'type': 'RANGE', 'valuesSelectivity': 0.99826744369192, 'distinctValues': 19014.0}, {'label': 'Person', 'properties': ['tmdbId'], 'size': 19047, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 19047.0}, {'label': 'User', 'properties': ['userId'], 'size': 671, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 671.0}, {'label': 'User', 'properties': ['name'], 'size': 671, 'type': 'RANGE', 'valuesSelectivity': 0.9970193740685543, 'distinctValues': 669.0}, {'label': '_Bloom_Perspective_', 'properties': ['id'], 'size': 1, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1.0}]}}"
+buzzoverflow,"Node properties:
+- **Question**
+  - `favorites`: INTEGER Example: ""0""
+  - `answered`: BOOLEAN 
+  - `text`: STRING Example: ""### This is:  Bug    ### Specifications  OS: Win10""
+  - `link`: STRING Example: ""https://stackoverflow.com/questions/62224586/playg""
+  - `createdAt`: DATE_TIME Min: 2020-06-05T16:57:19Z, Max: 2020-06-05T21:49:16Z
+  - `title`: STRING Example: ""Playground is not loading with apollo-server-lambd""
+  - `id`: INTEGER Min: 62220505, Max: 62224586
+  - `upVotes`: INTEGER Example: ""0""
+  - `score`: INTEGER Example: ""-1""
+  - `downVotes`: INTEGER Example: ""1""
+- **Tag**
+  - `name`: STRING Example: ""aws-lambda""
+- **User**
+  - `image`: STRING Example: ""https://lh3.googleusercontent.com/-NcFYSuXU0nk/AAA""
+  - `link`: STRING Example: ""https://stackoverflow.com/users/10251021/alexandre""
+  - `id`: INTEGER Min: 751, Max: 13681006
+  - `reputation`: INTEGER Min: 1, Max: 420137
+  - `display_name`: STRING Example: ""Alexandre Le""
+Relationship properties:
+
+The relationships:
+(:Question)-[:TAGGED]->(:Tag)
+(:User)-[:ASKED]->(:Question)","{'node_props': {'Question': [{'property': 'favorites', 'type': 'INTEGER', 'values': ['0']}, {'property': 'answered', 'type': 'BOOLEAN'}, {'property': 'text', 'type': 'STRING', 'values': ['### This is:\r\nBug\r\n\r\n### Specifications\r\nOS: Win10', 'I was trying to create subscription using the libr', 'Using GraphQL with React and Drupal is pretty inte', 'Here&#39;s the data:\r\n\r\n[![enter image description', 'I have sensor that can sense 20 different things: ']}, {'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/questions/62224586/playg', 'https://stackoverflow.com/questions/62222652/graph', 'https://stackoverflow.com/questions/62222021/react', 'https://stackoverflow.com/questions/62220732/graph', 'https://stackoverflow.com/questions/62220505/using']}, {'property': 'createdAt', 'type': 'DATE_TIME', 'min': '2020-06-05T16:57:19Z', 'max': '2020-06-05T21:49:16Z', 'distinct_count': 5}, {'property': 'title', 'type': 'STRING', 'values': ['Playground is not loading with apollo-server-lambd', 'GraphQL subscription delay on first time', 'React w/ Apollo &amp; Drupal nodeQuery - how to de', 'GraphQL query giving me a a &quot;Cannot return nu', 'Using GraphQLResolveInfo in resolver']}, {'property': 'id', 'type': 'INTEGER', 'min': '62220505', 'max': '62224586', 'distinct_count': 5}, {'property': 'upVotes', 'type': 'INTEGER', 'values': ['0']}, {'property': 'score', 'type': 'INTEGER', 'values': ['-1', '0']}, {'property': 'downVotes', 'type': 'INTEGER', 'values': ['1', '0']}], 'Tag': [{'property': 'name', 'type': 'STRING', 'values': ['aws-lambda', 'graphql', 'apollo', 'node.js', 'graphql-subscriptions', 'drupal-8', 'react-apollo', 'apollo-client', 'angular', 'angular8'], 'distinct_count': 1554}], 'User': [{'property': 'image', 'type': 'STRING', 'values': ['https://lh3.googleusercontent.com/-NcFYSuXU0nk/AAA', 'https://lh3.googleusercontent.com/a-/AOh14GgivQVqM', 'https://www.gravatar.com/avatar/abe65349ae3d314fa8', 'https://www.gravatar.com/avatar/57254856adf547299e', 'https://www.gravatar.com/avatar/d0446727d4eb365b07', 'https://www.gravatar.com/avatar/9c46e1aafdd2001f4b', 'https://lh3.googleusercontent.com/-m6PWf40GPuc/AAA', 'https://www.gravatar.com/avatar/b988693ff42463c94f', 'https://i.stack.imgur.com/TvsSL.png?s=128&g=1', 'https://i.stack.imgur.com/UH76y.jpg?s=128&g=1'], 'distinct_count': 6894}, {'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/users/10251021/alexandre', 'https://stackoverflow.com/users/13065972/abhijith-', 'https://stackoverflow.com/users/1429803/anthony-ga', 'https://stackoverflow.com/users/2957975/darkmatter', 'https://stackoverflow.com/users/2799999/gad0lin', 'https://stackoverflow.com/users/7075699/huy-nguyen', 'https://stackoverflow.com/users/11930438/muhammad-', 'https://stackoverflow.com/users/11971463/john-doe', 'https://stackoverflow.com/users/10129053/mrpbennet', 'https://stackoverflow.com/users/646334/chux'], 'distinct_count': 6947}, {'property': 'id', 'type': 'INTEGER', 'min': '751', 'max': '13681006', 'distinct_count': 6947}, {'property': 'reputation', 'type': 'INTEGER', 'min': '1', 'max': '420137', 'distinct_count': 2315}, {'property': 'display_name', 'type': 'STRING', 'values': ['Alexandre Le', 'Abhijith v', 'anthony galligani', 'Darkmatter5', 'gad0lin', 'Huy Nguyen', 'Muhammad Usama Malik', 'John Doe', 'mrpbennett', 'Chux'], 'distinct_count': 6719}]}, 'rel_props': {}, 'relationships': [{'start': 'Question', 'type': 'TAGGED', 'end': 'Tag'}, {'start': 'User', 'type': 'ASKED', 'end': 'Question'}], 'metadata': {'constraint': [{'id': 61, 'name': 'constraint_47e7f15d', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['id'], 'ownedIndex': 'constraint_47e7f15d', 'propertyType': None}, {'id': 59, 'name': 'constraint_64b1b1cf', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Tag'], 'properties': ['name'], 'ownedIndex': 'constraint_64b1b1cf', 'propertyType': None}, {'id': 65, 'name': 'constraint_939b067a', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Answer'], 'properties': ['id'], 'ownedIndex': 'constraint_939b067a', 'propertyType': None}, {'id': 63, 'name': 'constraint_f06c84a5', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Question'], 'properties': ['id'], 'ownedIndex': 'constraint_f06c84a5', 'propertyType': None}], 'index': [{'label': 'Answer', 'properties': ['id'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'Answer', 'properties': ['createdAt'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'Question', 'properties': ['createdAt'], 'size': 10000, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 10000.0}, {'label': 'Question', 'properties': ['text'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'Question', 'properties': ['title'], 'size': 10000, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 10000.0}, {'label': 'Question', 'properties': ['id'], 'size': 10000, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 10000.0}, {'label': 'Tag', 'properties': ['name'], 'size': 1554, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1554.0}, {'label': 'User', 'properties': ['display_name'], 'size': 6947, 'type': 'RANGE', 'valuesSelectivity': 0.9671800777313948, 'distinctValues': 6719.0}, {'label': 'User', 'properties': ['name'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'User', 'properties': ['id'], 'size': 6947, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 6947.0}]}}"
+bluesky,"Node properties:
+- **User**
+  - `label`: STRING Example: ""inchristbl.bsky.social""
+  - `key`: STRING Example: ""0""
+  - `y`: FLOAT Example: ""6000.659""
+  - `color`: STRING Example: ""#3CB371""
+  - `x`: FLOAT Example: ""-4383.217""
+  - `area`: FLOAT Example: ""2.6""
+  - `size`: FLOAT Example: ""1.82""
+Relationship properties:
+- **INTERACTED**
+  - `weight: INTEGER` Example: ""1""
+  - `ogWeight: INTEGER` Example: ""1""
+  - `size: FLOAT` Example: ""0.2""
+  - `key: STRING` Example: ""geid_68_0""
+The relationships:
+(:User)-[:INTERACTED]->(:User)","{'node_props': {'User': [{'property': 'label', 'type': 'STRING', 'values': ['inchristbl.bsky.social', 'r0yart.bsky.social', 'chromevoid.bsky.social', 'samiraingold.art', 'sarahp.bsky.social']}, {'property': 'key', 'type': 'STRING', 'values': ['0', '1', '2', '3', '4']}, {'property': 'y', 'type': 'FLOAT', 'values': ['6000.659', '7032.724', '4929.876', '5621.208', '-7333.085']}, {'property': 'color', 'type': 'STRING', 'values': ['#3CB371', '#87CEFA', '#4A708B']}, {'property': 'x', 'type': 'FLOAT', 'values': ['-4383.217', '-4857.137', '-3675.52', '-4477.705', '-3301.206']}, {'property': 'area', 'type': 'FLOAT', 'values': ['2.6', '1.77', '7.67', '4.94', '5.51']}, {'property': 'size', 'type': 'FLOAT', 'values': ['1.82', '1.5', '3.13', '2.51', '2.65']}]}, 'rel_props': {'INTERACTED': [{'property': 'weight', 'type': 'INTEGER', 'values': ['1', '3.39', '9.55']}, {'property': 'ogWeight', 'type': 'INTEGER', 'values': ['1', '3']}, {'property': 'size', 'type': 'FLOAT', 'values': ['0.2', '1.24', '2.11']}, {'property': 'key', 'type': 'STRING', 'values': ['geid_68_0', 'geid_68_1', 'geid_68_2', 'geid_68_3', 'geid_68_4']}]}, 'relationships': [{'start': 'User', 'type': 'INTERACTED', 'end': 'User'}], 'metadata': {'constraint': [{'id': 8, 'name': 'user_key', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['key'], 'ownedIndex': 'user_key', 'propertyType': None}], 'index': [{'label': 'User', 'properties': ['label'], 'size': 20405, 'type': 'RANGE', 'valuesSelectivity': 0.924234256309728, 'distinctValues': 18859.0}, {'label': 'User', 'properties': ['key'], 'size': 20405, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 20405.0}]}}"
+companies,"Node properties:
+- **Person**
+  - `name`: STRING Example: ""Julie Spellman Sweet""
+  - `id`: STRING Example: ""Eaf0bpz6NNoqLVUCqNZPAew""
+  - `summary`: STRING Example: ""CEO at Accenture""
+- **Organization**
+  - `revenue`: FLOAT Example: ""1.2E8""
+  - `motto`: STRING Example: """"
+  - `nbrEmployees`: INTEGER Example: ""375""
+  - `isDissolved`: BOOLEAN 
+  - `id`: STRING Example: ""E0ZU8eCc5OaqS1LU9qE3n3w""
+  - `isPublic`: BOOLEAN 
+  - `name`: STRING Example: ""New Energy Group""
+  - `summary`: STRING Example: ""Software company based in Rome, Metropolitan City ""
+- **IndustryCategory**
+  - `name`: STRING Example: ""Electronic Products Manufacturers""
+  - `id`: STRING Example: ""EUNd__O4zMNW81lAXNK2GNw""
+- **City**
+  - `id`: STRING Example: ""EZHWv2xKgN92oYDKSjhJ2gw""
+  - `summary`: STRING Example: ""City in and county seat of King County, Washington""
+  - `name`: STRING Example: ""Seattle""
+- **Country**
+  - `name`: STRING Example: ""United States of America""
+  - `id`: STRING Example: ""E01d4EK33MmCosgI2KXa4-A""
+  - `summary`: STRING Example: ""Country in North America""
+- **Article**
+  - `id`: STRING Example: ""ART176872705964""
+  - `sentiment`: FLOAT Example: ""0.856""
+  - `author`: STRING Example: ""David Correa""
+  - `siteName`: STRING Example: ""MrWeb""
+  - `summary`: STRING Example: ""Boston and Mumbai-based consumer behavior analyses""
+  - `date`: DATE_TIME Example: ""2022-03-10T00:00:00Z""
+  - `title`: STRING Example: ""Funds for Consumer Behavior Specialist Infinite An""
+- **Chunk**
+  - `text`: STRING Example: ""Boston and Mumbai-based consumer behavior analyses""
+- **Fewshot**
+  - `Question`: STRING Available options: ['How is Emil Eifrem connected to Michael Hunger? ', 'What are the latest news regarding Google? ', 'Are there any news regarding return to office poli', 'What is Microsoft policy regarding to the return t', 'How many levels of subsidiaries does Blackstone ha', 'How many Telecommunications Companies are from Mal']
+  - `Cypher`: STRING Available options: ['MATCH (p1:Person {{name:""Emil Eifrem""}}), (p2:Pers', 'MATCH (o:Organization {{name:""Google""}})<-[:MENTIO', 'CALL apoc.ml.openai.embedding([""Are there any news', 'CALL apoc.ml.openai.embedding([""What is Microsoft ', 'MATCH p=(o:Organization {name:""Blackstone""})-[:HAS', 'MATCH (o:Organization) WHERE EXISTS {(o)-[:HAS_CAT']
+  - `id`: INTEGER Min: 2, Max: 7
+Relationship properties:
+
+The relationships:
+(:Person)-[:HAS_PARENT]->(:Person)
+(:Person)-[:HAS_CHILD]->(:Person)
+(:Organization)-[:IN_CITY]->(:City)
+(:Organization)-[:HAS_CEO]->(:Person)
+(:Organization)-[:HAS_CATEGORY]->(:IndustryCategory)
+(:Organization)-[:HAS_SUBSIDIARY]->(:Organization)
+(:Organization)-[:HAS_SUPPLIER]->(:Organization)
+(:Organization)-[:HAS_INVESTOR]->(:Organization)
+(:Organization)-[:HAS_INVESTOR]->(:Person)
+(:Organization)-[:HAS_BOARD_MEMBER]->(:Person)
+(:Organization)-[:HAS_COMPETITOR]->(:Organization)
+(:City)-[:IN_COUNTRY]->(:Country)
+(:Article)-[:HAS_CHUNK]->(:Chunk)
+(:Article)-[:MENTIONS]->(:Organization)","{'node_props': {'Person': [{'property': 'name', 'type': 'STRING', 'values': ['Julie Spellman Sweet', 'Arun Sarin', 'Gilles Pélisson', 'Murthy Renduchintala', 'Tracey T. Travis', 'Nancy McKinstry', 'MJ Petroni', 'Frank Riemensperger', ""Lulu O'Sullivan"", 'Paula A. Price'], 'distinct_count': 7987}, {'property': 'id', 'type': 'STRING', 'values': ['Eaf0bpz6NNoqLVUCqNZPAew', 'EiBXh7ntpMfOdhqFJDmDw4A', 'EPXfNzMUGMfygOTJrdzjq-g', 'EljONz8D7O1KqbcjUzj3JqQ', 'EzoEIxWzONMK1Ghq3_ML0jA', 'EAuEaRjfqPxSgrzlBwzIt6w', 'EyDMiBt8_MdaZ8guOJF8mVQ', 'E9UHcgulCOKW5yeP9GTQ1TA', 'ESoimY_42NteM2fqHqvYdMg', 'Ep8aw6WCKPsuHvEZ2o7lgCQ'], 'distinct_count': 8064}, {'property': 'summary', 'type': 'STRING', 'values': ['CEO at Accenture', 'American businessman', 'French businessman', 'Board Member at Accenture', 'CFO at Estee Lauder Companies', 'CEO at CLM Matrix', 'CEO at Causeit', 'Chairman at Accenture', 'CEO at GiftsDirect', 'Vice President at CVS Pharmacy'], 'distinct_count': 6401}], 'Organization': [{'property': 'revenue', 'type': 'FLOAT', 'values': ['1.2E8', '4600000.0', '5.9E7']}, {'property': 'motto', 'type': 'STRING', 'values': ['', 'Securing the most prolific technologies in the wor', 'Supply Chain Management & Advanced Data Analytics.']}, {'property': 'nbrEmployees', 'type': 'INTEGER', 'values': ['375', '30', '175', '102']}, {'property': 'isDissolved', 'type': 'BOOLEAN'}, {'property': 'id', 'type': 'STRING', 'values': ['E0ZU8eCc5OaqS1LU9qE3n3w', 'E91iaB3VQN3K-0YIMTmJjRw', 'Ep4YdYe6nPdaQnvOFxKB_qQ', 'EyQvESab5O3aLu1zpcfgs1w', 'Ey6c5KMaiObKflzgTRFx28Q']}, {'property': 'isPublic', 'type': 'BOOLEAN'}, {'property': 'name', 'type': 'STRING', 'values': ['New Energy Group', 'Deja vu Security', 'Clarity Insights', 'Icon Integration', 'Exton Consulting']}, {'property': 'summary', 'type': 'STRING', 'values': ['Software company based in Rome, Metropolitan City ', 'Software company based in Seattle, Washington, Uni', 'Software company based in Chicago, Illinois, Unite', 'Software company based in Sydney, New South Wales,', 'Financial services company based in Neuilly-sur-Se']}], 'IndustryCategory': [{'property': 'name', 'type': 'STRING', 'values': ['Electronic Products Manufacturers', 'Enterprise Software Companies', 'Computer Hardware Companies', 'Business Software Companies', 'Mobile Phone Manufacturers', 'Cloud Computing Providers', 'Manufacturing Companies', 'CRM Software Companies', 'Software Companies', 'Open Source Software Organizations'], 'distinct_count': 258}, {'property': 'id', 'type': 'STRING', 'values': ['EUNd__O4zMNW81lAXNK2GNw', 'Efc_gAH4HM_SKwiKysIzA1w', 'EqFeVtLRWOUqTdzVhcYwBBQ', 'EK3MjPEGOPKatcFLr-zk_xg', 'EzqlzZ9UDNMOEq3ifB84Wcw', 'EbBgmU7WYPLm6DpLFV5chFg', 'E0bLvnJ6_OzqexMbWjOEekg', 'EAVUnGH_nPFunkNS-6VEf_w', 'EM3QovH3_NZCnZTu7zweSQQ', 'E0mRRD4ZpPKiybXtFYk5aFw'], 'distinct_count': 258}], 'City': [{'property': 'id', 'type': 'STRING', 'values': ['EZHWv2xKgN92oYDKSjhJ2gw', 'E_FZVnahVPq64PwoufmS6oA', 'ENFWeK7YSOSyL8SWvT14yEw', 'EuIfIxXqHPyCqFkUqzuM3JA', 'EBq4L4QZJNPmY523kMjfZIg', 'Efsd1HzRPP02EPZJnOZPfQA', 'EcMmgf99wMQ6XYnbChv5HiQ', 'EuaBmENEpOj-Jn4zhhh1rFg', 'EKrUKh2IuN2eDkhiICg1qZw', 'ECb_0DzYePbSvY2dXusB-Ag'], 'distinct_count': 9131}, {'property': 'summary', 'type': 'STRING', 'values': ['City in and county seat of King County, Washington', 'Capital and largest city of Italy', 'Major city in Greater Manchester, England, UK', 'Village in Beekdaelen, Netherlands', 'Capital of Argentina', 'City and county seat of Cook County, Illinois, Uni', 'Most populous city in the United States of America', 'City in San Mateo County, California, United State', 'Capital city of New South Wales, Australia', 'City on the North Island New Zealand'], 'distinct_count': 4368}, {'property': 'name', 'type': 'STRING', 'values': ['Seattle', 'Rome', 'Manchester', 'Schimmert', 'Buenos Aires', 'Chicago', 'New York City', 'Redwood City', 'Sydney', 'Auckland'], 'distinct_count': 8387}], 'Country': [{'property': 'name', 'type': 'STRING', 'values': ['United States of America', 'Italy', 'United Kingdom', 'Australia', 'Netherlands', 'Argentina', 'New Zealand', 'France', 'Germany', 'Spain'], 'distinct_count': 119}, {'property': 'id', 'type': 'STRING', 'values': ['E01d4EK33MmCosgI2KXa4-A', 'Es0LZKHtaPf2VSixCSIlcEg', 'EnI6g1AI9NcC6yCohEYEb2A', 'EFMlRRXcoPwu5uHO8umFWJg', 'EEu52SSGQONeAXzy30yKmBg', 'EJquW74SGMmKlsMubKzh3Ag', 'EDtTr-FLEN_WtNqEV9Awolg', 'EF-T5rsSIMVOAK-HK7eoXBw', 'EIcwjrVugPfi33BsXUpWVQA', 'EVgMpO16yNySigGdSXQEyZQ'], 'distinct_count': 119}, {'property': 'summary', 'type': 'STRING', 'values': ['Country in North America', 'Country in Southern Europe', 'Country in north-west Europe', 'Country in Oceania', 'Country in Northwestern Europe with territories in', 'Sovereign state in South America', 'Island country in the southwest Pacific Ocean', 'Country in Western Europe', 'Country in Central Europe', 'Country in southwestern Europe with territories in'], 'distinct_count': 71}], 'Article': [{'property': 'id', 'type': 'STRING', 'values': ['ART176872705964', 'ART207354016827', 'ART266798609405', 'ART119872457792', 'ART49144589301']}, {'property': 'sentiment', 'type': 'FLOAT', 'values': ['0.856', '0.908', '0.866', '0.693', 'NaN']}, {'property': 'author', 'type': 'STRING', 'values': ['David Correa', 'Meha Agarwal', 'Tyler Cowen']}, {'property': 'siteName', 'type': 'STRING', 'values': ['MrWeb', 'EIN Presswire', 'Inc42 Media', 'Marginal REVOLUTION', 'SBWire']}, {'property': 'summary', 'type': 'STRING', 'values': ['Boston and Mumbai-based consumer behavior analyses', 'Market is driven by factors such as perpetually gr', 'Pitney Bowes, a global technology company has sele', 'Praveen Mishra\nPraveen Mishra when he was 16 start', 'Free Sample Report + All Related Graphs & Charts @']}, {'property': 'date', 'type': 'DATE_TIME', 'values': ['2022-03-10T00:00:00Z', '2021-12-03T13:14:00Z', '2020-08-03T00:00:00Z', '2020-07-30T00:36:00Z', '2019-02-18T00:00:00Z']}, {'property': 'title', 'type': 'STRING', 'values': ['Funds for Consumer Behavior Specialist Infinite An', 'AI in Retail Market is Expected to Witness a Susta', 'Pitney Bowes Global Accelerator Programme Names Si', 'Emergent Ventures India, second cohort of winners', 'Recommendation Engine Market to Witness Huge Growt']}], 'Chunk': [{'property': 'text', 'type': 'STRING', 'values': ['Boston and Mumbai-based consumer behavior analyses', 'Market is driven by factors such as perpetually gr', 'Pitney Bowes, a global technology company has sele', 'Praveen Mishra\nPraveen Mishra when he was 16 start', 's history. Nilay has also spoken at TEDx New York ']}, {'property': 'embedding', 'type': 'LIST', 'max_size': 1536, 'min_size': 1536}, {'property': 'embedding_google', 'type': 'LIST', 'max_size': 768, 'min_size': 768}], 'Fewshot': [{'property': 'Question', 'type': 'STRING', 'values': ['How is Emil Eifrem connected to Michael Hunger?\n', 'What are the latest news regarding Google?\n', 'Are there any news regarding return to office poli', 'What is Microsoft policy regarding to the return t', 'How many levels of subsidiaries does Blackstone ha', 'How many Telecommunications Companies are from Mal'], 'distinct_count': 6}, {'property': 'Cypher', 'type': 'STRING', 'values': ['MATCH (p1:Person {{name:""Emil Eifrem""}}), (p2:Pers', 'MATCH (o:Organization {{name:""Google""}})<-[:MENTIO', 'CALL apoc.ml.openai.embedding([""Are there any news', 'CALL apoc.ml.openai.embedding([""What is Microsoft ', 'MATCH p=(o:Organization {name:""Blackstone""})-[:HAS', 'MATCH (o:Organization)\nWHERE EXISTS {(o)-[:HAS_CAT'], 'distinct_count': 6}, {'property': 'id', 'type': 'INTEGER', 'min': '2', 'max': '7', 'distinct_count': 6}, {'property': 'embedding', 'type': 'LIST', 'max_size': 1536, 'min_size': 1536}]}, 'rel_props': {}, 'relationships': [{'start': 'Person', 'type': 'HAS_PARENT', 'end': 'Person'}, {'start': 'Person', 'type': 'HAS_CHILD', 'end': 'Person'}, {'start': 'Organization', 'type': 'IN_CITY', 'end': 'City'}, {'start': 'Organization', 'type': 'HAS_CEO', 'end': 'Person'}, {'start': 'Organization', 'type': 'HAS_CATEGORY', 'end': 'IndustryCategory'}, {'start': 'Organization', 'type': 'HAS_SUBSIDIARY', 'end': 'Organization'}, {'start': 'Organization', 'type': 'HAS_SUPPLIER', 'end': 'Organization'}, {'start': 'Organization', 'type': 'HAS_INVESTOR', 'end': 'Organization'}, {'start': 'Organization', 'type': 'HAS_INVESTOR', 'end': 'Person'}, {'start': 'Organization', 'type': 'HAS_BOARD_MEMBER', 'end': 'Person'}, {'start': 'Organization', 'type': 'HAS_COMPETITOR', 'end': 'Organization'}, {'start': 'City', 'type': 'IN_COUNTRY', 'end': 'Country'}, {'start': 'Article', 'type': 'HAS_CHUNK', 'end': 'Chunk'}, {'start': 'Article', 'type': 'MENTIONS', 'end': 'Organization'}], 'metadata': {'constraint': [{'id': 10, 'name': 'constraint_ecc04354', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Article'], 'properties': ['id'], 'ownedIndex': 'constraint_ecc04354', 'propertyType': None}, {'id': 15, 'name': 'constraint_f7832722', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['_Bloom_Perspective_'], 'properties': ['id'], 'ownedIndex': 'constraint_f7832722', 'propertyType': None}, {'id': 8, 'name': 'industry_category_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['IndustryCategory'], 'properties': ['id'], 'ownedIndex': 'industry_category_id', 'propertyType': None}, {'id': 6, 'name': 'organization_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Organization'], 'properties': ['id'], 'ownedIndex': 'organization_id', 'propertyType': None}, {'id': 4, 'name': 'person_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Person'], 'properties': ['id'], 'ownedIndex': 'person_id', 'propertyType': None}], 'index': [{'label': 'Article', 'properties': ['id'], 'size': 64191, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 64191.0}, {'label': 'IndustryCategory', 'properties': ['id'], 'size': 253, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 253.0}, {'label': 'Organization', 'properties': ['id'], 'size': 45156, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 45156.0}, {'label': 'Person', 'properties': ['id'], 'size': 7909, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 7909.0}, {'label': '_Bloom_Perspective_', 'properties': ['id'], 'size': 1, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1.0}]}}"
+fincen,"Node properties:
+- **Country**
+  - `location`: POINT 
+  - `code`: STRING Example: ""AFG""
+  - `name`: STRING Example: ""Afghanistan""
+  - `tld`: STRING Example: ""AF""
+- **Filing**
+  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z
+  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z
+  - `originator_bank_id`: STRING Example: ""cimb-bank-berhad""
+  - `sar_id`: STRING Example: ""3297""
+  - `beneficiary_bank`: STRING Example: ""Barclays Bank Plc""
+  - `filer_org_name_id`: STRING Example: ""the-bank-of-new-york-mellon-corp""
+  - `originator_bank_country`: STRING Example: ""Singapore""
+  - `beneficiary_bank_country`: STRING Example: ""United Kingdom""
+  - `filer_org_name`: STRING Example: ""The Bank of New York Mellon Corp.""
+  - `originator_iso`: STRING Example: ""SGP""
+  - `beneficiary_bank_id`: STRING Example: ""barclays-bank-plc-london-england-gbr""
+  - `origin_lat`: STRING Example: ""1.3667""
+  - `origin_lng`: STRING Example: ""103.8""
+  - `end_date_format`: STRING Example: ""2015-09-25T00:00:00Z""
+  - `begin_date_format`: STRING Example: ""2015-03-25T00:00:00Z""
+  - `originator_bank`: STRING Example: ""CIMB Bank Berhad""
+  - `beneficiary_lat`: STRING Example: ""54""
+  - `beneficiary_iso`: STRING Example: ""GBR""
+  - `beneficiary_lng`: STRING Example: ""-2""
+  - `begin_date`: STRING Example: ""Mar 25, 2015""
+  - `id`: STRING Example: ""223254""
+  - `end_date`: STRING Example: ""Sep 25, 2015""
+  - `amount`: INTEGER Min: 1.18, Max: 2721000000
+  - `number`: INTEGER Min: 1, Max: 174
+- **Entity**
+  - `id`: STRING Example: ""the-bank-of-new-york-mellon-corp""
+  - `location`: POINT 
+  - `name`: STRING Example: ""The Bank of New York Mellon Corp.""
+  - `country`: STRING Example: ""CHN""
+Relationship properties:
+
+The relationships:
+(:Filing)-[:BENEFITS]->(:Entity)
+(:Filing)-[:CONCERNS]->(:Entity)
+(:Filing)-[:ORIGINATOR]->(:Entity)
+(:Entity)-[:FILED]->(:Filing)
+(:Entity)-[:COUNTRY]->(:Country)","{'node_props': {'Country': [{'property': 'location', 'type': 'POINT'}, {'property': 'code', 'type': 'STRING', 'values': ['AFG', 'ALB', 'DZA', 'ASM', 'AND', 'AGO', 'AIA', 'ATA', 'ATG', 'ARG'], 'distinct_count': 254}, {'property': 'name', 'type': 'STRING', 'values': ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina'], 'distinct_count': 254}, {'property': 'tld', 'type': 'STRING', 'values': ['AF', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR'], 'distinct_count': 243}], 'Filing': [{'property': 'begin', 'type': 'DATE_TIME', 'min': '2000-02-08T00:00:00Z', 'max': '2017-09-05T00:00:00Z', 'distinct_count': 1762}, {'property': 'end', 'type': 'DATE_TIME', 'min': '2000-02-08T00:00:00Z', 'max': '2017-11-03T00:00:00Z', 'distinct_count': 1751}, {'property': 'originator_bank_id', 'type': 'STRING', 'values': ['cimb-bank-berhad', 'barclays-bank-plc-ho-uk', 'natwest-offshore', 'evrofinance-mosnarbank', 'latvian-trade-commercial-bank', 'vtb-north-west', 'dbs-bank-ltd', 'unicredit-bank-austria-ag', 'kazkommertsbank', 'transcredit-bank'], 'distinct_count': 891}, {'property': 'sar_id', 'type': 'STRING', 'values': ['3297', '2924', '2345', '2354', '3244', '2778', '2355', '3176', '4314', '4031'], 'distinct_count': 534}, {'property': 'beneficiary_bank', 'type': 'STRING', 'values': ['Barclays Bank Plc', 'Skandinaviska Enskilda Banken', 'Commonwealth Bank of Australia', 'DNB Nor Bank Asa', 'Marfin Popular Bank Public Co Ltd', 'Alcoa Inc', 'Piraeus Bank', 'Credit To Euroclear Bank SA', 'LTB Bank', 'Credit Toltb Bank'], 'distinct_count': 1112}, {'property': 'filer_org_name_id', 'type': 'STRING', 'values': ['the-bank-of-new-york-mellon-corp', 'societe-generale-sa', 'deutsche-bank-ag', 'standard-chartered-plc', 'mitsubishi-ufj-financial-group-inc', 'ofg-bancorp', 'bank-of-america-corp', 'barclays-plc', 'china-investment-corporation', 'jp-morgan-chase-co'], 'distinct_count': 26}, {'property': 'originator_bank_country', 'type': 'STRING', 'values': ['Singapore', 'United Kingdom', 'Gibraltar', 'Russia', 'Latvia', 'Austria', 'Kazakhstan', 'United Arab Emirates', 'United States', 'Lebanon'], 'distinct_count': 119}, {'property': 'beneficiary_bank_country', 'type': 'STRING', 'values': ['United Kingdom', 'Sweden', 'Australia', 'Norway', 'Cyprus', 'United States', 'Bulgaria', 'Belgium', 'Latvia', 'Malaysia'], 'distinct_count': 111}, {'property': 'filer_org_name', 'type': 'STRING', 'values': ['The Bank of New York Mellon Corp.', 'Société Générale SA', 'Deutsche Bank AG', 'Standard Chartered Plc', 'Mitsubishi UFJ Financial Group, Inc.', 'OFG Bancorp', 'Bank of America Corp.', 'Barclays Plc', 'China Investment Corporation', 'JP Morgan Chase & Co.'], 'distinct_count': 26}, {'property': 'originator_iso', 'type': 'STRING', 'values': ['SGP', 'GBR', 'GIB', 'RUS', 'LVA', 'AUT', 'KAZ', 'ARE', 'USA', 'LBN'], 'distinct_count': 117}, {'property': 'beneficiary_bank_id', 'type': 'STRING', 'values': ['barclays-bank-plc-london-england-gbr', 'skandinaviska-enskilda-banken-stockholm-sweden-swe', 'commonwealth-bank-of-australia-sydney-australia-au', 'dnb-nor-bank-asa-oslo-norway-nor', 'marfin-popular-bank-public-co-ltd-nicosia-cyprus-c', 'alcoa-inc-pittsburgh-pa-usa', 'piraeus-bank-sofia-bulgaria-bgr', 'credit-to-euroclear-bank-sa-brussels-belgium-bel', 'ltb-bank-riga-latvia-lva', 'credit-toltb-bank-riga-latvia-lva'], 'distinct_count': 1389}, {'property': 'origin_lat', 'type': 'STRING', 'values': ['1.3667', '54', '36.1833', '60', '57', '47.3333', '48', '24', '38', '33.8333'], 'distinct_count': 97}, {'property': 'origin_lng', 'type': 'STRING', 'values': ['103.8', '-2', '-5.3667', '100', '25', '13.3333', '68', '54', '-97', '35.8333'], 'distinct_count': 96}, {'property': 'end_date_format', 'type': 'STRING', 'values': ['2015-09-25T00:00:00Z', '2012-07-05T00:00:00Z', '2012-06-20T00:00:00Z', '2012-05-31T00:00:00Z', '2012-05-29T00:00:00Z', '2012-05-22T00:00:00Z', '2012-05-21T00:00:00Z', '2012-05-15T00:00:00Z', '2012-05-14T00:00:00Z', '2012-05-11T00:00:00Z'], 'distinct_count': 1751}, {'property': 'begin_date_format', 'type': 'STRING', 'values': ['2015-03-25T00:00:00Z', '2015-03-30T00:00:00Z', '2012-07-05T00:00:00Z', '2012-06-20T00:00:00Z', '2012-05-31T00:00:00Z', '2012-05-29T00:00:00Z', '2012-05-22T00:00:00Z', '2012-05-21T00:00:00Z', '2012-05-15T00:00:00Z', '2012-05-14T00:00:00Z'], 'distinct_count': 1762}, {'property': 'originator_bank', 'type': 'STRING', 'values': ['CIMB Bank Berhad', 'Barclays Bank Plc Ho UK', ' Natwest Offshore', 'Natwest Offshore', 'Evrofinance Mosnarbank', 'Latvian Trade Commercial Bank', 'VTB North-West', 'DBS Bank Ltd', 'UniCredit Bank Austria AG', 'Kazkommertsbank'], 'distinct_count': 967}, {'property': 'beneficiary_lat', 'type': 'STRING', 'values': ['54', '62', '-27', '35', '38', '43', '50.8333', '57', '2.5', '1.3667'], 'distinct_count': 91}, {'property': 'beneficiary_iso', 'type': 'STRING', 'values': ['GBR', 'SWE', 'AUS', 'NOR', 'CYP', 'USA', 'BGR', 'BEL', 'LVA', 'MYS'], 'distinct_count': 107}, {'property': 'beneficiary_lng', 'type': 'STRING', 'values': ['-2', '15', '133', '10', '33', '-97', '25', '4', '112.5', '103.8'], 'distinct_count': 89}, {'property': 'begin_date', 'type': 'STRING', 'values': ['Mar 25, 2015', 'Mar 30, 2015', 'Jul 5, 2012', 'Jun 20, 2012', 'May 31, 2012', 'May 29, 2012', 'May 22, 2012', 'May 21, 2012', 'May 15, 2012', 'May 14, 2012'], 'distinct_count': 1762}, {'property': 'id', 'type': 'STRING', 'values': ['223254', '223255', '223258', '223259', '223260', '223261', '223262', '223263', '223264', '223265'], 'distinct_count': 4507}, {'property': 'end_date', 'type': 'STRING', 'values': ['Sep 25, 2015', 'Jul 5, 2012', 'Jun 20, 2012', 'May 31, 2012', 'May 29, 2012', 'May 22, 2012', 'May 21, 2012', 'May 15, 2012', 'May 14, 2012', 'May 11, 2012'], 'distinct_count': 1751}, {'property': 'amount', 'type': 'INTEGER', 'min': '1.18', 'max': '2721000000', 'distinct_count': 3579}, {'property': 'number', 'type': 'INTEGER', 'min': '1', 'max': '174', 'distinct_count': 73}], 'Entity': [{'property': 'id', 'type': 'STRING', 'values': ['the-bank-of-new-york-mellon-corp', 'societe-generale-sa', 'standard-chartered-plc', 'deutsche-bank-ag', 'jp-morgan-chase-co', 'the-northern-trust-company', 'bank-of-america-corp', 'barclays-plc', 'china-investment-corporation', 'the-royal-bank-of-scotland-plc'], 'distinct_count': 2755}, {'property': 'location', 'type': 'POINT'}, {'property': 'name', 'type': 'STRING', 'values': ['The Bank of New York Mellon Corp.', 'Société Générale SA', 'Standard Chartered Plc', 'Deutsche Bank AG', 'JP Morgan Chase & Co.', 'The Northern Trust Company', 'Bank of America Corp.', 'Barclays Plc', 'China Investment Corporation', 'The Royal Bank Of Scotland Plc'], 'distinct_count': 1805}, {'property': 'country', 'type': 'STRING', 'values': ['CHN', 'CYP', 'NZL', 'KHM', 'SGP', 'KAZ', 'EGY', 'ARE', 'BEL', 'CHE'], 'distinct_count': 99}]}, 'rel_props': {}, 'relationships': [{'start': 'Filing', 'type': 'BENEFITS', 'end': 'Entity'}, {'start': 'Filing', 'type': 'CONCERNS', 'end': 'Entity'}, {'start': 'Filing', 'type': 'ORIGINATOR', 'end': 'Entity'}, {'start': 'Entity', 'type': 'FILED', 'end': 'Filing'}, {'start': 'Entity', 'type': 'COUNTRY', 'end': 'Country'}], 'metadata': {'constraint': [{'id': 21, 'name': 'constraint_7c28e5f7', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Filing'], 'properties': ['id'], 'ownedIndex': 'constraint_7c28e5f7', 'propertyType': None}, {'id': 25, 'name': 'constraint_96870fc7', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Country'], 'properties': ['code'], 'ownedIndex': 'constraint_96870fc7', 'propertyType': None}, {'id': 23, 'name': 'constraint_ea922423', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Entity'], 'properties': ['id'], 'ownedIndex': 'constraint_ea922423', 'propertyType': None}], 'index': [{'label': 'Country', 'properties': ['name'], 'size': 254, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 254.0}, {'label': 'Country', 'properties': ['code'], 'size': 254, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 254.0}, {'label': 'Entity', 'properties': ['name'], 'size': 2763, 'type': 'RANGE', 'valuesSelectivity': 0.6539992761491132, 'distinctValues': 1806.9999999999998}, {'label': 'Entity', 'properties': ['id'], 'size': 2763, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 2763.0}, {'label': 'Filing', 'properties': ['amount'], 'size': 4507, 'type': 'RANGE', 'valuesSelectivity': 0.7940980696694031, 'distinctValues': 3579.0}, {'label': 'Filing', 'properties': ['end'], 'size': 4501, 'type': 'RANGE', 'valuesSelectivity': 0.389024661186403, 'distinctValues': 1751.0}, {'label': 'Filing', 'properties': ['begin'], 'size': 4501, 'type': 'RANGE', 'valuesSelectivity': 0.3914685625416574, 'distinctValues': 1762.0}, {'label': 'Filing', 'properties': ['sar_id'], 'size': 4507, 'type': 'RANGE', 'valuesSelectivity': 0.11848236077213224, 'distinctValues': 534.0}, {'label': 'Filing', 'properties': ['id'], 'size': 4507, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 4507.0}]}}"
+gameofthrones,"Node properties:
+- **Character**
+  - `centrality`: FLOAT Min: 0.0, Max: 1.0
+  - `book45PageRank`: FLOAT Min: 0.15000000000000002, Max: 11.409916274911177
+  - `fastrf_embedding`: LIST Min Size: 10, Max Size: 10
+  - `book1BetweennessCentrality`: FLOAT Min: 0.0, Max: 4638.53495125504
+  - `book1PageRank`: FLOAT Min: 0.15000000000000002, Max: 8.164174336296284
+  - `louvain`: INTEGER Min: 0, Max: 10
+  - `community`: INTEGER Min: 504, Max: 795
+  - `degree`: FLOAT Min: 0.0, Max: 300.0
+  - `name`: STRING Example: ""Addam-Marbrand""
+  - `pagerank`: FLOAT Min: 0.15000000000000002, Max: 9.473142454730429
+Relationship properties:
+- **INTERACTS**
+  - `weight: INTEGER` Min: 3, Max:  334
+- **INTERACTS1**
+  - `weight: INTEGER` Min: 3, Max:  291
+  - `book: INTEGER` Min: 1, Max:  1
+- **INTERACTS2**
+  - `weight: INTEGER` Min: 3, Max:  92
+  - `book: INTEGER` Min: 2, Max:  2
+- **INTERACTS3**
+  - `weight: INTEGER` Min: 3, Max:  95
+  - `book: INTEGER` Min: 3, Max:  3
+- **INTERACTS45**
+  - `weight: INTEGER` Min: 3, Max:  96
+  - `book: INTEGER` Min: 45, Max:  45
+The relationships:
+(:Character)-[:INTERACTS45]->(:Character)
+(:Character)-[:INTERACTS]->(:Character)
+(:Character)-[:INTERACTS1]->(:Character)
+(:Character)-[:INTERACTS3]->(:Character)
+(:Character)-[:INTERACTS2]->(:Character)","{'node_props': {'Character': [{'property': 'centrality', 'type': 'FLOAT', 'min': '0.0', 'max': '1.0', 'distinct_count': 81}, {'property': 'book45PageRank', 'type': 'FLOAT', 'min': '0.15000000000000002', 'max': '11.409916274911177', 'distinct_count': 417}, {'property': 'fastrf_embedding', 'type': 'LIST', 'max_size': 10, 'min_size': 10}, {'property': 'book1BetweennessCentrality', 'type': 'FLOAT', 'min': '0.0', 'max': '4638.53495125504', 'distinct_count': 91}, {'property': 'book1PageRank', 'type': 'FLOAT', 'min': '0.15000000000000002', 'max': '8.164174336296284', 'distinct_count': 161}, {'property': 'louvain', 'type': 'INTEGER', 'min': '0', 'max': '10', 'distinct_count': 11}, {'property': 'community', 'type': 'INTEGER', 'min': '504', 'max': '795', 'distinct_count': 222}, {'property': 'degree', 'type': 'FLOAT', 'min': '0.0', 'max': '300.0', 'distinct_count': 61}, {'property': 'name', 'type': 'STRING', 'values': ['Addam-Marbrand', 'Aegon-Frey-(son-of-Stevron)', 'Aegon-I-Targaryen', 'Aegon-Targaryen-(son-of-Rhaegar)', 'Aegon-V-Targaryen', 'Aemon-Targaryen-(Dragonknight)', 'Aemon-Targaryen-(Maester-Aemon)', 'Aenys-Frey', 'Aeron-Greyjoy', 'Aerys-I-Targaryen'], 'distinct_count': 796}, {'property': 'pagerank', 'type': 'FLOAT', 'min': '0.15000000000000002', 'max': '9.473142454730429', 'distinct_count': 441}]}, 'rel_props': {'INTERACTS': [{'property': 'weight', 'type': 'INTEGER', 'min': '3', 'max': '334', 'distinct_count': 107}], 'INTERACTS1': [{'property': 'weight', 'type': 'INTEGER', 'min': '3', 'max': '291', 'distinct_count': 57}, {'property': 'book', 'type': 'INTEGER', 'min': '1', 'max': '1', 'distinct_count': 1}], 'INTERACTS2': [{'property': 'weight', 'type': 'INTEGER', 'min': '3', 'max': '92', 'distinct_count': 46}, {'property': 'book', 'type': 'INTEGER', 'min': '2', 'max': '2', 'distinct_count': 1}], 'INTERACTS3': [{'property': 'weight', 'type': 'INTEGER', 'min': '3', 'max': '95', 'distinct_count': 51}, {'property': 'book', 'type': 'INTEGER', 'min': '3', 'max': '3', 'distinct_count': 1}], 'INTERACTS45': [{'property': 'weight', 'type': 'INTEGER', 'min': '3', 'max': '96', 'distinct_count': 53}, {'property': 'book', 'type': 'INTEGER', 'min': '45', 'max': '45', 'distinct_count': 1}]}, 'relationships': [{'start': 'Character', 'type': 'INTERACTS45', 'end': 'Character'}, {'start': 'Character', 'type': 'INTERACTS', 'end': 'Character'}, {'start': 'Character', 'type': 'INTERACTS1', 'end': 'Character'}, {'start': 'Character', 'type': 'INTERACTS3', 'end': 'Character'}, {'start': 'Character', 'type': 'INTERACTS2', 'end': 'Character'}], 'metadata': {'constraint': [{'id': 7, 'name': 'constraint_36fbcdfc', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Character'], 'properties': ['name'], 'ownedIndex': 'constraint_36fbcdfc', 'propertyType': None}], 'index': [{'label': 'Character', 'properties': ['name'], 'size': 796, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 796.0}]}}"
+grandstack,"Node properties:
+- **Business**
+  - `address`: STRING Available options: ['301 E Main St', '200 W Pine St', '313 N 1st St W', '1151 W Broadway St', '201 E Front St', '723 California Dr', '121 W Broadway St', '716 N San Mateo Dr', '111 E 5th Ave']
+  - `location`: POINT 
+  - `city`: STRING Available options: ['Missoula', 'Burlingame', 'San Mateo']
+  - `state`: STRING Available options: ['MT', 'CA']
+  - `businessId`: STRING Available options: ['b5', 'b3', 'b1', 'b2', 'b4', 'b7', 'b6', 'b8', 'b9']
+  - `name`: STRING Available options: ['Missoula Public Library', ""Ninja Mike's"", 'KettleHouse Brewing Co.', 'Imagine Nation Brewing', 'Market on Front', 'Hanabi', 'Zootown Brew', ""Ducky's Car Wash"", 'Neo4j']
+- **User**
+  - `name`: STRING Available options: ['Will', 'Bob', 'Jenny', 'Angie']
+  - `userId`: STRING Available options: ['u1', 'u2', 'u3', 'u4']
+- **Review**
+  - `date`: DATE Min: 2015-08-29, Max: 2018-09-10
+  - `text`: STRING Available options: ['Not a great selection of books, but fortunately th', ""Best breakfast sandwich at the Farmer's Market. Al"", 'Great IPA selection!', ""Awesome full-service car wash. Love Ducky's!"", ""The world's leading graph database HQ!""]
+  - `stars`: FLOAT Min: 3.0, Max: 5.0
+  - `reviewId`: STRING Example: ""r7""
+- **Category**
+  - `name`: STRING Example: ""Library""
+Relationship properties:
+
+The relationships:
+(:Business)-[:IN_CATEGORY]->(:Category)
+(:User)-[:WROTE]->(:Review)
+(:Review)-[:REVIEWS]->(:Business)","{'node_props': {'Business': [{'property': 'address', 'type': 'STRING', 'values': ['301 E Main St', '200 W Pine St', '313 N 1st St W', '1151 W Broadway St', '201 E Front St', '723 California Dr', '121 W Broadway St', '716 N San Mateo Dr', '111 E 5th Ave'], 'distinct_count': 9}, {'property': 'location', 'type': 'POINT'}, {'property': 'city', 'type': 'STRING', 'values': ['Missoula', 'Burlingame', 'San Mateo'], 'distinct_count': 3}, {'property': 'state', 'type': 'STRING', 'values': ['MT', 'CA'], 'distinct_count': 2}, {'property': 'businessId', 'type': 'STRING', 'values': ['b5', 'b3', 'b1', 'b2', 'b4', 'b7', 'b6', 'b8', 'b9'], 'distinct_count': 9}, {'property': 'name', 'type': 'STRING', 'values': ['Missoula Public Library', ""Ninja Mike's"", 'KettleHouse Brewing Co.', 'Imagine Nation Brewing', 'Market on Front', 'Hanabi', 'Zootown Brew', ""Ducky's Car Wash"", 'Neo4j'], 'distinct_count': 9}], 'User': [{'property': 'name', 'type': 'STRING', 'values': ['Will', 'Bob', 'Jenny', 'Angie'], 'distinct_count': 4}, {'property': 'userId', 'type': 'STRING', 'values': ['u1', 'u2', 'u3', 'u4'], 'distinct_count': 4}], 'Review': [{'property': 'date', 'type': 'DATE', 'min': '2015-08-29', 'max': '2018-09-10', 'distinct_count': 12}, {'property': 'text', 'type': 'STRING', 'values': ['Not a great selection of books, but fortunately th', ""Best breakfast sandwich at the Farmer's Market. Al"", 'Great IPA selection!', ""Awesome full-service car wash. Love Ducky's!"", ""The world's leading graph database HQ!""], 'distinct_count': 5}, {'property': 'stars', 'type': 'FLOAT', 'min': '3.0', 'max': '5.0', 'distinct_count': 3}, {'property': 'reviewId', 'type': 'STRING', 'values': ['r7', 'r5', 'r1', 'r10', 'r6', 'r9', 'r4', 'r2', 'r8', 'r3'], 'distinct_count': 12}], 'Category': [{'property': 'name', 'type': 'STRING', 'values': ['Library', 'Breakfast', 'Restaurant', 'Brewery', 'Beer', 'Deli', 'Cafe', 'Coffee', 'Ramen', 'Car Wash'], 'distinct_count': 11}]}, 'rel_props': {}, 'relationships': [{'start': 'Business', 'type': 'IN_CATEGORY', 'end': 'Category'}, {'start': 'User', 'type': 'WROTE', 'end': 'Review'}, {'start': 'Review', 'type': 'REVIEWS', 'end': 'Business'}], 'metadata': {'constraint': [], 'index': []}}"
+movies,"Node properties:
+- **Movie**
+  - `title`: STRING Example: ""The Matrix""
+  - `votes`: INTEGER Min: 1, Max: 5259
+  - `tagline`: STRING Example: ""Welcome to the Real World""
+  - `released`: INTEGER Min: 1975, Max: 2012
+- **Person**
+  - `born`: INTEGER Min: 1929, Max: 1996
+  - `name`: STRING Example: ""Keanu Reeves""
+Relationship properties:
+- **ACTED_IN**
+  - `roles: LIST` Min Size: 1, Max Size: 6
+- **REVIEWED**
+  - `summary: STRING` Available options: ['Pretty funny at times', 'A solid romp', 'Silly, but fun', 'You had me at Jerry', 'An amazing journey', 'Slapstick redeemed only by the Robin Williams and ', 'Dark, but compelling', 'The coolest football movie ever', 'Fun, but a little far fetched']
+  - `rating: INTEGER` Min: 45, Max:  100
+The relationships:
+(:Person)-[:ACTED_IN]->(:Movie)
+(:Person)-[:DIRECTED]->(:Movie)
+(:Person)-[:PRODUCED]->(:Movie)
+(:Person)-[:WROTE]->(:Movie)
+(:Person)-[:FOLLOWS]->(:Person)
+(:Person)-[:REVIEWED]->(:Movie)","{'node_props': {'Movie': [{'property': 'title', 'type': 'STRING', 'values': ['The Matrix', 'The Matrix Reloaded', 'The Matrix Revolutions', ""The Devil's Advocate"", 'A Few Good Men', 'Top Gun', 'Jerry Maguire', 'Stand By Me', 'As Good as It Gets', 'What Dreams May Come'], 'distinct_count': 38}, {'property': 'votes', 'type': 'INTEGER', 'min': '1', 'max': '5259', 'distinct_count': 31}, {'property': 'tagline', 'type': 'STRING', 'values': ['Welcome to the Real World', 'Free your mind', 'Everything that has a beginning has an end', 'Evil has its winning ways', ""In the heart of the nation's capital, in a courtho"", 'I feel the need, the need for speed.', 'The rest of his life begins now.', ""For some, it's the last real taste of innocence, a"", 'A comedy from the heart that goes for the throat.', 'After life there is more. The end is just the begi'], 'distinct_count': 37}, {'property': 'released', 'type': 'INTEGER', 'min': '1975', 'max': '2012', 'distinct_count': 18}], 'Person': [{'property': 'born', 'type': 'INTEGER', 'min': '1929', 'max': '1996', 'distinct_count': 51}, {'property': 'name', 'type': 'STRING', 'values': ['Keanu Reeves', 'Carrie-Anne Moss', 'Laurence Fishburne', 'Hugo Weaving', 'Lilly Wachowski', 'Lana Wachowski', 'Joel Silver', 'Emil Eifrem', 'Charlize Theron', 'Al Pacino'], 'distinct_count': 133}]}, 'rel_props': {'ACTED_IN': [{'property': 'roles', 'type': 'LIST', 'max_size': 6, 'min_size': 1}], 'REVIEWED': [{'property': 'summary', 'type': 'STRING', 'values': ['Pretty funny at times', 'A solid romp', 'Silly, but fun', 'You had me at Jerry', 'An amazing journey', 'Slapstick redeemed only by the Robin Williams and ', 'Dark, but compelling', 'The coolest football movie ever', 'Fun, but a little far fetched'], 'distinct_count': 9}, {'property': 'rating', 'type': 'INTEGER', 'min': '45', 'max': '100', 'distinct_count': 8}]}, 'relationships': [{'start': 'Person', 'type': 'ACTED_IN', 'end': 'Movie'}, {'start': 'Person', 'type': 'DIRECTED', 'end': 'Movie'}, {'start': 'Person', 'type': 'PRODUCED', 'end': 'Movie'}, {'start': 'Person', 'type': 'WROTE', 'end': 'Movie'}, {'start': 'Person', 'type': 'FOLLOWS', 'end': 'Person'}, {'start': 'Person', 'type': 'REVIEWED', 'end': 'Movie'}], 'metadata': {'constraint': [{'id': 13, 'name': 'constraint_3044d997', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Movie'], 'properties': ['title'], 'ownedIndex': 'constraint_3044d997', 'propertyType': None}, {'id': 11, 'name': 'constraint_e26b1a8b', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Person'], 'properties': ['name'], 'ownedIndex': 'constraint_e26b1a8b', 'propertyType': None}], 'index': [{'label': 'Movie', 'properties': ['title'], 'size': 38, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 38.0}, {'label': 'Person', 'properties': ['born'], 'size': 128, 'type': 'RANGE', 'valuesSelectivity': 0.3984375, 'distinctValues': 51.0}, {'label': 'Person', 'properties': ['released'], 'size': 0, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 0.0}, {'label': 'Person', 'properties': ['name'], 'size': 133, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 133.0}]}}"
+neoflix,"Node properties:
+- **Movie**
+  - `average_vote`: FLOAT Example: ""7.7""
+  - `overview`: STRING Example: ""Led by Woody, Andy's toys live happily in his room""
+  - `revenue`: FLOAT Example: ""3.73554033E8""
+  - `vote_count`: INTEGER Example: ""5415""
+  - `tagline`: STRING Example: ""Roll the dice and unleash the excitement!""
+  - `budget`: INTEGER Example: ""30000000""
+  - `title`: STRING Example: ""Toy Story""
+  - `poster_path`: STRING Example: ""/rhIRbceoE9lR4veEXuwCC2wARtG.jpg""
+  - `imdb_id`: STRING Example: ""tt0114709""
+  - `status`: STRING Example: ""Released""
+  - `runtime`: FLOAT Example: ""81.0""
+  - `popularity`: FLOAT Example: ""21.946943""
+  - `homepage`: STRING Example: ""http://toystory.disney.com/toy-story""
+  - `release_date`: DATE Example: ""1995-10-30""
+  - `id`: INTEGER Min: 862, Max: 31357
+  - `original_title`: STRING Example: ""Toy Story""
+  - `original_language`: STRING Example: ""en""
+- **Language**
+  - `id`: STRING Example: ""en""
+  - `name`: STRING Available options: ['', 'Gaeilge', 'Kiswahili', 'Azərbaycan', 'Somali', 'беларуская мова', 'Fulfulde', 'Hausa']
+- **Country**
+  - `id`: STRING Example: ""US""
+  - `name`: STRING Example: ""United States of America""
+- **Genre**
+  - `id`: INTEGER Min: 12, Max: 10770
+  - `name`: STRING Example: ""Animation""
+- **ProductionCompany**
+  - `id`: INTEGER Min: 3, Max: 10201
+  - `name`: STRING Example: ""Pixar Animation Studios""
+- **Collection**
+  - `name`: STRING Example: ""Toy Story Collection""
+  - `id`: INTEGER Min: 10, Max: 480160
+  - `backdrop_path`: STRING Example: ""/9FBwqcd9IRruEDUrTdcaafOMKUq.jpg""
+  - `poster_path`: STRING Example: ""/7G9915LfUQ2lVfwMEEhDsn3kT4B.jpg""
+- **Person**
+  - `gender`: INTEGER Example: ""2""
+  - `profile_path`: STRING Example: ""/pQFoyx7rp09CJTAb932F2g8Nlho.jpg""
+  - `id`: INTEGER Min: 31, Max: 12900
+  - `name`: STRING Example: ""Tom Hanks""
+- **User**
+  - `id`: INTEGER Min: 27490cf6-22eb-495d-9dd6-902c0f89c627, Max: 4
+- **Keyword**
+  - `id`: INTEGER Min: 931, Max: 9713
+  - `name`: STRING Example: ""jealousy""
+- **Video**
+  - `tagline`: STRING Example: ""Fresh Fish. Mixed Vegetables.""
+  - `average_vote`: FLOAT Min: 0.0, Max: 10.0
+  - `overview`: STRING Example: ""Get ready as Bob the Tomato, Larry the Cucumber an""
+  - `revenue`: FLOAT Min: 0.0, Max: 0.0
+  - `poster_path`: STRING Example: ""/iWahPsY3hsKOizZHgzQcAxv4O3B.jpg""
+  - `vote_count`: INTEGER Min: 0, Max: 115
+  - `title`: STRING Example: ""Jonah: A VeggieTales Movie""
+  - `release_date`: DATE Min: 1973-01-12, Max: 2017-03-17
+  - `status`: STRING Available options: ['Released']
+  - `budget`: INTEGER Min: 0, Max: 2219684
+  - `popularity`: FLOAT Min: 0.0, Max: 9.22546
+  - `imdb_id`: STRING Example: ""tt0298388""
+  - `original_title`: STRING Example: ""Jonah: A VeggieTales Movie""
+  - `id`: INTEGER Min: 13284, Max: 461088
+  - `runtime`: FLOAT Min: 0.0, Max: 583.0
+  - `original_language`: STRING Example: ""en""
+  - `homepage`: STRING Example: ""http://www.loosechange911.com/""
+- **Adult**
+  - `average_vote`: FLOAT Min: 0.0, Max: 6.3
+  - `overview`: STRING Available options: ['A sailor takes an American businessman and his gir', 'The FBI and Texas police make ready to storm the h', 'Electrical Girl centers around a horny young woman', 'Ágata suffers from a psychological disorder which ', ""Shane Ryan's sequel to the disturbing Amateur Porn"", 'Australian film about a fictional sub-par Australi', 'Olaf and his mother run a boarding house and a whi', 'A man who returns home to find his wife cheating o', 'An American scientific research facility opens a p']
+  - `revenue`: FLOAT Min: 0.0, Max: 0.0
+  - `poster_path`: STRING Available options: ['/tzVK7nTnzUiVeFSZhOAIHmrgXUS.jpg', '/1VzwIa8HTykNiCCW8PBaJnyTvO8.jpg', '/yTfqRQlJMTAuTNDG01XjNg5KPPg.jpg', '/oP2WvKIWxqSBVHjfYAizFHOqBLG.jpg', '/zpycBSiBFp5Uib6gWJpgEvfOgdn.jpg', '/e7CAc8OadcUoKNPIX86SEPSX7f.jpg', '/jjncR0vECvXVrBvr0A1vLghL4pN.jpg', '/pJLmZBruOmn2c9mYWe3h1xcXaA0.jpg', '/3uv9oaqOJkkdZiQp6r9lf24tkHW.jpg']
+  - `vote_count`: INTEGER Min: 0, Max: 16
+  - `title`: STRING Available options: ['Erotic Nights of the Living Dead', 'Standoff', 'Electrical Girl', 'Diet of Sex', 'Amateur Porn Star Killer 2', 'The Band', 'The Sinful Dwarf', 'Adulterers', 'Half -Life']
+  - `release_date`: DATE Min: 1973-12-20, Max: 2016-01-05
+  - `status`: STRING Available options: ['Released', 'In Production']
+  - `budget`: INTEGER Min: 0, Max: 750000
+  - `popularity`: FLOAT Min: 0.001803, Max: 6.889832
+  - `imdb_id`: STRING Available options: ['tt0079642', 'tt0119931', 'tt0322232', 'tt3094816', 'tt1161951', 'tt1153101', 'tt0070696', 'tt4044464', 'tt2697688']
+  - `original_title`: STRING Available options: ['Le notti erotiche dei morti viventi', 'Standoff', '發電悄嬌娃', 'Diet of Sex', 'Amateur Porn Star Killer 2', 'The Band', 'Dværgen', 'Adulterers', 'Half -Life']
+  - `id`: INTEGER Min: 5422, Max: 448290
+  - `runtime`: FLOAT Min: 0.0, Max: 112.0
+  - `original_language`: STRING Available options: ['it', 'en', 'cn', 'es', 'da']
+  - `tagline`: STRING Available options: ['Trust Will Get You Killed', 'Comedy, food, drama and sex, a lot of sex', 'Humiliation. Rape. Murder. You know the drill.', ""Sex, drugs and Rock 'n Roll"", 'The Mother of all Dwarfsploitation films!', 'Love. Betrayal. Vengeance']
+  - `homepage`: STRING Available options: ['http://www.imdb.com/title/tt0119931/', 'http://www.dietofsex.com/']
+- **Package**
+  - `price`: FLOAT Min: 0.0, Max: 99.99
+  - `duration`: DURATION 
+  - `id`: INTEGER Min: 0, Max: 6
+  - `name`: STRING Available options: ['Childrens', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Ultimate', 'Free Trial']
+- **Subscription**
+  - `expiresAt`: DATE_TIME Min: 2020-08-23T16:20:52.383Z, Max: 2020-08-23T16:20:52.383Z
+  - `id`: STRING Available options: ['e74f7163-eace-4169-8043-41627f1fe236']
+Relationship properties:
+- **CAST_FOR**
+  - `credit_id: STRING` Example: ""52fe4459c3a36847f8090d7d""
+  - `order: INTEGER` Example: ""0""
+  - `character: STRING` Example: ""Charlie Wilson""
+  - `cast_id: INTEGER` Example: ""12""
+- **CREW_FOR**
+  - `credit_id: STRING` Example: ""55e4f0abc3a368140800047e""
+  - `job: STRING` Example: ""Producer""
+  - `department: STRING` Example: ""Production""
+- **RATED**
+  - `timestamp: DATE_TIME` Example: ""2015-03-09T22:49:42Z""
+  - `rating: FLOAT` Example: ""5.0""
+The relationships:
+(:Movie)-[:ORIGINAL_LANGUAGE]->(:Language)
+(:Movie)-[:SPOKEN_IN_LANGUAGE]->(:Language)
+(:Movie)-[:PRODUCED_IN_COUNTRY]->(:Country)
+(:Movie)-[:IN_GENRE]->(:Genre)
+(:Movie)-[:PRODUCED_BY]->(:ProductionCompany)
+(:Movie)-[:HAS_KEYWORD]->(:Keyword)
+(:Movie)-[:IN_COLLECTION]->(:Collection)
+(:Person)-[:CAST_FOR]->(:Movie)
+(:Person)-[:CREW_FOR]->(:Movie)
+(:Person)-[:CREW_FOR]->(:Video)
+(:User)-[:RATED]->(:Movie)
+(:User)-[:RATED]->(:Video)
+(:Video)-[:ORIGINAL_LANGUAGE]->(:Language)
+(:Video)-[:SPOKEN_IN_LANGUAGE]->(:Language)
+(:Video)-[:PRODUCED_IN_COUNTRY]->(:Country)
+(:Video)-[:IN_GENRE]->(:Genre)
+(:Video)-[:PRODUCED_BY]->(:ProductionCompany)
+(:Video)-[:HAS_KEYWORD]->(:Keyword)
+(:Video)-[:IN_COLLECTION]->(:Collection)
+(:Adult)-[:ORIGINAL_LANGUAGE]->(:Language)
+(:Adult)-[:SPOKEN_IN_LANGUAGE]->(:Language)
+(:Adult)-[:PRODUCED_IN_COUNTRY]->(:Country)
+(:Adult)-[:IN_GENRE]->(:Genre)
+(:Adult)-[:PRODUCED_BY]->(:ProductionCompany)
+(:Adult)-[:HAS_KEYWORD]->(:Keyword)
+(:Package)-[:PROVIDES_ACCESS_TO]->(:Genre)
+(:Subscription)-[:FOR_PACKAGE]->(:Package)","{'node_props': {'Movie': [{'property': 'average_vote', 'type': 'FLOAT', 'values': ['7.7', '6.9', '6.5', '6.1', '5.7']}, {'property': 'overview', 'type': 'STRING', 'values': [""Led by Woody, Andy's toys live happily in his room"", 'When siblings Judy and Peter discover an enchanted', 'A family wedding reignites the ancient feud betwee', 'Cheated on, mistreated and stepped on, the women a', 'Just when George Banks has recovered from his daug']}, {'property': 'revenue', 'type': 'FLOAT', 'values': ['3.73554033E8', '2.62797249E8', '0.0', '8.1452156E7', '7.6578911E7']}, {'property': 'vote_count', 'type': 'INTEGER', 'values': ['5415', '2413', '92', '34', '173']}, {'property': 'tagline', 'type': 'STRING', 'values': ['Roll the dice and unleash the excitement!', 'Still Yelling. Still Fighting. Still Ready for Lov', 'Friends are the people who let you be yourself... ', ""Just When His World Is Back To Normal... He's In F""]}, {'property': 'budget', 'type': 'INTEGER', 'values': ['30000000', '65000000', '0', '16000000']}, {'property': 'title', 'type': 'STRING', 'values': ['Toy Story', 'Jumanji', 'Grumpier Old Men', 'Waiting to Exhale', 'Father of the Bride Part II']}, {'property': 'poster_path', 'type': 'STRING', 'values': ['/rhIRbceoE9lR4veEXuwCC2wARtG.jpg', '/vzmL6fP7aPKNKPRTFnZmiUfciyV.jpg', '/6ksm1sjKMFLbO7UY2i6G1ju9SML.jpg', '/16XOMpEaLWkrcPqSQqhTmeJuqQl.jpg', '/e64sOI48hQXyru7naBFyssKFxVd.jpg']}, {'property': 'imdb_id', 'type': 'STRING', 'values': ['tt0114709', 'tt0113497', 'tt0113228', 'tt0114885', 'tt0113041']}, {'property': 'status', 'type': 'STRING', 'values': ['Released']}, {'property': 'runtime', 'type': 'FLOAT', 'values': ['81.0', '104.0', '101.0', '127.0', '106.0']}, {'property': 'popularity', 'type': 'FLOAT', 'values': ['21.946943', '17.015539', '11.7129', '3.859495', '8.387519']}, {'property': 'homepage', 'type': 'STRING', 'values': ['http://toystory.disney.com/toy-story']}, {'property': 'release_date', 'type': 'DATE', 'values': ['1995-10-30', '1995-12-15', '1995-12-22', '1995-02-10']}, {'property': 'id', 'type': 'INTEGER', 'min': '862', 'max': '31357', 'distinct_count': 5}, {'property': 'original_title', 'type': 'STRING', 'values': ['Toy Story', 'Jumanji', 'Grumpier Old Men', 'Waiting to Exhale', 'Father of the Bride Part II']}, {'property': 'original_language', 'type': 'STRING', 'values': ['en']}], 'Language': [{'property': 'id', 'type': 'STRING', 'values': ['en', 'fr', 'zh', 'it', 'fa', 'nl', 'de', 'cn', 'ar', 'es'], 'distinct_count': 133}, {'property': 'name', 'type': 'STRING', 'values': ['', 'Gaeilge', 'Kiswahili', 'Azərbaycan', 'Somali', 'беларуская мова', 'Fulfulde', 'Hausa'], 'distinct_count': 8}], 'Country': [{'property': 'id', 'type': 'STRING', 'values': ['US', 'DE', 'GB', 'FR', 'IT', 'ES', 'CN', 'AU', 'ZA', 'CA'], 'distinct_count': 161}, {'property': 'name', 'type': 'STRING', 'values': ['United States of America', 'Germany', 'United Kingdom', 'France', 'Italy', 'Spain', 'China', 'Australia', 'South Africa', 'Canada'], 'distinct_count': 160}], 'Genre': [{'property': 'id', 'type': 'INTEGER', 'min': '12', 'max': '10770', 'distinct_count': 20}, {'property': 'name', 'type': 'STRING', 'values': ['Animation', 'Comedy', 'Family', 'Adventure', 'Fantasy', 'Romance', 'Drama', 'Action', 'Crime', 'Thriller'], 'distinct_count': 20}], 'ProductionCompany': [{'property': 'id', 'type': 'INTEGER', 'min': '3', 'max': '10201', 'distinct_count': 5}, {'property': 'name', 'type': 'STRING', 'values': ['Pixar Animation Studios', 'TriStar Pictures', 'Teitler Film', 'Interscope Communications', 'Warner Bros.']}], 'Collection': [{'property': 'name', 'type': 'STRING', 'values': ['Toy Story Collection', 'Grumpy Old Men Collection', 'Father of the Bride Collection', 'James Bond Collection', 'Balto Collection', 'Ace Ventura Collection', 'Chili Palmer Collection', 'Babe Collection', 'Mortal Kombat Collection', 'Pocahontas Collection'], 'distinct_count': 1695}, {'property': 'id', 'type': 'INTEGER', 'min': '10', 'max': '480160', 'distinct_count': 1695}, {'property': 'backdrop_path', 'type': 'STRING', 'values': ['/9FBwqcd9IRruEDUrTdcaafOMKUq.jpg', '/hypTnLot2z8wpFS7qwsQHW1uV8u.jpg', '/7qwE57OVZmMJChBpLEbJEmzUydk.jpg', '/6VcVl48kNKvdXOZfJPdarlUGOsk.jpg', '/9VM5LiJV0bGb1st1KyHA3cVnO2G.jpg', '/bswWgdDsLu0fhWMYUzLF8XgiK4h.jpg', '/uWaANGQeoSs5vSP1CWtlkDrkqei.jpg', '/zRWuGdIlkWqXMQcs1t3sPy1XQ6x.jpg', '/qD3efz57VGNywAN4lTvgz3FHnBb.jpg', '/qqeOxNmtAW7WXdbrmQftgluvve7.jpg'], 'distinct_count': 1122}, {'property': 'poster_path', 'type': 'STRING', 'values': ['/7G9915LfUQ2lVfwMEEhDsn3kT4B.jpg', '/nLvUdqgPgm3F85NMCii9gVFUcet.jpg', '/nts4iOmNnq7GNicycMJ9pSAn204.jpg', '/HORpg5CSkmeQlAolx3bKMrKgfi.jpg', '/w0ZgH6Lgxt2bQYnf1ss74UvYftm.jpg', '/qCxH543pScFed1CycwJ1nVgrkOc.jpg', '/ae3smJDdWrMJ77tDpYOrpo4frKq.jpg', '/jgnah0k4AumfcZE4HHMJywYHvG6.jpg', '/nauCllomdtyciLCRcVrSJKcJQbn.jpg', '/s4RkDe4AjwyrlltdF6Ui7INlME6.jpg'], 'distinct_count': 1403}], 'Person': [{'property': 'gender', 'type': 'INTEGER', 'values': ['2']}, {'property': 'profile_path', 'type': 'STRING', 'values': ['/pQFoyx7rp09CJTAb932F2g8Nlho.jpg', '/uX2xVf6pMmPepxnvFWyBtjexzgY.jpg', '/h5BcaDMPRVLHLDzbQavec4xfSdt.jpg', '/eIo2jVVXYgjDtaHoF19Ll9vtW7h.jpg', '/oGE6JqPP2xH4tNORKNqxbNPYi7u.jpg']}, {'property': 'id', 'type': 'INTEGER', 'min': '31', 'max': '12900', 'distinct_count': 5}, {'property': 'name', 'type': 'STRING', 'values': ['Tom Hanks', 'Tim Allen', 'Don Rickles', 'Jim Varney', 'Wallace Shawn']}], 'User': [{'property': 'id', 'type': 'INTEGER', 'min': '27490cf6-22eb-495d-9dd6-902c0f89c627', 'max': '4', 'distinct_count': 5}], 'Keyword': [{'property': 'id', 'type': 'INTEGER', 'min': '931', 'max': '9713', 'distinct_count': 5}, {'property': 'name', 'type': 'STRING', 'values': ['jealousy', 'toy', 'boy', 'friendship', 'friends']}], 'Video': [{'property': 'tagline', 'type': 'STRING', 'values': ['Fresh Fish. Mixed Vegetables.', 'What really happened on 9/11?', 'Spring break... Love Hina Style!!', 'The awesomeness begins', 'The truth is always the truth, a lie is always a l', 'Discover A Magical New Land', ""Spend Father's Day with who really raised you... S"", 'On Halloween night five filmmakers enter a haunted', '“Father of Indian Unrest” (Bal Gangadhar Tilak)', 'Every super hero has his nemesis - and this time F'], 'distinct_count': 25}, {'property': 'average_vote', 'type': 'FLOAT', 'min': '0.0', 'max': '10.0', 'distinct_count': 45}, {'property': 'overview', 'type': 'STRING', 'values': ['Get ready as Bob the Tomato, Larry the Cucumber an', 'What if...September 11th was not a surprise attack', 'A short film in which Quran verses are shown along', 'The tests have come, and Keitaro can only hope to ', 'Ahoy, matey! Your Favorite Playmobil toys have com', 'Experience why America has fallen in love with Ter', 'Some of the boys in South Park elementary find the', 'Behind every breakthrough in the progression of cl', 'The legendary YES line-up of Jon Anderson, Chris S', 'In April 2009, a group of University of Michigan s'], 'distinct_count': 88}, {'property': 'revenue', 'type': 'FLOAT', 'min': '0.0', 'max': '0.0', 'distinct_count': 1}, {'property': 'poster_path', 'type': 'STRING', 'values': ['/iWahPsY3hsKOizZHgzQcAxv4O3B.jpg', '/isRGTPFiX8IwM1dNXQ1SUoticvY.jpg', '/2xZIYEyp6jUfB8ZMiqvtXRD6tSX.jpg', '/pO535dqMmvatuqbgvpOIA1bQw3R.jpg', '/affnnZunHbXQGxlOGNo2QsGUqnC.jpg', '/dklQFjCKxu6WNpAQqaBkWHopUf2.jpg', '/kuGKdb5PyX8J6khl4j3XPLbIH1J.jpg', '/t8YuLmK3NIeeRQ3zjsuJ8v0KMSi.jpg', '/sDNI6jED4yBmFopBEQYznp3wr7f.jpg', '/8GcoqIPxjFqfW2VhG9OcQyftzXC.jpg'], 'distinct_count': 91}, {'property': 'vote_count', 'type': 'INTEGER', 'min': '0', 'max': '115', 'distinct_count': 27}, {'property': 'title', 'type': 'STRING', 'values': ['Jonah: A VeggieTales Movie', 'Loose Change: 2nd Edition', 'Fitna', 'Love Hina Spring Special - I Wish Your Dream', 'Playmobil: The Secret of Pirate Island', 'Terry Fator: Live from Las Vegas', 'South Park: Imaginationland', 'Progression', 'Yes: 9012 live', 'A Very Potter Musical'], 'distinct_count': 93}, {'property': 'release_date', 'type': 'DATE', 'min': '1973-01-12', 'max': '2017-03-17', 'distinct_count': 85}, {'property': 'status', 'type': 'STRING', 'values': ['Released'], 'distinct_count': 1}, {'property': 'budget', 'type': 'INTEGER', 'min': '0', 'max': '2219684', 'distinct_count': 6}, {'property': 'popularity', 'type': 'FLOAT', 'min': '0.0', 'max': '9.22546', 'distinct_count': 93}, {'property': 'imdb_id', 'type': 'STRING', 'values': ['tt0298388', 'tt0831315', 'tt1198399', 'tt0416938', 'tt1512792', 'tt1489246', 'tt1308667', 'tt1530970', 'tt0204116', 'tt2033193'], 'distinct_count': 93}, {'property': 'original_title', 'type': 'STRING', 'values': ['Jonah: A VeggieTales Movie', 'Loose Change: 2nd Edition', 'Fitna', 'ラブひな 春スペシャル ～キミサクラチルナカレ!!～', 'Playmobil: The Secret of Pirate Island', 'Terry Fator: Live from Las Vegas', 'South Park: Imaginationland', 'Progression', 'Yes: 9012 live', 'A Very Potter Musical'], 'distinct_count': 93}, {'property': 'id', 'type': 'INTEGER', 'min': '13284', 'max': '461088', 'distinct_count': 93}, {'property': 'runtime', 'type': 'FLOAT', 'min': '0.0', 'max': '583.0', 'distinct_count': 61}, {'property': 'original_language', 'type': 'STRING', 'values': ['en', 'ja', 'it', 'cn', 'th', 'de', 'ab', 'fr', 'el', 'ko'], 'distinct_count': 13}, {'property': 'homepage', 'type': 'STRING', 'values': ['http://www.loosechange911.com/', 'http://www.sonypictures.com/familyzone/playmobil/', 'http://www.terryfator.com/', 'http://www.bigupproductions.com/#/films/Progressio', 'http://www.teamstarkid.com/avpm.html', 'http://www.teamstarkid.com/avps.html', 'http://www.911inplanesite.com/', 'http://ntlive.nationaltheatre.org.uk/productions/1', 'http://www.thewho.com/listening-to-you-the-who-liv', 'http://www.toddbarry.com/'], 'distinct_count': 28}], 'Adult': [{'property': 'average_vote', 'type': 'FLOAT', 'min': '0.0', 'max': '6.3', 'distinct_count': 9}, {'property': 'overview', 'type': 'STRING', 'values': ['A sailor takes an American businessman and his gir', 'The FBI and Texas police make ready to storm the h', 'Electrical Girl centers around a horny young woman', 'Ágata suffers from a psychological disorder which ', ""Shane Ryan's sequel to the disturbing Amateur Porn"", 'Australian film about a fictional sub-par Australi', 'Olaf and his mother run a boarding house and a whi', 'A man who returns home to find his wife cheating o', 'An American scientific research facility opens a p'], 'distinct_count': 9}, {'property': 'revenue', 'type': 'FLOAT', 'min': '0.0', 'max': '0.0', 'distinct_count': 1}, {'property': 'poster_path', 'type': 'STRING', 'values': ['/tzVK7nTnzUiVeFSZhOAIHmrgXUS.jpg', '/1VzwIa8HTykNiCCW8PBaJnyTvO8.jpg', '/yTfqRQlJMTAuTNDG01XjNg5KPPg.jpg', '/oP2WvKIWxqSBVHjfYAizFHOqBLG.jpg', '/zpycBSiBFp5Uib6gWJpgEvfOgdn.jpg', '/e7CAc8OadcUoKNPIX86SEPSX7f.jpg', '/jjncR0vECvXVrBvr0A1vLghL4pN.jpg', '/pJLmZBruOmn2c9mYWe3h1xcXaA0.jpg', '/3uv9oaqOJkkdZiQp6r9lf24tkHW.jpg'], 'distinct_count': 9}, {'property': 'vote_count', 'type': 'INTEGER', 'min': '0', 'max': '16', 'distinct_count': 8}, {'property': 'title', 'type': 'STRING', 'values': ['Erotic Nights of the Living Dead', 'Standoff', 'Electrical Girl', 'Diet of Sex', 'Amateur Porn Star Killer 2', 'The Band', 'The Sinful Dwarf', 'Adulterers', 'Half -Life'], 'distinct_count': 9}, {'property': 'release_date', 'type': 'DATE', 'min': '1973-12-20', 'max': '2016-01-05', 'distinct_count': 8}, {'property': 'status', 'type': 'STRING', 'values': ['Released', 'In Production'], 'distinct_count': 2}, {'property': 'budget', 'type': 'INTEGER', 'min': '0', 'max': '750000', 'distinct_count': 2}, {'property': 'popularity', 'type': 'FLOAT', 'min': '0.001803', 'max': '6.889832', 'distinct_count': 9}, {'property': 'imdb_id', 'type': 'STRING', 'values': ['tt0079642', 'tt0119931', 'tt0322232', 'tt3094816', 'tt1161951', 'tt1153101', 'tt0070696', 'tt4044464', 'tt2697688'], 'distinct_count': 9}, {'property': 'original_title', 'type': 'STRING', 'values': ['Le notti erotiche dei morti viventi', 'Standoff', '發電悄嬌娃', 'Diet of Sex', 'Amateur Porn Star Killer 2', 'The Band', 'Dværgen', 'Adulterers', 'Half -Life'], 'distinct_count': 9}, {'property': 'id', 'type': 'INTEGER', 'min': '5422', 'max': '448290', 'distinct_count': 9}, {'property': 'runtime', 'type': 'FLOAT', 'min': '0.0', 'max': '112.0', 'distinct_count': 8}, {'property': 'original_language', 'type': 'STRING', 'values': ['it', 'en', 'cn', 'es', 'da'], 'distinct_count': 5}, {'property': 'tagline', 'type': 'STRING', 'values': ['Trust Will Get You Killed', 'Comedy, food, drama and sex, a lot of sex', 'Humiliation. Rape. Murder. You know the drill.', ""Sex, drugs and Rock 'n Roll"", 'The Mother of all Dwarfsploitation films!', 'Love. Betrayal. Vengeance'], 'distinct_count': 6}, {'property': 'homepage', 'type': 'STRING', 'values': ['http://www.imdb.com/title/tt0119931/', 'http://www.dietofsex.com/'], 'distinct_count': 2}], 'Package': [{'property': 'price', 'type': 'FLOAT', 'min': '0.0', 'max': '99.99', 'distinct_count': 7}, {'property': 'duration', 'type': 'DURATION'}, {'property': 'id', 'type': 'INTEGER', 'min': '0', 'max': '6', 'distinct_count': 7}, {'property': 'name', 'type': 'STRING', 'values': ['Childrens', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Ultimate', 'Free Trial'], 'distinct_count': 7}], 'Subscription': [{'property': 'expiresAt', 'type': 'DATE_TIME', 'min': '2020-08-23T16:20:52.383Z', 'max': '2020-08-23T16:20:52.383Z', 'distinct_count': 1}, {'property': 'id', 'type': 'STRING', 'values': ['e74f7163-eace-4169-8043-41627f1fe236'], 'distinct_count': 1}]}, 'rel_props': {'CAST_FOR': [{'property': 'credit_id', 'type': 'STRING', 'values': ['52fe4459c3a36847f8090d7d', '547200b79251411752000075', '52fe4360c3a36847f804faaf', '52fe4283c3a36847f8024aef', '52fe450ec3a36847f80b9ba3']}, {'property': 'order', 'type': 'INTEGER', 'values': ['0', '5', '2']}, {'property': 'character', 'type': 'STRING', 'values': ['Charlie Wilson', 'Mr. Macauley', 'Allen Bauer', 'Captain John H. Miller', 'Mr. White']}, {'property': 'cast_id', 'type': 'INTEGER', 'values': ['12', '14', '1', '10', '5']}], 'CREW_FOR': [{'property': 'credit_id', 'type': 'STRING', 'values': ['55e4f0abc3a368140800047e', '52fe44a2c3a36847f80a14ed', '52fe499dc3a36847f81a3b4f', '54009d31c3a36806030016d9', '54ad733cc3a36856c20000c0']}, {'property': 'job', 'type': 'STRING', 'values': ['Producer', 'Screenplay', 'Executive Producer']}, {'property': 'department', 'type': 'STRING', 'values': ['Production', 'Writing']}], 'RATED': [{'property': 'timestamp', 'type': 'DATE_TIME', 'values': ['2015-03-09T22:49:42Z', '2015-03-09T22:53:21Z', '2015-03-09T22:52:09Z', '2015-03-09T22:48:33Z', '2015-03-09T23:00:07Z']}, {'property': 'rating', 'type': 'FLOAT', 'values': ['5.0', '4.0', '1.0', '3.5']}]}, 'relationships': [{'start': 'Movie', 'type': 'ORIGINAL_LANGUAGE', 'end': 'Language'}, {'start': 'Movie', 'type': 'SPOKEN_IN_LANGUAGE', 'end': 'Language'}, {'start': 'Movie', 'type': 'PRODUCED_IN_COUNTRY', 'end': 'Country'}, {'start': 'Movie', 'type': 'IN_GENRE', 'end': 'Genre'}, {'start': 'Movie', 'type': 'PRODUCED_BY', 'end': 'ProductionCompany'}, {'start': 'Movie', 'type': 'HAS_KEYWORD', 'end': 'Keyword'}, {'start': 'Movie', 'type': 'IN_COLLECTION', 'end': 'Collection'}, {'start': 'Person', 'type': 'CAST_FOR', 'end': 'Movie'}, {'start': 'Person', 'type': 'CREW_FOR', 'end': 'Movie'}, {'start': 'Person', 'type': 'CREW_FOR', 'end': 'Video'}, {'start': 'User', 'type': 'RATED', 'end': 'Movie'}, {'start': 'User', 'type': 'RATED', 'end': 'Video'}, {'start': 'Video', 'type': 'ORIGINAL_LANGUAGE', 'end': 'Language'}, {'start': 'Video', 'type': 'SPOKEN_IN_LANGUAGE', 'end': 'Language'}, {'start': 'Video', 'type': 'PRODUCED_IN_COUNTRY', 'end': 'Country'}, {'start': 'Video', 'type': 'IN_GENRE', 'end': 'Genre'}, {'start': 'Video', 'type': 'PRODUCED_BY', 'end': 'ProductionCompany'}, {'start': 'Video', 'type': 'HAS_KEYWORD', 'end': 'Keyword'}, {'start': 'Video', 'type': 'IN_COLLECTION', 'end': 'Collection'}, {'start': 'Adult', 'type': 'ORIGINAL_LANGUAGE', 'end': 'Language'}, {'start': 'Adult', 'type': 'SPOKEN_IN_LANGUAGE', 'end': 'Language'}, {'start': 'Adult', 'type': 'PRODUCED_IN_COUNTRY', 'end': 'Country'}, {'start': 'Adult', 'type': 'IN_GENRE', 'end': 'Genre'}, {'start': 'Adult', 'type': 'PRODUCED_BY', 'end': 'ProductionCompany'}, {'start': 'Adult', 'type': 'HAS_KEYWORD', 'end': 'Keyword'}, {'start': 'Package', 'type': 'PROVIDES_ACCESS_TO', 'end': 'Genre'}, {'start': 'Subscription', 'type': 'FOR_PACKAGE', 'end': 'Package'}], 'metadata': {'constraint': [{'id': 41, 'name': 'constraint_3a764435', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Movie'], 'properties': ['id'], 'ownedIndex': 'constraint_3a764435', 'propertyType': None}, {'id': 39, 'name': 'constraint_3a8336b6', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['email'], 'ownedIndex': 'constraint_3a8336b6', 'propertyType': None}, {'id': 49, 'name': 'constraint_47e7f15d', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['id'], 'ownedIndex': 'constraint_47e7f15d', 'propertyType': None}, {'id': 27, 'name': 'constraint_50656458', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Person'], 'properties': ['id'], 'ownedIndex': 'constraint_50656458', 'propertyType': None}, {'id': 43, 'name': 'constraint_56e99879', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Subscription'], 'properties': ['id'], 'ownedIndex': 'constraint_56e99879', 'propertyType': None}, {'id': 35, 'name': 'constraint_5ad5c639', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Country'], 'properties': ['id'], 'ownedIndex': 'constraint_5ad5c639', 'propertyType': None}, {'id': 45, 'name': 'constraint_5cf79cea', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Package'], 'properties': ['id'], 'ownedIndex': 'constraint_5cf79cea', 'propertyType': None}, {'id': 33, 'name': 'constraint_860aead3', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Genre'], 'properties': ['id'], 'ownedIndex': 'constraint_860aead3', 'propertyType': None}, {'id': 31, 'name': 'constraint_9a791beb', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['ProductionCompany'], 'properties': ['id'], 'ownedIndex': 'constraint_9a791beb', 'propertyType': None}, {'id': 37, 'name': 'constraint_c2951f31', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Language'], 'properties': ['id'], 'ownedIndex': 'constraint_c2951f31', 'propertyType': None}, {'id': 29, 'name': 'constraint_cf4b0437', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Collection'], 'properties': ['id'], 'ownedIndex': 'constraint_cf4b0437', 'propertyType': None}, {'id': 47, 'name': 'constraint_db0e1c22', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Keyword'], 'properties': ['id'], 'ownedIndex': 'constraint_db0e1c22', 'propertyType': None}], 'index': [{'label': 'Collection', 'properties': ['id'], 'size': 1695, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1695.0}, {'label': 'Country', 'properties': ['id'], 'size': 161, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 161.0}, {'label': 'Genre', 'properties': ['id'], 'size': 20, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 20.0}, {'label': 'Keyword', 'properties': ['id'], 'size': 19956, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 19956.0}, {'label': 'Language', 'properties': ['id'], 'size': 133, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 133.0}, {'label': 'Movie', 'properties': ['id'], 'size': 45433, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 45433.0}, {'label': 'Package', 'properties': ['id'], 'size': 7, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 7.0}, {'label': 'Person', 'properties': ['id'], 'size': 353343, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 353343.0}, {'label': 'ProductionCompany', 'properties': ['id'], 'size': 23693, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 23693.0}, {'label': 'Subscription', 'properties': ['id'], 'size': 1, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1.0}, {'label': 'User', 'properties': ['email'], 'size': 1, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1.0}, {'label': 'User', 'properties': ['id'], 'size': 265918, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 265918.0}]}}"
+network,"Node properties:
+- **DataCenter**
+  - `name`: STRING Available options: ['DC1']
+  - `location`: STRING Available options: ['Iceland, Rekjavik']
+- **Router**
+  - `name`: STRING Available options: ['DC1-RE', 'DC1-R-1', 'DC1-R-2', 'DC1-R-3', 'DC1-R-4']
+  - `zone`: INTEGER Min: 1, Max: 4
+- **Egress**
+  - `name`: STRING Available options: ['DC1-RE']
+- **Interface**
+  - `ip`: STRING Example: ""10.0.0.254""
+- **Network**
+  - `ip`: STRING Available options: ['10.1', '10.2', '10.3', '10.4']
+  - `size`: INTEGER Min: 16, Max: 16
+  - `zone`: INTEGER Min: 1, Max: 4
+- **Zone**
+  - `ip`: STRING Available options: ['10.1', '10.2', '10.3', '10.4']
+  - `size`: INTEGER Min: 16, Max: 16
+  - `zone`: INTEGER Min: 1, Max: 4
+- **Rack**
+  - `name`: STRING Example: ""DC1-RCK-1-1""
+  - `zone`: INTEGER Min: 1, Max: 4
+  - `rack`: INTEGER Min: 1, Max: 10
+- **Switch**
+  - `ip`: STRING Example: ""10.1.1""
+  - `rack`: INTEGER Min: 1, Max: 10
+- **Type**
+  - `id`: INTEGER Min: 0, Max: 5
+  - `type`: STRING Available options: ['xs', 's', 'm', 'l', 'xl', 'xxl']
+  - `ram`: INTEGER Min: 1, Max: 1024
+  - `name`: STRING Available options: ['xs-1/1/1', 's-2/4/5', 'm-4/16/25', 'l-8/64/125', 'xl-16/256/625', 'xxl-32/1024/3125']
+  - `disk`: INTEGER Min: 1, Max: 3125
+  - `cpu`: INTEGER Min: 1, Max: 32
+- **Machine**
+  - `name`: STRING Example: ""DC1-RCK-1-1-M-1""
+- **Software**
+  - `name`: STRING Example: ""RHEL""
+  - `versions`: LIST Min Size: 1, Max Size: 4
+  - `ports`: LIST Min Size: 1, Max Size: 11
+  - `dependencies`: LIST Min Size: 1, Max Size: 3
+- **OS**
+  - `name`: STRING Example: ""RHEL""
+  - `startTime`: INTEGER Min: 1605733619064, Max: 1606597376483
+- **Service**
+  - `name`: STRING Example: ""java""
+  - `startTime`: INTEGER 
+  - `pid`: INTEGER 
+- **Application**
+  - `name`: STRING Available options: ['webserver', 'crm', 'cms', 'webapp', 'logstash']
+  - `startTime`: INTEGER Min: 1606165629748, Max: 1607029401909
+  - `pid`: INTEGER Min: 0, Max: 9999
+- **Version**
+  - `name`: STRING Example: ""7.1""
+- **Process**
+  - `name`: STRING Example: ""7.1""
+  - `startTime`: INTEGER Example: ""1605946409388""
+  - `pid`: INTEGER Example: ""8966""
+- **Port**
+  - `port`: INTEGER Example: ""80""
+Relationship properties:
+
+The relationships:
+(:DataCenter)-[:CONTAINS]->(:Rack)
+(:DataCenter)-[:CONTAINS]->(:Router)
+(:DataCenter)-[:CONTAINS]->(:Egress)
+(:Router)-[:ROUTES]->(:Interface)
+(:Egress)-[:ROUTES]->(:Interface)
+(:Interface)-[:EXPOSES]->(:Port)
+(:Interface)-[:CONNECTS]->(:Interface)
+(:Network)-[:ROUTES]->(:Interface)
+(:Zone)-[:ROUTES]->(:Interface)
+(:Rack)-[:HOLDS]->(:Machine)
+(:Rack)-[:HOLDS]->(:Switch)
+(:Switch)-[:ROUTES]->(:Interface)
+(:Machine)-[:RUNS]->(:Application)
+(:Machine)-[:RUNS]->(:Process)
+(:Machine)-[:RUNS]->(:OS)
+(:Machine)-[:RUNS]->(:Service)
+(:Machine)-[:ROUTES]->(:Interface)
+(:Machine)-[:TYPE]->(:Type)
+(:Software)-[:VERSION]->(:Version)
+(:Software)-[:DEPENDS_ON]->(:Version)
+(:Software)-[:DEPENDS_ON]->(:Software)
+(:Software)-[:DEPENDS_ON]->(:Application)
+(:Software)-[:DEPENDS_ON]->(:Service)
+(:OS)-[:INSTANCE]->(:Version)
+(:Service)-[:LISTENS]->(:Port)
+(:Service)-[:INSTANCE]->(:Software)
+(:Service)-[:INSTANCE]->(:Service)
+(:Service)-[:INSTANCE]->(:Version)
+(:Service)-[:INSTANCE]->(:Application)
+(:Application)-[:LISTENS]->(:Port)
+(:Application)-[:INSTANCE]->(:Software)
+(:Application)-[:INSTANCE]->(:Application)
+(:Application)-[:DEPENDS_ON]->(:Service)
+(:Application)-[:DEPENDS_ON]->(:Process)
+(:Version)-[:PREVIOUS]->(:Version)
+(:Process)-[:INSTANCE]->(:Version)
+(:Process)-[:INSTANCE]->(:Software)
+(:Process)-[:INSTANCE]->(:Application)
+(:Process)-[:INSTANCE]->(:Service)
+(:Process)-[:DEPENDS_ON]->(:Service)
+(:Process)-[:DEPENDS_ON]->(:Process)
+(:Process)-[:LISTENS]->(:Port)","{'node_props': {'DataCenter': [{'property': 'name', 'type': 'STRING', 'values': ['DC1'], 'distinct_count': 1}, {'property': 'location', 'type': 'STRING', 'values': ['Iceland, Rekjavik'], 'distinct_count': 1}], 'Router': [{'property': 'name', 'type': 'STRING', 'values': ['DC1-RE', 'DC1-R-1', 'DC1-R-2', 'DC1-R-3', 'DC1-R-4'], 'distinct_count': 5}, {'property': 'zone', 'type': 'INTEGER', 'min': '1', 'max': '4', 'distinct_count': 4}], 'Egress': [{'property': 'name', 'type': 'STRING', 'values': ['DC1-RE'], 'distinct_count': 1}], 'Interface': [{'property': 'ip', 'type': 'STRING', 'values': ['10.0.0.254', '10.1.0.254', '10.2.0.254', '10.3.0.254', '10.4.0.254', '10.1.1.254', '10.1.2.254', '10.1.3.254', '10.1.4.254', '10.1.5.254'], 'distinct_count': 8045}], 'Network': [{'property': 'ip', 'type': 'STRING', 'values': ['10.1', '10.2', '10.3', '10.4'], 'distinct_count': 4}, {'property': 'size', 'type': 'INTEGER', 'min': '16', 'max': '16', 'distinct_count': 1}, {'property': 'zone', 'type': 'INTEGER', 'min': '1', 'max': '4', 'distinct_count': 4}], 'Zone': [{'property': 'ip', 'type': 'STRING', 'values': ['10.1', '10.2', '10.3', '10.4'], 'distinct_count': 4}, {'property': 'size', 'type': 'INTEGER', 'min': '16', 'max': '16', 'distinct_count': 1}, {'property': 'zone', 'type': 'INTEGER', 'min': '1', 'max': '4', 'distinct_count': 4}], 'Rack': [{'property': 'name', 'type': 'STRING', 'values': ['DC1-RCK-1-1', 'DC1-RCK-1-2', 'DC1-RCK-1-3', 'DC1-RCK-1-4', 'DC1-RCK-1-5', 'DC1-RCK-1-6', 'DC1-RCK-1-7', 'DC1-RCK-1-8', 'DC1-RCK-1-9', 'DC1-RCK-1-10'], 'distinct_count': 40}, {'property': 'zone', 'type': 'INTEGER', 'min': '1', 'max': '4', 'distinct_count': 4}, {'property': 'rack', 'type': 'INTEGER', 'min': '1', 'max': '10', 'distinct_count': 10}], 'Switch': [{'property': 'ip', 'type': 'STRING', 'values': ['10.1.1', '10.1.2', '10.1.3', '10.1.4', '10.1.5', '10.1.6', '10.1.7', '10.1.8', '10.1.9', '10.1.10'], 'distinct_count': 40}, {'property': 'rack', 'type': 'INTEGER', 'min': '1', 'max': '10', 'distinct_count': 10}], 'Type': [{'property': 'id', 'type': 'INTEGER', 'min': '0', 'max': '5', 'distinct_count': 6}, {'property': 'type', 'type': 'STRING', 'values': ['xs', 's', 'm', 'l', 'xl', 'xxl'], 'distinct_count': 6}, {'property': 'ram', 'type': 'INTEGER', 'min': '1', 'max': '1024', 'distinct_count': 6}, {'property': 'name', 'type': 'STRING', 'values': ['xs-1/1/1', 's-2/4/5', 'm-4/16/25', 'l-8/64/125', 'xl-16/256/625', 'xxl-32/1024/3125'], 'distinct_count': 6}, {'property': 'disk', 'type': 'INTEGER', 'min': '1', 'max': '3125', 'distinct_count': 6}, {'property': 'cpu', 'type': 'INTEGER', 'min': '1', 'max': '32', 'distinct_count': 6}], 'Machine': [{'property': 'name', 'type': 'STRING', 'values': ['DC1-RCK-1-1-M-1', 'DC1-RCK-1-1-M-2', 'DC1-RCK-1-1-M-3', 'DC1-RCK-1-1-M-4', 'DC1-RCK-1-1-M-5', 'DC1-RCK-1-1-M-6', 'DC1-RCK-1-1-M-7', 'DC1-RCK-1-1-M-8', 'DC1-RCK-1-1-M-9', 'DC1-RCK-1-1-M-10'], 'distinct_count': 8000}], 'Software': [{'property': 'name', 'type': 'STRING', 'values': ['RHEL', 'Ubuntu', 'Debian', 'java', 'neo4j', 'postgres', 'couchbase', 'elasticsearch', 'webserver', 'crm'], 'distinct_count': 14}, {'property': 'versions', 'type': 'LIST', 'max_size': 4, 'min_size': 1}, {'property': 'ports', 'type': 'LIST', 'max_size': 11, 'min_size': 1}, {'property': 'dependencies', 'type': 'LIST', 'max_size': 3, 'min_size': 1}], 'OS': [{'property': 'name', 'type': 'STRING', 'values': ['RHEL', 'Ubuntu', 'Debian', '7.1', '7.2', '14.04', '17.04', '7-Wheezy', '6-Squeeze', '8-Jessie'], 'distinct_count': 13}, {'property': 'startTime', 'type': 'INTEGER', 'min': '1605733619064', 'max': '1606597376483', 'distinct_count': 8000}], 'Service': [{'property': 'name', 'type': 'STRING', 'values': ['java', 'neo4j', 'postgres', 'couchbase', 'elasticsearch']}, {'property': 'startTime', 'type': 'INTEGER', 'values': []}, {'property': 'pid', 'type': 'INTEGER', 'values': []}], 'Application': [{'property': 'name', 'type': 'STRING', 'values': ['webserver', 'crm', 'cms', 'webapp', 'logstash'], 'distinct_count': 5}, {'property': 'startTime', 'type': 'INTEGER', 'min': '1606165629748', 'max': '1607029401909', 'distinct_count': 8000}, {'property': 'pid', 'type': 'INTEGER', 'min': '0', 'max': '9999', 'distinct_count': 5541}], 'Version': [{'property': 'name', 'type': 'STRING', 'values': ['7.1', '7.2', '7.3', '14.04', '16.04', '16.10', '17.04', '6-Squeeze', '7-Wheezy', '8-Jessie'], 'distinct_count': 23}], 'Process': [{'property': 'name', 'type': 'STRING', 'values': ['7.1', 'webserver', '7.2', 'crm', '14.04']}, {'property': 'startTime', 'type': 'INTEGER', 'values': ['1605946409388', '1606178140338', '1606205018820', '1606757328692', '1605741608606']}, {'property': 'pid', 'type': 'INTEGER', 'values': ['8966', '4885']}], 'Port': [{'property': 'port', 'type': 'INTEGER', 'values': ['80', '443']}]}, 'rel_props': {}, 'relationships': [{'start': 'DataCenter', 'type': 'CONTAINS', 'end': 'Rack'}, {'start': 'DataCenter', 'type': 'CONTAINS', 'end': 'Router'}, {'start': 'DataCenter', 'type': 'CONTAINS', 'end': 'Egress'}, {'start': 'Router', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Egress', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Interface', 'type': 'EXPOSES', 'end': 'Port'}, {'start': 'Interface', 'type': 'CONNECTS', 'end': 'Interface'}, {'start': 'Network', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Zone', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Rack', 'type': 'HOLDS', 'end': 'Machine'}, {'start': 'Rack', 'type': 'HOLDS', 'end': 'Switch'}, {'start': 'Switch', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Machine', 'type': 'RUNS', 'end': 'Application'}, {'start': 'Machine', 'type': 'RUNS', 'end': 'Process'}, {'start': 'Machine', 'type': 'RUNS', 'end': 'OS'}, {'start': 'Machine', 'type': 'RUNS', 'end': 'Service'}, {'start': 'Machine', 'type': 'ROUTES', 'end': 'Interface'}, {'start': 'Machine', 'type': 'TYPE', 'end': 'Type'}, {'start': 'Software', 'type': 'VERSION', 'end': 'Version'}, {'start': 'Software', 'type': 'DEPENDS_ON', 'end': 'Version'}, {'start': 'Software', 'type': 'DEPENDS_ON', 'end': 'Software'}, {'start': 'Software', 'type': 'DEPENDS_ON', 'end': 'Application'}, {'start': 'Software', 'type': 'DEPENDS_ON', 'end': 'Service'}, {'start': 'OS', 'type': 'INSTANCE', 'end': 'Version'}, {'start': 'Service', 'type': 'LISTENS', 'end': 'Port'}, {'start': 'Service', 'type': 'INSTANCE', 'end': 'Software'}, {'start': 'Service', 'type': 'INSTANCE', 'end': 'Service'}, {'start': 'Service', 'type': 'INSTANCE', 'end': 'Version'}, {'start': 'Service', 'type': 'INSTANCE', 'end': 'Application'}, {'start': 'Application', 'type': 'LISTENS', 'end': 'Port'}, {'start': 'Application', 'type': 'INSTANCE', 'end': 'Software'}, {'start': 'Application', 'type': 'INSTANCE', 'end': 'Application'}, {'start': 'Application', 'type': 'DEPENDS_ON', 'end': 'Service'}, {'start': 'Application', 'type': 'DEPENDS_ON', 'end': 'Process'}, {'start': 'Version', 'type': 'PREVIOUS', 'end': 'Version'}, {'start': 'Process', 'type': 'INSTANCE', 'end': 'Version'}, {'start': 'Process', 'type': 'INSTANCE', 'end': 'Software'}, {'start': 'Process', 'type': 'INSTANCE', 'end': 'Application'}, {'start': 'Process', 'type': 'INSTANCE', 'end': 'Service'}, {'start': 'Process', 'type': 'DEPENDS_ON', 'end': 'Service'}, {'start': 'Process', 'type': 'DEPENDS_ON', 'end': 'Process'}, {'start': 'Process', 'type': 'LISTENS', 'end': 'Port'}], 'metadata': {'constraint': [], 'index': [{'label': 'Software', 'properties': ['name'], 'size': 14, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 14.0}]}}"
+northwind,"Node properties:
+- **Product**
+  - `productName`: STRING Example: ""Chai""
+  - `quantityPerUnit`: STRING Example: ""10 boxes x 20 bags""
+  - `unitsOnOrder`: INTEGER Min: 0, Max: 100
+  - `supplierID`: STRING Example: ""1""
+  - `productID`: STRING Example: ""1""
+  - `discontinued`: BOOLEAN 
+  - `categoryID`: STRING Available options: ['1', '2', '7', '6', '8', '4', '3', '5']
+  - `reorderLevel`: INTEGER Min: 0, Max: 30
+  - `unitsInStock`: INTEGER Min: 0, Max: 125
+  - `unitPrice`: FLOAT Min: 2.5, Max: 263.5
+- **Category**
+  - `picture`: STRING Available options: ['0x151C2F00020000000D000E0014002100FFFFFFFF4269746D']
+  - `categoryID`: STRING Available options: ['1', '2', '3', '4', '5', '6', '7', '8']
+  - `description`: STRING Available options: ['Soft drinks, coffees, teas, beers, and ales', 'Sweet and savory sauces, relishes, spreads, and se', 'Desserts, candies, and sweet breads', 'Cheeses', 'Breads, crackers, pasta, and cereal', 'Prepared meats', 'Dried fruit and bean curd', 'Seaweed and fish']
+  - `categoryName`: STRING Available options: ['Beverages', 'Condiments', 'Confections', 'Dairy Products', 'Grains/Cereals', 'Meat/Poultry', 'Produce', 'Seafood']
+- **Supplier**
+  - `companyName`: STRING Example: ""Exotic Liquids""
+  - `contactName`: STRING Example: ""Charlotte Cooper""
+  - `homePage`: STRING Available options: ['NULL', '#CAJUN.HTM#', ""Mayumi's (on the World Wide Web)#http://www.micros"", '(03) 444-6588', 'Plutzer (on the World Wide Web)#http://www.microso', '(0544) 60603', '(1) 03.83.00.62', '(02) 555-4873', '(089) 6547667', '38.76.98.58']
+  - `phone`: STRING Example: ""(171) 555-2222""
+  - `postalCode`: STRING Example: ""EC1 4SD""
+  - `contactTitle`: STRING Example: ""Purchasing Manager""
+  - `region`: STRING Example: ""NULL""
+  - `address`: STRING Example: ""49 Gilbert St.""
+  - `fax`: STRING Example: ""NULL""
+  - `supplierID`: STRING Example: ""1""
+  - `country`: STRING Example: ""UK""
+  - `city`: STRING Example: ""London""
+- **Customer**
+  - `fax`: STRING Example: ""030-0076545""
+  - `companyName`: STRING Example: ""Alfreds Futterkiste""
+  - `customerID`: STRING Example: ""ALFKI""
+  - `phone`: STRING Example: ""030-0074321""
+  - `contactName`: STRING Example: ""Maria Anders""
+  - `contactTitle`: STRING Example: ""Sales Representative""
+  - `region`: STRING Example: ""NULL""
+  - `address`: STRING Example: ""Obere Str. 57""
+  - `postalCode`: STRING Example: ""12209""
+  - `country`: STRING Example: ""Germany""
+  - `city`: STRING Example: ""Berlin""
+- **Order**
+  - `shipName`: STRING Example: ""Vins et alcools Chevalier""
+  - `requiredDate`: STRING Example: ""1996-08-01 00:00:00.000""
+  - `shipCity`: STRING Example: ""Reims""
+  - `employeeID`: STRING Available options: ['5', '6', '4', '3', '9', '1', '8', '2', '7']
+  - `shipPostalCode`: STRING Example: ""51100""
+  - `shippedDate`: STRING Example: ""1996-07-16 00:00:00.000""
+  - `freight`: STRING Example: ""32.38""
+  - `orderDate`: STRING Example: ""1996-07-04 00:00:00.000""
+  - `orderID`: STRING Example: ""10248""
+  - `shipAddress`: STRING Example: ""59 rue de l'Abbaye""
+  - `customerID`: STRING Example: ""VINET""
+  - `shipCountry`: STRING Example: ""France""
+  - `shipVia`: STRING Available options: ['3', '1', '2']
+  - `shipRegion`: STRING Example: ""NULL""
+Relationship properties:
+- **ORDERS**
+  - `orderID: STRING` Example: ""10248""
+  - `unitPrice: STRING` Example: ""34.80""
+  - `productID: STRING` Example: ""72""
+  - `quantity: INTEGER` Min: 1, Max:  130
+  - `discount: STRING` Example: ""0""
+The relationships:
+(:Product)-[:PART_OF]->(:Category)
+(:Supplier)-[:SUPPLIES]->(:Product)
+(:Customer)-[:PURCHASED]->(:Order)
+(:Order)-[:ORDERS]->(:Product)","{'node_props': {'Product': [{'property': 'productName', 'type': 'STRING', 'values': ['Chai', 'Chang', 'Aniseed Syrup', ""Chef Anton's Cajun Seasoning"", ""Chef Anton's Gumbo Mix"", ""Grandma's Boysenberry Spread"", ""Uncle Bob's Organic Dried Pears"", 'Northwoods Cranberry Sauce', 'Mishi Kobe Niku', 'Ikura'], 'distinct_count': 77}, {'property': 'quantityPerUnit', 'type': 'STRING', 'values': ['10 boxes x 20 bags', '24 - 12 oz bottles', '12 - 550 ml bottles', '48 - 6 oz jars', '36 boxes', '12 - 8 oz jars', '12 - 1 lb pkgs.', '12 - 12 oz jars', '18 - 500 g pkgs.', '12 - 200 ml jars'], 'distinct_count': 70}, {'property': 'unitsOnOrder', 'type': 'INTEGER', 'min': '0', 'max': '100', 'distinct_count': 10}, {'property': 'supplierID', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'distinct_count': 29}, {'property': 'productID', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'distinct_count': 77}, {'property': 'discontinued', 'type': 'BOOLEAN'}, {'property': 'categoryID', 'type': 'STRING', 'values': ['1', '2', '7', '6', '8', '4', '3', '5'], 'distinct_count': 8}, {'property': 'reorderLevel', 'type': 'INTEGER', 'min': '0', 'max': '30', 'distinct_count': 7}, {'property': 'unitsInStock', 'type': 'INTEGER', 'min': '0', 'max': '125', 'distinct_count': 51}, {'property': 'unitPrice', 'type': 'FLOAT', 'min': '2.5', 'max': '263.5', 'distinct_count': 62}], 'Category': [{'property': 'picture', 'type': 'STRING', 'values': ['0x151C2F00020000000D000E0014002100FFFFFFFF4269746D'], 'distinct_count': 1}, {'property': 'categoryID', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8'], 'distinct_count': 8}, {'property': 'description', 'type': 'STRING', 'values': ['Soft drinks, coffees, teas, beers, and ales', 'Sweet and savory sauces, relishes, spreads, and se', 'Desserts, candies, and sweet breads', 'Cheeses', 'Breads, crackers, pasta, and cereal', 'Prepared meats', 'Dried fruit and bean curd', 'Seaweed and fish'], 'distinct_count': 8}, {'property': 'categoryName', 'type': 'STRING', 'values': ['Beverages', 'Condiments', 'Confections', 'Dairy Products', 'Grains/Cereals', 'Meat/Poultry', 'Produce', 'Seafood'], 'distinct_count': 8}], 'Supplier': [{'property': 'companyName', 'type': 'STRING', 'values': ['Exotic Liquids', 'New Orleans Cajun Delights', ""Grandma Kelly's Homestead"", 'Tokyo Traders', ""Cooperativa de Quesos 'Las Cabras'"", ""Mayumi's"", 'Pavlova', 'Specialty Biscuits', 'PB Knäckebröd AB', 'Refrescos Americanas LTDA'], 'distinct_count': 29}, {'property': 'contactName', 'type': 'STRING', 'values': ['Charlotte Cooper', 'Shelley Burke', 'Regina Murphy', 'Yoshi Nagase', 'Antonio del Valle Saavedra', 'Mayumi Ohno', ' Ltd.', 'Lars Peterson', 'Carlos Diaz', 'Petra Winkler'], 'distinct_count': 28}, {'property': 'homePage', 'type': 'STRING', 'values': ['NULL', '#CAJUN.HTM#', ""Mayumi's (on the World Wide Web)#http://www.micros"", '(03) 444-6588', 'Plutzer (on the World Wide Web)#http://www.microso', '(0544) 60603', '(1) 03.83.00.62', '(02) 555-4873', '(089) 6547667', '38.76.98.58'], 'distinct_count': 10}, {'property': 'phone', 'type': 'STRING', 'values': ['(171) 555-2222', '(100) 555-4822', '(313) 555-5735', '(03) 3555-5011', '(98) 598 76 54', '(06) 431-7877', 'Australia', 'UK', '031-987 65 43', '(11) 555 4640'], 'distinct_count': 25}, {'property': 'postalCode', 'type': 'STRING', 'values': ['EC1 4SD', '70117', '48104', '100', '33007', '545', 'Victoria', 'NULL', 'S-345 67', '5442'], 'distinct_count': 23}, {'property': 'contactTitle', 'type': 'STRING', 'values': ['Purchasing Manager', 'Order Administrator', 'Sales Representative', 'Marketing Manager', 'Export Administrator', 'Marketing Representative', 'Ian Devling', 'Peter Wilson', 'Sales Agent', 'Sales Manager'], 'distinct_count': 18}, {'property': 'region', 'type': 'STRING', 'values': ['NULL', 'LA', 'MI', 'Asturias', 'Melbourne', 'Manchester', 'Ravenna', 'OR', 'Paris', 'MA'], 'distinct_count': 16}, {'property': 'address', 'type': 'STRING', 'values': ['49 Gilbert St.', 'P.O. Box 78934', '707 Oxford Rd.', '9-8 Sekimai Musashino-shi', 'Calle del Rosal 4', '92 Setsuko Chuo-ku', 'Marketing Manager', 'Sales Representative', 'Kaloadagatan 13', 'Av. das Americanas 12.890'], 'distinct_count': 28}, {'property': 'fax', 'type': 'STRING', 'values': ['NULL', '(313) 555-3349', '(03) 444-2343', '(161) 555-4448', '031-987 65 91', '(04721) 8714', '(0544) 60323', '(1) 03.83.00.68', '(617) 555-3389', '555-8787'], 'distinct_count': 17}, {'property': 'supplierID', 'type': 'STRING', 'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'distinct_count': 29}, {'property': 'country', 'type': 'STRING', 'values': ['UK', 'USA', 'Japan', 'Spain', '3058', 'M14 GSD', 'Sweden', 'Brazil', 'Germany', '48100'], 'distinct_count': 21}, {'property': 'city', 'type': 'STRING', 'values': ['London', 'New Orleans', 'Ann Arbor', 'Tokyo', 'Oviedo', 'Osaka', '74 Rose St. Moonie Ponds', ""29 King's Way"", 'Göteborg', 'Sao Paulo'], 'distinct_count': 29}], 'Customer': [{'property': 'fax', 'type': 'STRING', 'values': ['030-0076545', '(5) 555-3745', 'NULL', '(171) 555-6750', '0921-12 34 67', '0621-08924', '88.60.15.32', '(91) 555 91 99', '91.24.45.41', '(604) 555-3745'], 'distinct_count': 70}, {'property': 'companyName', 'type': 'STRING', 'values': ['Alfreds Futterkiste', 'Ana Trujillo Emparedados y helados', 'Antonio Moreno Taquería', 'Around the Horn', 'Berglunds snabbköp', 'Blauer See Delikatessen', 'Blondesddsl père et fils', 'Bólido Comidas preparadas', ""Bon app'"", 'Bottom-Dollar Markets'], 'distinct_count': 91}, {'property': 'customerID', 'type': 'STRING', 'values': ['ALFKI', 'ANATR', 'ANTON', 'AROUT', 'BERGS', 'BLAUS', 'BLONP', 'BOLID', 'BONAP', 'BOTTM'], 'distinct_count': 91}, {'property': 'phone', 'type': 'STRING', 'values': ['030-0074321', '(5) 555-4729', '(5) 555-3932', '(171) 555-7788', '0921-12 34 65', '0621-08460', '88.60.15.31', '(91) 555 22 82', '91.24.45.40', '(604) 555-4729'], 'distinct_count': 91}, {'property': 'contactName', 'type': 'STRING', 'values': ['Maria Anders', 'Ana Trujillo', 'Antonio Moreno', 'Thomas Hardy', 'Christina Berglund', 'Hanna Moos', 'Frédérique Citeaux', 'Martín Sommer', 'Laurence Lebihan', 'Elizabeth Lincoln'], 'distinct_count': 91}, {'property': 'contactTitle', 'type': 'STRING', 'values': ['Sales Representative', 'Owner', 'Order Administrator', 'Marketing Manager', 'Accounting Manager', 'Sales Agent', 'Sales Associate', 'Sales Manager', 'Marketing Assistant', 'Assistant Sales Agent'], 'distinct_count': 12}, {'property': 'region', 'type': 'STRING', 'values': ['NULL', 'BC', 'SP', 'OR', 'DF', 'RJ', 'Táchira', 'Co. Cork', 'Isle of Wight', 'WA'], 'distinct_count': 19}, {'property': 'address', 'type': 'STRING', 'values': ['Obere Str. 57', 'Avda. de la Constitución 2222', 'Mataderos  2312', '120 Hanover Sq.', 'Berguvsvägen  8', 'Forsterstr. 57', '24, place Kléber', 'C/ Araquil, 67', ' 12, rue des Bouchers', '23 Tsawassen Blvd.'], 'distinct_count': 91}, {'property': 'postalCode', 'type': 'STRING', 'values': ['12209', '5021', '5023', 'WA1 1DP', 'S-958 22', '68306', '67000', '28023', '13008', 'T2F 8M4'], 'distinct_count': 86}, {'property': 'country', 'type': 'STRING', 'values': ['Germany', 'Mexico', 'UK', 'Sweden', 'France', 'Spain', 'Canada', 'Argentina', 'Switzerland', 'Brazil'], 'distinct_count': 21}, {'property': 'city', 'type': 'STRING', 'values': ['Berlin', 'México D.F.', 'London', 'Luleå', 'Mannheim', 'Strasbourg', 'Madrid', 'Marseille', 'Tsawassen', 'Buenos Aires'], 'distinct_count': 69}], 'Order': [{'property': 'shipName', 'type': 'STRING', 'values': ['Vins et alcools Chevalier', 'Toms Spezialitäten', 'Hanari Carnes', 'Victuailles en stock', 'Suprêmes délices', 'Chop-suey Chinese', 'Richter Supermarkt', 'Wellington Importadora', 'HILARION-Abastos', 'Ernst Handel'], 'distinct_count': 90}, {'property': 'requiredDate', 'type': 'STRING', 'values': ['1996-08-01 00:00:00.000', '1996-08-16 00:00:00.000', '1996-08-05 00:00:00.000', '1996-08-06 00:00:00.000', '1996-07-24 00:00:00.000', '1996-08-08 00:00:00.000', '1996-08-09 00:00:00.000', '1996-08-12 00:00:00.000', '1996-08-13 00:00:00.000', '1996-08-14 00:00:00.000'], 'distinct_count': 454}, {'property': 'shipCity', 'type': 'STRING', 'values': ['Reims', 'Münster', ' 67', ' rue du Commerce', ' 255', 'Bern', 'Genève', ' 12', 'San Cristóbal', 'Graz'], 'distinct_count': 74}, {'property': 'employeeID', 'type': 'STRING', 'values': ['5', '6', '4', '3', '9', '1', '8', '2', '7'], 'distinct_count': 9}, {'property': 'shipPostalCode', 'type': 'STRING', 'values': ['51100', '44087', 'RJ', 'NULL', '3012', '1204', 'SP', '5022', '8010', '05022'], 'distinct_count': 66}, {'property': 'shippedDate', 'type': 'STRING', 'values': ['1996-07-16 00:00:00.000', '1996-07-10 00:00:00.000', '1996-07-12 00:00:00.000', '1996-07-15 00:00:00.000', '1996-07-11 00:00:00.000', '1996-07-23 00:00:00.000', '1996-07-17 00:00:00.000', '1996-07-22 00:00:00.000', '1996-07-25 00:00:00.000', '1996-07-29 00:00:00.000'], 'distinct_count': 388}, {'property': 'freight', 'type': 'STRING', 'values': ['32.38', '11.61', '65.83', '41.34', '51.30', '58.17', '22.98', '148.33', '13.97', '81.91'], 'distinct_count': 799}, {'property': 'orderDate', 'type': 'STRING', 'values': ['1996-07-04 00:00:00.000', '1996-07-05 00:00:00.000', '1996-07-08 00:00:00.000', '1996-07-09 00:00:00.000', '1996-07-10 00:00:00.000', '1996-07-11 00:00:00.000', '1996-07-12 00:00:00.000', '1996-07-15 00:00:00.000', '1996-07-16 00:00:00.000', '1996-07-17 00:00:00.000'], 'distinct_count': 480}, {'property': 'orderID', 'type': 'STRING', 'values': ['10248', '10249', '10250', '10251', '10252', '10253', '10254', '10255', '10256', '10257'], 'distinct_count': 830}, {'property': 'shipAddress', 'type': 'STRING', 'values': [""59 rue de l'Abbaye"", 'Luisenstr. 48', 'Rua do Paço', '2', 'Boulevard Tirou', 'Hauptstr. 31', 'Starenweg 5', 'Rua do Mercado', 'Carrera 22 con Ave. Carlos Soublette #8-35', 'Kirchgasse 6'], 'distinct_count': 88}, {'property': 'customerID', 'type': 'STRING', 'values': ['VINET', 'TOMSP', 'HANAR', 'VICTE', 'SUPRD', 'CHOPS', 'RICSU', 'WELLI', 'HILAA', 'ERNSH'], 'distinct_count': 89}, {'property': 'shipCountry', 'type': 'STRING', 'values': ['France', 'Germany', '05454-876', '69004', 'B-6000', 'Switzerland', '08737-363', 'Venezuela', 'Austria', 'Mexico'], 'distinct_count': 40}, {'property': 'shipVia', 'type': 'STRING', 'values': ['3', '1', '2'], 'distinct_count': 3}, {'property': 'shipRegion', 'type': 'STRING', 'values': ['NULL', 'Rio de Janeiro', 'Lyon', 'Charleroi', 'Resende', 'Táchira', 'NM', 'Strasbourg', 'DF', 'WA'], 'distinct_count': 33}]}, 'rel_props': {'ORDERS': [{'property': 'orderID', 'type': 'STRING', 'values': ['10248', '10249', '10250', '10251', '10252', '10253', '10254', '10255', '10256', '10257'], 'distinct_count': 830}, {'property': 'unitPrice', 'type': 'STRING', 'values': ['34.80', '14.00', '9.80', '18.60', '42.40', '16.80', '7.70', '15.60', '27.20', '2.00'], 'distinct_count': 116}, {'property': 'productID', 'type': 'STRING', 'values': ['72', '11', '42', '14', '51', '65', '41', '22', '57', '60'], 'distinct_count': 77}, {'property': 'quantity', 'type': 'INTEGER', 'min': '1', 'max': '130', 'distinct_count': 55}, {'property': 'discount', 'type': 'STRING', 'values': ['0', '0.15', '0.05', '0.2', '0.25', '0.1', '0.02', '0.03', '0.06', '0.01'], 'distinct_count': 11}]}, 'relationships': [{'start': 'Product', 'type': 'PART_OF', 'end': 'Category'}, {'start': 'Supplier', 'type': 'SUPPLIES', 'end': 'Product'}, {'start': 'Customer', 'type': 'PURCHASED', 'end': 'Order'}, {'start': 'Order', 'type': 'ORDERS', 'end': 'Product'}], 'metadata': {'constraint': [], 'index': [{'label': 'Category', 'properties': ['categoryID'], 'size': 8, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 8.0}, {'label': 'Customer', 'properties': ['customerID'], 'size': 91, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 91.0}, {'label': 'Order', 'properties': ['orderID'], 'size': 830, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 830.0}, {'label': 'Product', 'properties': ['productID'], 'size': 77, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 77.0}, {'label': 'Supplier', 'properties': ['supplierID'], 'size': 29, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 29.0}]}}"
+offshoreleaks,"Node properties:
+- **Entity**
+  - `countries`: STRING Example: ""Hong Kong""
+  - `ibcRUC`: STRING Example: ""25221""
+  - `valid_until`: STRING Example: ""The Panama Papers data is current through 2015""
+  - `country_codes`: STRING Example: ""HKG""
+  - `service_provider`: STRING Available options: ['Appleby', 'Portcullis Trustnet', 'Mossack Fonseca', 'Commonwealth Trust Limited']
+  - `address`: STRING Example: ""ORION HOUSE SERVICES (HK) LIMITED ROOM 1401; 14/F.""
+  - `inactivation_date`: STRING Example: ""18-FEB-2013""
+  - `struck_off_date`: STRING Example: ""15-FEB-2013""
+  - `status`: STRING Example: ""Defaulted""
+  - `jurisdiction_description`: STRING Example: ""Samoa""
+  - `incorporation_date`: STRING Example: ""23-MAR-2006""
+  - `original_name`: STRING Example: ""TIANSHENG INDUSTRY AND TRADING CO., LTD.""
+  - `jurisdiction`: STRING Example: ""SAM""
+  - `name`: STRING Example: ""TIANSHENG INDUSTRY AND TRADING CO., LTD.""
+  - `internal_id`: STRING Example: ""1001256""
+  - `lastEditTimestamp`: STRING Example: ""1638311020926""
+  - `node_id`: INTEGER Min: 10000001, Max: 10000005
+  - `sourceID`: STRING Example: ""Panama Papers""
+  - `former_name`: STRING 
+  - `company_type`: STRING 
+  - `tax_stat_description`: STRING 
+  - `note`: STRING 
+  - `dorm_date`: STRING 
+  - `type`: STRING 
+  - `closed_date`: STRING 
+  - `company_number`: STRING 
+  - `comments`: STRING 
+  - `entity_number`: STRING 
+- **Intermediary**
+  - `countries`: STRING Example: ""South Africa""
+  - `lastEditTimestamp`: STRING Example: ""1638311034131""
+  - `address`: STRING Example: ""MICHAEL PAPAGEORGE; MR. 106 NICHOLSON STREET BROOK""
+  - `valid_until`: STRING Example: ""The Panama Papers  data is current through 2015""
+  - `country_codes`: STRING Example: ""ZAF""
+  - `name`: STRING Example: ""MICHAEL PAPAGEORGE, MR.""
+  - `status`: STRING Available options: ['UNRECOVERABLE ACCOUNTS', 'CLIENT IN REPRESENTATIVE TERRITORY', 'ACTIVE', 'INACTIVE', 'SUSPENDED', 'DELINQUENT', 'PROSPECT', 'SUSPENDED LEGAL', 'ACTIVE LEGAL']
+  - `node_id`: INTEGER Min: 11000001, Max: 11000005
+  - `sourceID`: STRING Available options: ['Pandora Papers - Alemán, Cordero, Galindo & Lee (Alcogal)', 'Paradise Papers - Appleby', 'Paradise Papers - Barbados corporate registry', 'Bahamas Leaks', 'Panama Papers', 'Paradise Papers - Nevis corporate registry', 'Paradise Papers - Bahamas corporate registry', 'Offshore Leaks', 'Paradise Papers - Aruba corporate registry']
+  - `internal_id`: STRING Example: ""10001""
+  - `registered_office`: STRING 
+- **Officer**
+  - `valid_until`: STRING Example: ""The Panama Papers data is current through 2015""
+  - `name`: STRING Example: ""KIM SOO IN""
+  - `sourceID`: STRING Example: ""Panama Papers""
+  - `icij_id`: STRING Example: ""E72326DEA50F1A9C2876E112AAEB42BC""
+  - `node_id`: INTEGER Min: 12000001, Max: 12000005
+  - `lastEditTimestamp`: STRING Example: ""1638311034062""
+  - `country_codes`: STRING Example: ""KOR""
+  - `countries`: STRING Example: ""South Korea""
+  - `note`: STRING 
+- **Address**
+  - `original_address`: STRING Example: ""ANNEX FREDERICK & SHIRLEY STS, P. O. BOX N-4805 NA""
+  - `lastEditTimestamp`: STRING Example: ""1638311020926""
+  - `countries`: STRING Example: ""Bahamas""
+  - `address`: STRING Example: ""ANNEX FREDERICK & SHIRLEY STS, P.O. BOX N-4805, NA""
+  - `valid_until`: STRING Example: ""The Bahamas Leaks data is current through early 20""
+  - `icij_id`: STRING Example: ""7C1AAD6896EFDED57D680B82E7ADF7AB""
+  - `node_id`: INTEGER Min: 24000001, Max: 24000005
+  - `sourceID`: STRING Example: ""Bahamas Leaks""
+  - `country_codes`: STRING Example: ""BHS""
+  - `name`: STRING 
+  - `addressID`: STRING 
+  - `country_code`: STRING 
+  - `country`: STRING 
+- **Other**
+  - `lastEditTimestamp`: STRING Available options: ['1638311068329', '1638311074502', '1638311074946', '1638311075268', '1638311075503']
+  - `incorporation_date`: STRING Example: ""18-MAY-1983""
+  - `struck_off_date`: STRING Example: ""31-DEC-2002""
+  - `jurisdiction`: STRING Available options: ['AW']
+  - `jurisdiction_description`: STRING Available options: ['Aruba']
+  - `valid_until`: STRING Available options: ['Aruba corporate registry data is current through 2', 'Appleby data is current through 2014']
+  - `sourceID`: STRING Available options: ['Paradise Papers - Aruba corporate registry', 'Paradise Papers - Appleby']
+  - `name`: STRING Example: ""ANTAM ENTERPRISES N.V.""
+  - `type`: STRING Available options: ['LIMITED LIABILITY COMPANY', 'SOLE OWNERSHIP', 'FOREIGN FORMED CORPORATION']
+  - `node_id`: INTEGER Min: 80000012, Max: 85050056
+  - `closed_date`: STRING Example: ""28-NOV-2012""
+  - `note`: STRING Available options: ['Closed date stands for Cancelled date.', 'Closed date stands for Liquidation date.']
+  - `countries`: STRING Example: ""Bermuda;Isle of Man""
+  - `country_codes`: STRING Example: ""BMU;IMN""
+Relationship properties:
+- **registered_address**
+  - `link: STRING` Example: ""registered address""
+  - `sourceID: STRING` Example: ""Panama Papers""
+  - `valid_until: STRING` 
+- **intermediary_of**
+  - `valid_until: STRING` Example: ""The Panama Papers data is current through 2015""
+  - `sourceID: STRING` Example: ""Panama Papers""
+  - `link: STRING` Example: ""intermediary of""
+  - `end_date: STRING` 
+  - `start_date: STRING` 
+- **officer_of**
+  - `link: STRING` Example: ""shareholder of""
+  - `valid_until: STRING` Example: ""The Panama Papers data is current through 2015""
+  - `sourceID: STRING` Example: ""Panama Papers""
+  - `start_date: STRING` Example: ""19-NOV-1999""
+  - `end_date: STRING` Example: ""04-JUL-2000""
+  - `status: STRING` 
+- **similar**
+  - `link: STRING` Example: ""similar name and address as""
+- **same_as**
+  - `link: STRING` Available options: ['same name and registration date as', 'same address as', 'same as']
+- **same_name_as**
+  - `sourceID: STRING` Example: ""Bahamas Leaks""
+  - `link: STRING` Example: ""same name as""
+  - `valid_until: STRING` Example: ""The Bahamas Leaks data is current through early 20""
+- **same_company_as**
+  - `valid_until: STRING` Example: ""The Bahamas Leaks data is current through early 20""
+  - `sourceID: STRING` Example: ""Bahamas Leaks""
+  - `link: STRING` Example: ""same company as""
+- **same_id_as**
+  - `sourceID: STRING` Available options: ['Paradise Papers - Malta corporate registry']
+  - `link: STRING` Available options: ['same id as']
+  - `valid_until: STRING` Available options: ['Malta corporate registry data is current through 2']
+- **connected_to**
+  - `valid_until: STRING` Example: ""Aruba corporate registry data is current through 2""
+  - `link: STRING` Example: ""connected to""
+  - `sourceID: STRING` Example: ""Paradise Papers - Aruba corporate registry""
+The relationships:
+(:Entity)-[:same_as]->(:Entity)
+(:Entity)-[:registered_address]->(:Address)
+(:Entity)-[:same_company_as]->(:Entity)
+(:Entity)-[:same_name_as]->(:Other)
+(:Entity)-[:same_name_as]->(:Entity)
+(:Intermediary)-[:intermediary_of]->(:Entity)
+(:Intermediary)-[:registered_address]->(:Address)
+(:Intermediary)-[:officer_of]->(:Entity)
+(:Intermediary)-[:similar]->(:Officer)
+(:Intermediary)-[:same_name_as]->(:Intermediary)
+(:Intermediary)-[:same_name_as]->(:Officer)
+(:Intermediary)-[:same_as]->(:Officer)
+(:Officer)-[:officer_of]->(:Entity)
+(:Officer)-[:officer_of]->(:Other)
+(:Officer)-[:registered_address]->(:Address)
+(:Officer)-[:similar]->(:Officer)
+(:Officer)-[:similar]->(:Intermediary)
+(:Officer)-[:same_name_as]->(:Officer)
+(:Officer)-[:connected_to]->(:Entity)
+(:Officer)-[:same_id_as]->(:Officer)
+(:Address)-[:same_as]->(:Address)
+(:Other)-[:registered_address]->(:Address)
+(:Other)-[:connected_to]->(:Entity)
+(:Other)-[:same_name_as]->(:Entity)
+(:Other)-[:same_name_as]->(:Officer)
+(:Other)-[:same_name_as]->(:Other)","{'node_props': {'Entity': [{'property': 'countries', 'type': 'STRING', 'values': ['Hong Kong']}, {'property': 'ibcRUC', 'type': 'STRING', 'values': ['25221', '25249', '24138', '24012', 'R25638']}, {'property': 'valid_until', 'type': 'STRING', 'values': ['The Panama Papers data is current through 2015']}, {'property': 'country_codes', 'type': 'STRING', 'values': ['HKG']}, {'property': 'service_provider', 'type': 'STRING', 'values': ['Appleby', 'Portcullis Trustnet', 'Mossack Fonseca', 'Commonwealth Trust Limited'], 'distinct_count': 4}, {'property': 'address', 'type': 'STRING', 'values': ['ORION HOUSE SERVICES (HK) LIMITED ROOM 1401; 14/F.', 'LOYAL PORT LIMITED 8/F; CRAWFORD TOWER 99 JERVOIS ']}, {'property': 'inactivation_date', 'type': 'STRING', 'values': ['18-FEB-2013', '27-FEB-2014', '15-FEB-2012', '16-FEB-2009', '15-MAY-2009']}, {'property': 'struck_off_date', 'type': 'STRING', 'values': ['15-FEB-2013', '15-FEB-2014', '15-FEB-2012', '15-FEB-2009', '15-FEB-2008']}, {'property': 'status', 'type': 'STRING', 'values': ['Defaulted', 'Changed agent']}, {'property': 'jurisdiction_description', 'type': 'STRING', 'values': ['Samoa']}, {'property': 'incorporation_date', 'type': 'STRING', 'values': ['23-MAR-2006', '27-MAR-2006', '10-JAN-2006', '06-JAN-2006', '19-APR-2006']}, {'property': 'original_name', 'type': 'STRING', 'values': ['TIANSHENG INDUSTRY AND TRADING CO., LTD.', 'NINGBO SUNRISE ENTERPRISES UNITED CO., LTD.', 'HOTFOCUS CO., LTD.', 'SKY-BLUE GIFTS & TOYS CO., LTD.', 'FORTUNEMAKER INVESTMENTS CORPORATION']}, {'property': 'jurisdiction', 'type': 'STRING', 'values': ['SAM']}, {'property': 'name', 'type': 'STRING', 'values': ['TIANSHENG INDUSTRY AND TRADING CO., LTD.', 'NINGBO SUNRISE ENTERPRISES UNITED CO., LTD.', 'HOTFOCUS CO., LTD.', 'SKY-BLUE GIFTS & TOYS CO., LTD.', 'FORTUNEMAKER INVESTMENTS CORPORATION']}, {'property': 'internal_id', 'type': 'STRING', 'values': ['1001256', '1001263', '1000896', '1000914', '1001266']}, {'property': 'lastEditTimestamp', 'type': 'STRING', 'values': ['1638311020926']}, {'property': 'node_id', 'type': 'INTEGER', 'min': '10000001', 'max': '10000005', 'distinct_count': 5}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Panama Papers']}, {'property': 'former_name', 'type': 'STRING', 'values': []}, {'property': 'company_type', 'type': 'STRING', 'values': []}, {'property': 'tax_stat_description', 'type': 'STRING', 'values': []}, {'property': 'note', 'type': 'STRING', 'values': []}, {'property': 'dorm_date', 'type': 'STRING', 'values': []}, {'property': 'type', 'type': 'STRING', 'values': []}, {'property': 'closed_date', 'type': 'STRING', 'values': []}, {'property': 'company_number', 'type': 'STRING', 'values': []}, {'property': 'comments', 'type': 'STRING', 'values': []}, {'property': 'entity_number', 'type': 'STRING', 'values': []}], 'Intermediary': [{'property': 'countries', 'type': 'STRING', 'values': ['South Africa', 'Liechtenstein', 'Monaco', 'Belgium', 'Lebanon']}, {'property': 'lastEditTimestamp', 'type': 'STRING', 'values': ['1638311034131']}, {'property': 'address', 'type': 'STRING', 'values': ['MICHAEL PAPAGEORGE; MR. 106 NICHOLSON STREET BROOK', '']}, {'property': 'valid_until', 'type': 'STRING', 'values': ['The Panama Papers  data is current through 2015']}, {'property': 'country_codes', 'type': 'STRING', 'values': ['ZAF', 'LIE', 'MCO', 'BEL', 'LBN']}, {'property': 'name', 'type': 'STRING', 'values': ['MICHAEL PAPAGEORGE, MR.', 'CORFIDUCIA ANSTALT', 'DAVID, RONALD', 'DE  BOUTSELIS, JEAN-PIERRE', 'THE LEVANT LAWYERS (TLL)']}, {'property': 'status', 'type': 'STRING', 'values': ['UNRECOVERABLE ACCOUNTS', 'CLIENT IN REPRESENTATIVE TERRITORY', 'ACTIVE', 'INACTIVE', 'SUSPENDED', 'DELINQUENT', 'PROSPECT', 'SUSPENDED LEGAL', 'ACTIVE LEGAL'], 'distinct_count': 9}, {'property': 'node_id', 'type': 'INTEGER', 'min': '11000001', 'max': '11000005', 'distinct_count': 5}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Pandora Papers - Alemán, Cordero, Galindo & Lee (Alcogal)', 'Paradise Papers - Appleby', 'Paradise Papers - Barbados corporate registry', 'Bahamas Leaks', 'Panama Papers', 'Paradise Papers - Nevis corporate registry', 'Paradise Papers - Bahamas corporate registry', 'Offshore Leaks', 'Paradise Papers - Aruba corporate registry'], 'distinct_count': 9}, {'property': 'internal_id', 'type': 'STRING', 'values': ['10001', '10004', '10014', '10015', '10029']}, {'property': 'registered_office', 'type': 'STRING', 'values': []}], 'Officer': [{'property': 'valid_until', 'type': 'STRING', 'values': ['The Panama Papers data is current through 2015']}, {'property': 'name', 'type': 'STRING', 'values': ['KIM SOO IN', 'Tian Yuan', 'GREGORY JOHN SOLOMON', 'MATSUDA MASUMI', 'HO THUY NGA']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Panama Papers']}, {'property': 'icij_id', 'type': 'STRING', 'values': ['E72326DEA50F1A9C2876E112AAEB42BC', '58287E0FD37852000D9D5AB8B27A2581', 'F476011509FD5C2EF98E9B1D74913CCE', '974F420B2324A23EAF46F20E178AF52C', '06A0FC92656D09F63D966FE7BD076A45']}, {'property': 'node_id', 'type': 'INTEGER', 'min': '12000001', 'max': '12000005', 'distinct_count': 5}, {'property': 'lastEditTimestamp', 'type': 'STRING', 'values': ['1638311034062']}, {'property': 'country_codes', 'type': 'STRING', 'values': ['KOR', 'CHN', 'AUS', 'JPN', 'VNM']}, {'property': 'countries', 'type': 'STRING', 'values': ['South Korea', 'China', 'Australia', 'Japan', 'Viet Nam']}, {'property': 'note', 'type': 'STRING', 'values': []}], 'Address': [{'property': 'original_address', 'type': 'STRING', 'values': ['ANNEX FREDERICK & SHIRLEY STS, P. O. BOX N-4805 NA', 'SUITE E-2,UNION COURT BUILDING, P. O. BOX N-8188 N', 'Lyford Cay House, Lyford Cay, P. O. BOX N-7785 NAS', 'P.O. BOX N-3708 BAHAMAS FINANCIAL CENTRE, P. O. BO', 'LYFORD CAY HOUSE, 3rd Floor, Lyford Cay, P. O. BOX']}, {'property': 'lastEditTimestamp', 'type': 'STRING', 'values': ['1638311020926']}, {'property': 'countries', 'type': 'STRING', 'values': ['Bahamas']}, {'property': 'address', 'type': 'STRING', 'values': ['ANNEX FREDERICK & SHIRLEY STS, P.O. BOX N-4805, NA', 'SUITE E-2,UNION COURT BUILDING, P.O. BOX N-8188, N', 'LYFORD CAY HOUSE, LYFORD CAY, P.O. BOX N-7785, NAS', 'P.O. BOX N-3708 BAHAMAS FINANCIAL CENTRE, P.O. BOX', 'LYFORD CAY HOUSE, 3RD FLOOR, LYFORD CAY, P.O. BOX ']}, {'property': 'valid_until', 'type': 'STRING', 'values': ['The Bahamas Leaks data is current through early 20']}, {'property': 'icij_id', 'type': 'STRING', 'values': ['7C1AAD6896EFDED57D680B82E7ADF7AB', '5CF92908D511A6A0F283B19EC3CFCBBA', 'ADA3C3D869753691DEA39AABCA652C86', '900FA9A4DA30ED6C0B1AF471CA90F40C', 'C921353C797A114D3641EE4AB3CCA747']}, {'property': 'node_id', 'type': 'INTEGER', 'min': '24000001', 'max': '24000005', 'distinct_count': 5}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Bahamas Leaks']}, {'property': 'country_codes', 'type': 'STRING', 'values': ['BHS']}, {'property': 'name', 'type': 'STRING', 'values': []}, {'property': 'addressID', 'type': 'STRING', 'values': []}, {'property': 'country_code', 'type': 'STRING', 'values': []}, {'property': 'country', 'type': 'STRING', 'values': []}], 'Other': [{'property': 'lastEditTimestamp', 'type': 'STRING', 'values': ['1638311068329', '1638311074502', '1638311074946', '1638311075268', '1638311075503'], 'distinct_count': 5}, {'property': 'incorporation_date', 'type': 'STRING', 'values': ['18-MAY-1983', '28-JUN-1989', '19-JUL-1989', '27-JUL-1989', '01-AUG-1989', '18-AUG-1989', '22-AUG-1989', '29-AUG-1989', '04-SEP-1989', '29-SEP-1988'], 'distinct_count': 834}, {'property': 'struck_off_date', 'type': 'STRING', 'values': ['31-DEC-2002', '24-JUL-2000', '23-APR-2009', '22-OCT-1996', '30-DEC-2005', '26-AUG-2005', '31-DEC-1999', '22-FEB-2005', '10-SEP-2003', '31-DEC-2000'], 'distinct_count': 39}, {'property': 'jurisdiction', 'type': 'STRING', 'values': ['AW'], 'distinct_count': 1}, {'property': 'jurisdiction_description', 'type': 'STRING', 'values': ['Aruba'], 'distinct_count': 1}, {'property': 'valid_until', 'type': 'STRING', 'values': ['Aruba corporate registry data is current through 2', 'Appleby data is current through 2014'], 'distinct_count': 2}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Paradise Papers - Aruba corporate registry', 'Paradise Papers - Appleby'], 'distinct_count': 2}, {'property': 'name', 'type': 'STRING', 'values': ['ANTAM ENTERPRISES N.V.', 'DEVIATION N.V.', 'ARIAZI N.V.', 'FLAIRUBA N.V.', 'S.L. ARUBA FISHERIES TRADING N.V.', 'PALCOHI ARUBA N.V.', 'CHEECHO (ARUBA) N.V.', 'WINTERGARDEN N.V.', 'CRUKEL (ARUBA) II N.V.', 'CARAMBOLA N.V.'], 'distinct_count': 2892}, {'property': 'type', 'type': 'STRING', 'values': ['LIMITED LIABILITY COMPANY', 'SOLE OWNERSHIP', 'FOREIGN FORMED CORPORATION'], 'distinct_count': 3}, {'property': 'node_id', 'type': 'INTEGER', 'min': '80000012', 'max': '85050056', 'distinct_count': 2919}, {'property': 'closed_date', 'type': 'STRING', 'values': ['28-NOV-2012', '19-MAY-2004', '29-OCT-2007', '05-SEP-2016', '18-DEC-2007', '22-DEC-1999', '04-DEC-2002', '03-MAR-2010', '08-APR-2011', '22-JUN-1999'], 'distinct_count': 112}, {'property': 'note', 'type': 'STRING', 'values': ['Closed date stands for Cancelled date.', 'Closed date stands for Liquidation date.'], 'distinct_count': 2}, {'property': 'countries', 'type': 'STRING', 'values': ['Bermuda;Isle of Man', 'Cayman Islands', 'Isle of Man', 'Isle of Man;United Kingdom', 'Bahrain', 'Guernsey', 'Latvia', 'British Virgin Islands;Isle of Man', 'Mauritius', 'British Virgin Islands'], 'distinct_count': 63}, {'property': 'country_codes', 'type': 'STRING', 'values': ['BMU;IMN', 'CYM', 'IMN', 'IMN;GBR', 'BHR', 'GGY', 'LVA', 'VGB;IMN', 'MUS', 'VGB'], 'distinct_count': 63}]}, 'rel_props': {'registered_address': [{'property': 'link', 'type': 'STRING', 'values': ['registered address']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Panama Papers']}, {'property': 'valid_until', 'type': 'STRING', 'values': []}], 'intermediary_of': [{'property': 'valid_until', 'type': 'STRING', 'values': ['The Panama Papers data is current through 2015']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Panama Papers']}, {'property': 'link', 'type': 'STRING', 'values': ['intermediary of']}, {'property': 'end_date', 'type': 'STRING', 'values': []}, {'property': 'start_date', 'type': 'STRING', 'values': []}], 'officer_of': [{'property': 'link', 'type': 'STRING', 'values': ['shareholder of']}, {'property': 'valid_until', 'type': 'STRING', 'values': ['The Panama Papers data is current through 2015']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Panama Papers']}, {'property': 'start_date', 'type': 'STRING', 'values': ['19-NOV-1999', '30-MAR-2012', '14-JAN-2010', '23-JUL-2012', '13-SEP-2010']}, {'property': 'end_date', 'type': 'STRING', 'values': ['04-JUL-2000', '06-JUL-2012', '']}, {'property': 'status', 'type': 'STRING', 'values': []}], 'similar': [{'property': 'link', 'type': 'STRING', 'values': ['similar name and address as']}], 'same_as': [{'property': 'link', 'type': 'STRING', 'values': ['same name and registration date as', 'same address as', 'same as'], 'distinct_count': 3}], 'same_name_as': [{'property': 'sourceID', 'type': 'STRING', 'values': ['Bahamas Leaks']}, {'property': 'link', 'type': 'STRING', 'values': ['same name as']}, {'property': 'valid_until', 'type': 'STRING', 'values': ['The Bahamas Leaks data is current through early 20']}], 'same_company_as': [{'property': 'valid_until', 'type': 'STRING', 'values': ['The Bahamas Leaks data is current through early 20']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Bahamas Leaks']}, {'property': 'link', 'type': 'STRING', 'values': ['same company as']}], 'same_id_as': [{'property': 'sourceID', 'type': 'STRING', 'values': ['Paradise Papers - Malta corporate registry'], 'distinct_count': 1}, {'property': 'link', 'type': 'STRING', 'values': ['same id as'], 'distinct_count': 1}, {'property': 'valid_until', 'type': 'STRING', 'values': ['Malta corporate registry data is current through 2'], 'distinct_count': 1}], 'connected_to': [{'property': 'valid_until', 'type': 'STRING', 'values': ['Aruba corporate registry data is current through 2']}, {'property': 'link', 'type': 'STRING', 'values': ['connected to']}, {'property': 'sourceID', 'type': 'STRING', 'values': ['Paradise Papers - Aruba corporate registry']}]}, 'relationships': [{'start': 'Entity', 'type': 'same_as', 'end': 'Entity'}, {'start': 'Entity', 'type': 'registered_address', 'end': 'Address'}, {'start': 'Entity', 'type': 'same_company_as', 'end': 'Entity'}, {'start': 'Entity', 'type': 'same_name_as', 'end': 'Other'}, {'start': 'Entity', 'type': 'same_name_as', 'end': 'Entity'}, {'start': 'Intermediary', 'type': 'intermediary_of', 'end': 'Entity'}, {'start': 'Intermediary', 'type': 'registered_address', 'end': 'Address'}, {'start': 'Intermediary', 'type': 'officer_of', 'end': 'Entity'}, {'start': 'Intermediary', 'type': 'similar', 'end': 'Officer'}, {'start': 'Intermediary', 'type': 'same_name_as', 'end': 'Intermediary'}, {'start': 'Intermediary', 'type': 'same_name_as', 'end': 'Officer'}, {'start': 'Intermediary', 'type': 'same_as', 'end': 'Officer'}, {'start': 'Officer', 'type': 'officer_of', 'end': 'Entity'}, {'start': 'Officer', 'type': 'officer_of', 'end': 'Other'}, {'start': 'Officer', 'type': 'registered_address', 'end': 'Address'}, {'start': 'Officer', 'type': 'similar', 'end': 'Officer'}, {'start': 'Officer', 'type': 'similar', 'end': 'Intermediary'}, {'start': 'Officer', 'type': 'same_name_as', 'end': 'Officer'}, {'start': 'Officer', 'type': 'connected_to', 'end': 'Entity'}, {'start': 'Officer', 'type': 'same_id_as', 'end': 'Officer'}, {'start': 'Address', 'type': 'same_as', 'end': 'Address'}, {'start': 'Other', 'type': 'registered_address', 'end': 'Address'}, {'start': 'Other', 'type': 'connected_to', 'end': 'Entity'}, {'start': 'Other', 'type': 'same_name_as', 'end': 'Entity'}, {'start': 'Other', 'type': 'same_name_as', 'end': 'Officer'}, {'start': 'Other', 'type': 'same_name_as', 'end': 'Other'}], 'metadata': {'constraint': [{'id': 91, 'name': 'Address_node_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Address'], 'properties': ['node_id'], 'ownedIndex': 'Address_node_id', 'propertyType': None}, {'id': 99, 'name': 'Entity_node_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Entity'], 'properties': ['node_id'], 'ownedIndex': 'Entity_node_id', 'propertyType': None}, {'id': 97, 'name': 'Intermediary_node_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Intermediary'], 'properties': ['node_id'], 'ownedIndex': 'Intermediary_node_id', 'propertyType': None}, {'id': 93, 'name': 'Officer_node_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Officer'], 'properties': ['node_id'], 'ownedIndex': 'Officer_node_id', 'propertyType': None}, {'id': 95, 'name': 'Other_node_id', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Other'], 'properties': ['node_id'], 'ownedIndex': 'Other_node_id', 'propertyType': None}], 'index': [{'label': 'Address', 'properties': ['countries'], 'size': 265805, 'type': 'RANGE', 'valuesSelectivity': 0.0008916310829367393, 'distinctValues': 237.0}, {'label': 'Address', 'properties': ['country_codes'], 'size': 265805, 'type': 'RANGE', 'valuesSelectivity': 0.0008276744229792517, 'distinctValues': 220.0}, {'label': 'Address', 'properties': ['sourceID'], 'size': 390995, 'type': 'RANGE', 'valuesSelectivity': 3.0690929551528794e-05, 'distinctValues': 12.0}, {'label': 'Address', 'properties': ['lastEditTimestamp'], 'size': 390995, 'type': 'RANGE', 'valuesSelectivity': 9.207278865458637e-05, 'distinctValues': 36.0}, {'label': 'Address', 'properties': ['node_id'], 'size': 390995, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 390995.0}, {'label': 'Entity', 'properties': ['struck_off_date'], 'size': 461101, 'type': 'RANGE', 'valuesSelectivity': 0.01968332317648411, 'distinctValues': 9076.0}, {'label': 'Entity', 'properties': ['status'], 'size': 355454, 'type': 'RANGE', 'valuesSelectivity': 0.00015191839169062665, 'distinctValues': 54.00000000000001}, {'label': 'Entity', 'properties': ['incorporation_date'], 'size': 785244, 'type': 'RANGE', 'valuesSelectivity': 0.02362195699680609, 'distinctValues': 18549.0}, {'label': 'Entity', 'properties': ['inactivation_date'], 'size': 213647, 'type': 'RANGE', 'valuesSelectivity': 0.03227754192663599, 'distinctValues': 6895.999999999999}, {'label': 'Entity', 'properties': ['service_provider'], 'size': 344086, 'type': 'RANGE', 'valuesSelectivity': 1.1625000726562546e-05, 'distinctValues': 4.0}, {'label': 'Entity', 'properties': ['sourceID'], 'size': 802817, 'type': 'RANGE', 'valuesSelectivity': 1.7438594349646306e-05, 'distinctValues': 13.999999999999998}, {'label': 'Entity', 'properties': ['jurisdiction'], 'size': 798965, 'type': 'RANGE', 'valuesSelectivity': 0.00010012954259573323, 'distinctValues': 80.0}, {'label': 'Entity', 'properties': ['name'], 'size': 802792, 'type': 'RANGE', 'valuesSelectivity': 0.959800296963597, 'distinctValues': 770520.0}, {'label': 'Entity', 'properties': ['lastEditTimestamp'], 'size': 802817, 'type': 'RANGE', 'valuesSelectivity': 6.850876351646764e-05, 'distinctValues': 55.0}, {'label': 'Entity', 'properties': ['country_codes'], 'size': 501943, 'type': 'RANGE', 'valuesSelectivity': 0.001924521310188607, 'distinctValues': 966.0}, {'label': 'Entity', 'properties': ['countries'], 'size': 501943, 'type': 'RANGE', 'valuesSelectivity': 0.0019285058263587699, 'distinctValues': 968.0}, {'label': 'Entity', 'properties': ['node_id'], 'size': 802817, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 802817.0}, {'label': 'Intermediary', 'properties': ['lastEditTimestamp'], 'size': 26768, 'type': 'RANGE', 'valuesSelectivity': 0.0007845188284518828, 'distinctValues': 21.0}, {'label': 'Intermediary', 'properties': ['countries'], 'size': 23154, 'type': 'RANGE', 'valuesSelectivity': 0.012352077394834586, 'distinctValues': 286.0}, {'label': 'Intermediary', 'properties': ['country_codes'], 'size': 23154, 'type': 'RANGE', 'valuesSelectivity': 0.012352077394834586, 'distinctValues': 286.0}, {'label': 'Intermediary', 'properties': ['status'], 'size': 12621, 'type': 'RANGE', 'valuesSelectivity': 0.0007130972189208462, 'distinctValues': 9.0}, {'label': 'Intermediary', 'properties': ['name'], 'size': 26767, 'type': 'RANGE', 'valuesSelectivity': 0.9559905854223484, 'distinctValues': 25589.0}, {'label': 'Intermediary', 'properties': ['sourceID'], 'size': 26768, 'type': 'RANGE', 'valuesSelectivity': 0.00033622235505080696, 'distinctValues': 9.0}, {'label': 'Intermediary', 'properties': ['node_id'], 'size': 26768, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 26768.0}, {'label': 'Officer', 'properties': ['lastEditTimestamp'], 'size': 746949, 'type': 'RANGE', 'valuesSelectivity': 7.497165134433543e-05, 'distinctValues': 56.0}, {'label': 'Officer', 'properties': ['country_codes'], 'size': 449598, 'type': 'RANGE', 'valuesSelectivity': 0.009815435122042358, 'distinctValues': 4413.0}, {'label': 'Officer', 'properties': ['countries'], 'size': 449579, 'type': 'RANGE', 'valuesSelectivity': 0.008423436148040723, 'distinctValues': 3787.0000000000005}, {'label': 'Officer', 'properties': ['name'], 'size': 746890, 'type': 'RANGE', 'valuesSelectivity': 0.7020136834071952, 'distinctValues': 524327.0}, {'label': 'Officer', 'properties': ['sourceID'], 'size': 746949, 'type': 'RANGE', 'valuesSelectivity': 1.8742912836083856e-05, 'distinctValues': 14.0}, {'label': 'Officer', 'properties': ['node_id'], 'size': 746949, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 746949.0}, {'label': 'Other', 'properties': ['lastEditTimestamp'], 'size': 2919, 'type': 'RANGE', 'valuesSelectivity': 0.0017129153819801302, 'distinctValues': 5.0}, {'label': 'Other', 'properties': ['node_id'], 'size': 2919, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 2919.0}]}}"
+stackoverflow2,"Node properties:
+- **Question**
+  - `link`: STRING Example: ""https://stackoverflow.com/q/65697972""
+  - `accepted_answer_id`: INTEGER Min: 61447621, Max: 69272967
+  - `creation_date`: INTEGER Min: 1587746198, Max: 1632249176
+  - `view_count`: INTEGER Min: 4, Max: 1851
+  - `answer_count`: INTEGER Min: 0, Max: 4
+  - `body_markdown`: STRING Example: ""I want to create a graph from my recursive JSON fi""
+  - `uuid`: INTEGER Min: 61413144, Max: 69273945
+  - `title`: STRING Example: ""Create graph from recursive JSON data using apoc.l""
+- **User**
+  - `uuid`: INTEGER Min: deleted, Max: 16922964
+  - `display_name`: STRING Example: ""schernichkin""
+- **Tag**
+  - `name`: STRING Example: ""neo4j""
+  - `link`: STRING Example: ""https://stackoverflow.com/questions/tagged/neo4j""
+- **Answer**
+  - `link`: STRING Example: ""https://stackoverflow.com/a/69272967""
+  - `title`: STRING Example: ""Return &#39;biggest fan of a tag&#39; neo4j""
+  - `is_accepted`: BOOLEAN 
+  - `body_markdown`: STRING Example: ""The error is here:    ```  WHERE COUNT(posted) &lt""
+  - `score`: INTEGER Min: -2, Max: 6
+  - `uuid`: INTEGER Min: 61445468, Max: 69273049
+- **Comment**
+  - `score`: INTEGER Min: 0, Max: 3
+  - `uuid`: INTEGER Min: 108645245, Max: 122427099
+  - `link`: STRING Example: ""https://stackoverflow.com/questions/69208813/confi""
+Relationship properties:
+
+The relationships:
+(:Question)-[:TAGGED]->(:Tag)
+(:User)-[:ASKED]->(:Question)
+(:User)-[:COMMENTED]->(:Comment)
+(:User)-[:PROVIDED]->(:Answer)
+(:Answer)-[:ANSWERED]->(:Question)
+(:Comment)-[:COMMENTED_ON]->(:Question)","{'node_props': {'Question': [{'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/q/65697972', 'https://stackoverflow.com/q/65697147', 'https://stackoverflow.com/q/65694121', 'https://stackoverflow.com/q/65691774', 'https://stackoverflow.com/q/65690692', 'https://stackoverflow.com/q/65690563', 'https://stackoverflow.com/q/65687157', 'https://stackoverflow.com/q/65686699', 'https://stackoverflow.com/q/65683749', 'https://stackoverflow.com/q/65682935'], 'distinct_count': 1589}, {'property': 'accepted_answer_id', 'type': 'INTEGER', 'min': '61447621', 'max': '69272967', 'distinct_count': 619}, {'property': 'creation_date', 'type': 'INTEGER', 'min': '1587746198', 'max': '1632249176', 'distinct_count': 1589}, {'property': 'view_count', 'type': 'INTEGER', 'min': '4', 'max': '1851', 'distinct_count': 217}, {'property': 'answer_count', 'type': 'INTEGER', 'min': '0', 'max': '4', 'distinct_count': 5}, {'property': 'body_markdown', 'type': 'STRING', 'values': ['I want to create a graph from my recursive JSON fi', 'I have a dataset in java which contains an &quot;I', 'Given the schema\r\n\r\n```graphql\r\ntype User {\r\n  id:', 'I am having trouble updating nodes in a neo4j-data', 'My graph has the following entities:\r\n\r\n- Post\r\n- ', 'Well first thing this is my code\r\n\r\n    LOAD CSV W', 'I am trying to run following Neo4j cypher Query:\r\n', 'In the neomodel documentation it&#39;s possible to', 'Trying the option of going with ETL as in Producti', 'I’m a total beginner in Cypher and I’m struggling '], 'distinct_count': 1576}, {'property': 'uuid', 'type': 'INTEGER', 'min': '61413144', 'max': '69273945', 'distinct_count': 1589}, {'property': 'title', 'type': 'STRING', 'values': ['Create graph from recursive JSON data using apoc.l', 'Specify a certain column as id values in Neo4j Spa', 'Why are non-unique indexes dropped and created whe', 'py2neo doesn&#39;t update database nodes', 'Unwind with Multiple OPTIONAL MATCH returns duplic', 'Neo.ClientError.Statement.ExternalResourceFailed e', 'LIMIT not working inside apoc procedure apoc.cyphe', 'Neomodel: specify neo4j database name in connectio', 'Neo4j ETL takes time to migrate from RDBMS to Grap', 'Cypher to show relationships of hidden nodes'], 'distinct_count': 1588}], 'User': [{'property': 'uuid', 'type': 'INTEGER', 'min': 'deleted', 'max': '16922964', 'distinct_count': 1365}, {'property': 'display_name', 'type': 'STRING', 'values': ['schernichkin', 'Damian Grzanka', 'sandrooco', 'Bobis', 'wanderingcatto', 'bguegan', 'Swordfish', 'Chris Wohlert', 'zulfi123786', 'Florian Bauer'], 'distinct_count': 1354}], 'Tag': [{'property': 'name', 'type': 'STRING', 'values': ['neo4j', 'subgraph', 'graph', 'cypher', 'graph-databases', 'neo4j-apoc', 'database', 'spring-boot', 'grandstack', 'search'], 'distinct_count': 476}, {'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/questions/tagged/neo4j', 'https://stackoverflow.com/questions/tagged/subgrap', 'https://stackoverflow.com/questions/tagged/graph', 'https://stackoverflow.com/questions/tagged/cypher', 'https://stackoverflow.com/questions/tagged/graph-d', 'https://stackoverflow.com/questions/tagged/neo4j-a', 'https://stackoverflow.com/questions/tagged/databas', 'https://stackoverflow.com/questions/tagged/spring-', 'https://stackoverflow.com/questions/tagged/grandst', 'https://stackoverflow.com/questions/tagged/search'], 'distinct_count': 421}], 'Answer': [{'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/a/69272967', 'https://stackoverflow.com/a/69267009', 'https://stackoverflow.com/a/69263731', 'https://stackoverflow.com/a/69263260', 'https://stackoverflow.com/a/69263576', 'https://stackoverflow.com/a/69251760', 'https://stackoverflow.com/a/69273018', 'https://stackoverflow.com/a/69255357', 'https://stackoverflow.com/a/69253457', 'https://stackoverflow.com/a/69256380'], 'distinct_count': 1367}, {'property': 'title', 'type': 'STRING', 'values': ['Return &#39;biggest fan of a tag&#39; neo4j', 'How to simplify neo4j query with multiple CASE&#39', 'Returning same path after &quot;count&quot; operat', 'Neo4j - Get the relationship that have the latest ', 'Neo4j modeling relationship query', 'How to add additional stop words to a Neo4j Full-t', 'Neo4j query using only one core of my machine', 'Substitute for @additionalLabels in Neo4j GraphQL ', 'Graphileon Proxy Feature issue', 'Neo4j Procedure and Transactions'], 'distinct_count': 1142}, {'property': 'is_accepted', 'type': 'BOOLEAN'}, {'property': 'body_markdown', 'type': 'STRING', 'values': ['The error is here:\r\n\r\n```\r\nWHERE COUNT(posted) &lt', 'perhaps something along the line of this, using CO', 'Without testing, I think this would solve the issu', 'these are a couple of options depending what you e', 'I think the definition of &#39;competing&#39; shou', 'AFAIK, it is not possible to write a custom analyz', 'You can use `CALL apoc.periodic.iterate()` to do p', 'There is no workaround for this at this time(20/09', 'The `body` must also be JSON so you need to do:\r\n\r', 'I figured this out and will share for those it may'], 'distinct_count': 1364}, {'property': 'score', 'type': 'INTEGER', 'min': '-2', 'max': '6', 'distinct_count': 8}, {'property': 'uuid', 'type': 'INTEGER', 'min': '61445468', 'max': '69273049', 'distinct_count': 1367}], 'Comment': [{'property': 'score', 'type': 'INTEGER', 'min': '0', 'max': '3', 'distinct_count': 4}, {'property': 'uuid', 'type': 'INTEGER', 'min': '108645245', 'max': '122427099', 'distinct_count': 1396}, {'property': 'link', 'type': 'STRING', 'values': ['https://stackoverflow.com/questions/69208813/confi', 'https://stackoverflow.com/questions/69199782/neo4j', 'https://stackoverflow.com/questions/69177409/how-t', 'https://stackoverflow.com/questions/69163777/conne', 'https://stackoverflow.com/questions/69158730/neo4j', 'https://stackoverflow.com/questions/69147992/not-a', 'https://stackoverflow.com/questions/69118543/sprin', 'https://stackoverflow.com/questions/69107479/neo4j', 'https://stackoverflow.com/questions/69104919/py2ne', 'https://stackoverflow.com/questions/69098868/short'], 'distinct_count': 546}]}, 'rel_props': {}, 'relationships': [{'start': 'Question', 'type': 'TAGGED', 'end': 'Tag'}, {'start': 'User', 'type': 'ASKED', 'end': 'Question'}, {'start': 'User', 'type': 'COMMENTED', 'end': 'Comment'}, {'start': 'User', 'type': 'PROVIDED', 'end': 'Answer'}, {'start': 'Answer', 'type': 'ANSWERED', 'end': 'Question'}, {'start': 'Comment', 'type': 'COMMENTED_ON', 'end': 'Question'}], 'metadata': {'constraint': [{'id': 20, 'name': 'constraint_32ea8862', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Comment'], 'properties': ['uuid'], 'ownedIndex': 'constraint_32ea8862', 'propertyType': None}, {'id': 18, 'name': 'constraint_401df8db', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Question'], 'properties': ['uuid'], 'ownedIndex': 'constraint_401df8db', 'propertyType': None}, {'id': 14, 'name': 'constraint_64b1b1cf', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Tag'], 'properties': ['name'], 'ownedIndex': 'constraint_64b1b1cf', 'propertyType': None}, {'id': 22, 'name': 'constraint_7e29bbac', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Answer'], 'properties': ['uuid'], 'ownedIndex': 'constraint_7e29bbac', 'propertyType': None}, {'id': 16, 'name': 'constraint_b13a3b7d', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['uuid'], 'ownedIndex': 'constraint_b13a3b7d', 'propertyType': None}], 'index': [{'label': 'Answer', 'properties': ['uuid'], 'size': 1367, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1367.0}, {'label': 'Comment', 'properties': ['uuid'], 'size': 1396, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1396.0}, {'label': 'Question', 'properties': ['uuid'], 'size': 1589, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1589.0}, {'label': 'Tag', 'properties': ['name'], 'size': 476, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 476.0}, {'label': 'User', 'properties': ['uuid'], 'size': 1365, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1365.0}]}}"
+twitch,"Node properties:
+- **Stream**
+  - `createdAt`: DATE_TIME Min: 2007-05-22T10:39:53.259969Z, Max: 2021-05-09T14:16:40.370294Z
+  - `id`: STRING Example: ""129004176""
+  - `description`: STRING Example: ""Welcome to my Channel, I'm Big Chase, 31 living in""
+  - `url`: STRING Example: ""https://www.twitch.tv/itsbigchase""
+  - `name`: STRING Example: ""itsbigchase""
+  - `followers`: INTEGER Min: 0, Max: 10243195
+  - `total_view_count`: INTEGER Min: 21, Max: 1451487256
+- **Game**
+  - `name`: STRING Example: ""Rust""
+- **Language**
+  - `name`: STRING Example: ""en""
+- **User**
+  - `name`: STRING Example: ""itsbigchase""
+- **Team**
+  - `createdAt`: DATE_TIME Min: 2011-10-11T23:59:43.548701Z, Max: 2021-05-07T17:19:09.946382Z
+  - `name`: STRING Example: ""ESO Stream Team""
+  - `id`: STRING Example: ""5893""
+Relationship properties:
+
+The relationships:
+(:Stream)-[:PLAYS]->(:Game)
+(:Stream)-[:HAS_LANGUAGE]->(:Language)
+(:Stream)-[:MODERATOR]->(:Stream)
+(:Stream)-[:MODERATOR]->(:User)
+(:Stream)-[:CHATTER]->(:Stream)
+(:Stream)-[:CHATTER]->(:User)
+(:Stream)-[:HAS_TEAM]->(:Team)
+(:Stream)-[:VIP]->(:Stream)
+(:Stream)-[:VIP]->(:User)
+(:User)-[:CHATTER]->(:Stream)
+(:User)-[:CHATTER]->(:User)
+(:User)-[:MODERATOR]->(:Stream)
+(:User)-[:MODERATOR]->(:User)","{'node_props': {'Stream': [{'property': 'createdAt', 'type': 'DATE_TIME', 'min': '2007-05-22T10:39:53.259969Z', 'max': '2021-05-09T14:16:40.370294Z', 'distinct_count': 5743}, {'property': 'id', 'type': 'STRING', 'values': ['129004176', '26490481', '50988750', '213749122', '30104304', '238320465', '10985633', '160504245', '50597026', '125387632'], 'distinct_count': 5743}, {'property': 'description', 'type': 'STRING', 'values': [""Welcome to my Channel, I'm Big Chase, 31 living in"", ""I'm a variety streamer(kind of). Been streaming 8 "", '感謝します。', 'Топовая студия в мире профессионального киберспорт', ""Maximilian's Livestream Of Hype! Modern fighting g"", 'PRO GAMING TEAM JUPITER #JUPWIN', '楽しんでゲームしていきます', 'spawns at midnight (pst)', 'On se tape des immenses barres.', 'Welcome to my stream! My name is Amouranth and I l'], 'distinct_count': 4967}, {'property': 'url', 'type': 'STRING', 'values': ['https://www.twitch.tv/itsbigchase', 'https://www.twitch.tv/summit1g', 'https://www.twitch.tv/stylishnoob4', 'https://www.twitch.tv/dota2mc_ru', 'https://www.twitch.tv/maximilian_dood', 'https://www.twitch.tv/jupiter_gg', 'https://www.twitch.tv/spygea', 'https://www.twitch.tv/39daph', 'https://www.twitch.tv/ponce', 'https://www.twitch.tv/amouranth'], 'distinct_count': 5787}, {'property': 'name', 'type': 'STRING', 'values': ['itsbigchase', 'summit1g', 'stylishnoob4', 'dota2mc_ru', 'maximilian_dood', 'jupiter_gg', 'spygea', '39daph', 'ponce', 'amouranth'], 'distinct_count': 5787}, {'property': 'followers', 'type': 'INTEGER', 'min': '0', 'max': '10243195', 'distinct_count': 5663}, {'property': 'total_view_count', 'type': 'INTEGER', 'min': '21', 'max': '1451487256', 'distinct_count': 5738}], 'Game': [{'property': 'name', 'type': 'STRING', 'values': ['Rust', 'DayZ', 'VALORANT', 'Dota 2', 'Resident Evil Village', 'Rocket League', 'Just Chatting', 'Fortnite', 'Grand Theft Auto V', 'Call of Duty: Warzone'], 'distinct_count': 594}], 'Language': [{'property': 'name', 'type': 'STRING', 'values': ['en', 'ja', 'en-gb', 'fr', 'it', 'ko', 'ru', 'es', 'de', 'zh-tw'], 'distinct_count': 29}], 'User': [{'property': 'name', 'type': 'STRING', 'values': ['itsbigchase', 'summit1g', 'stylishnoob4', 'dota2mc_ru', 'maximilian_dood']}], 'Team': [{'property': 'createdAt', 'type': 'DATE_TIME', 'min': '2011-10-11T23:59:43.548701Z', 'max': '2021-05-07T17:19:09.946382Z', 'distinct_count': 1468}, {'property': 'name', 'type': 'STRING', 'values': ['ESO Stream Team', 'N3RDFUSION', 'The Household', 'The Bean Bandits', 'Cloud9', 'fantasyexpo', 'THE CULT', 'COLLAB', 'UBISOFT Korea', '노잼져스'], 'distinct_count': 1466}, {'property': 'id', 'type': 'STRING', 'values': ['5893', '1886', '2717', '719', '735', '3553', '3255', '9102', '5257', '3679'], 'distinct_count': 1468}]}, 'rel_props': {}, 'relationships': [{'start': 'Stream', 'type': 'PLAYS', 'end': 'Game'}, {'start': 'Stream', 'type': 'HAS_LANGUAGE', 'end': 'Language'}, {'start': 'Stream', 'type': 'MODERATOR', 'end': 'Stream'}, {'start': 'Stream', 'type': 'MODERATOR', 'end': 'User'}, {'start': 'Stream', 'type': 'CHATTER', 'end': 'Stream'}, {'start': 'Stream', 'type': 'CHATTER', 'end': 'User'}, {'start': 'Stream', 'type': 'HAS_TEAM', 'end': 'Team'}, {'start': 'Stream', 'type': 'VIP', 'end': 'Stream'}, {'start': 'Stream', 'type': 'VIP', 'end': 'User'}, {'start': 'User', 'type': 'CHATTER', 'end': 'Stream'}, {'start': 'User', 'type': 'CHATTER', 'end': 'User'}, {'start': 'User', 'type': 'MODERATOR', 'end': 'Stream'}, {'start': 'User', 'type': 'MODERATOR', 'end': 'User'}], 'metadata': {'constraint': [{'id': 15, 'name': 'constraint_2b4f13ce', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Stream'], 'properties': ['name'], 'ownedIndex': 'constraint_2b4f13ce', 'propertyType': None}, {'id': 19, 'name': 'constraint_5018efe5', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Language'], 'properties': ['name'], 'ownedIndex': 'constraint_5018efe5', 'propertyType': None}, {'id': 13, 'name': 'constraint_5101b27d', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Team'], 'properties': ['id'], 'ownedIndex': 'constraint_5101b27d', 'propertyType': None}, {'id': 21, 'name': 'constraint_952bbd70', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['name'], 'ownedIndex': 'constraint_952bbd70', 'propertyType': None}, {'id': 17, 'name': 'constraint_d7191a75', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Game'], 'properties': ['name'], 'ownedIndex': 'constraint_d7191a75', 'propertyType': None}], 'index': [{'label': 'Game', 'properties': ['name'], 'size': 594, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 594.0}, {'label': 'Language', 'properties': ['name'], 'size': 29, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 29.0}, {'label': 'Stream', 'properties': ['name'], 'size': 5787, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 5787.0}, {'label': 'Team', 'properties': ['id'], 'size': 1468, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1468.0}, {'label': 'User', 'properties': ['name'], 'size': 10514229, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 10514229.0}]}}"
+twitter,"Node properties:
+- **User**
+  - `betweenness`: FLOAT Example: ""3.49332601E8""
+  - `location`: STRING Example: ""Graphs Are Everywhere""
+  - `followers`: INTEGER Example: ""34507""
+  - `following`: INTEGER Example: ""10124""
+  - `profile_image_url`: STRING Example: ""http://pbs.twimg.com/profile_images/11837552737537""
+  - `screen_name`: STRING Example: ""neo4j""
+  - `name`: STRING Example: ""Neo4j""
+  - `url`: STRING Example: ""https://t.co/JSIaZFJEaE""
+  - `statuses`: INTEGER Example: ""512""
+- **Me**
+  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']
+  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8
+  - `following`: INTEGER Min: 10124, Max: 10124
+  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']
+  - `location`: STRING Available options: ['Graphs Are Everywhere']
+  - `followers`: INTEGER Min: 34507, Max: 34507
+  - `screen_name`: STRING Available options: ['neo4j']
+  - `name`: STRING Available options: ['Neo4j']
+- **Tweet**
+  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z
+  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966
+  - `id_str`: STRING Example: ""1371815021265747970""
+  - `text`: STRING Example: ""Proud to help @educationgovuk deliver critical ser""
+  - `favorites`: INTEGER Min: 0, Max: 394
+  - `import_method`: STRING Available options: ['user']
+- **Hashtag**
+  - `name`: STRING Example: ""education""
+- **Link**
+  - `url`: STRING Example: ""https://twitter.com/i/web/status/13718150212657479""
+- **Source**
+  - `name`: STRING Example: ""Buffer""
+Relationship properties:
+- **SIMILAR_TO**
+  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0
+The relationships:
+(:User)-[:FOLLOWS]->(:User)
+(:User)-[:FOLLOWS]->(:Me)
+(:User)-[:POSTS]->(:Tweet)
+(:User)-[:INTERACTS_WITH]->(:User)
+(:User)-[:SIMILAR_TO]->(:User)
+(:User)-[:SIMILAR_TO]->(:Me)
+(:Me)-[:FOLLOWS]->(:User)
+(:Me)-[:POSTS]->(:Tweet)
+(:Me)-[:INTERACTS_WITH]->(:User)
+(:Me)-[:RT_MENTIONS]->(:User)
+(:Me)-[:AMPLIFIES]->(:User)
+(:Tweet)-[:MENTIONS]->(:User)
+(:Tweet)-[:MENTIONS]->(:Me)
+(:Tweet)-[:USING]->(:Source)
+(:Tweet)-[:TAGS]->(:Hashtag)
+(:Tweet)-[:CONTAINS]->(:Link)
+(:Tweet)-[:RETWEETS]->(:Tweet)
+(:Tweet)-[:REPLY_TO]->(:Tweet)","{'node_props': {'User': [{'property': 'betweenness', 'type': 'FLOAT', 'values': ['3.49332601E8', '0.0']}, {'property': 'location', 'type': 'STRING', 'values': ['Graphs Are Everywhere', 'Jezero Crater, Mars', '', 'Nigeria']}, {'property': 'followers', 'type': 'INTEGER', 'values': ['34507', '2617355', '0', '35', '71']}, {'property': 'following', 'type': 'INTEGER', 'values': ['10124', '45', '0', '35', '71']}, {'property': 'profile_image_url', 'type': 'STRING', 'values': ['http://pbs.twimg.com/profile_images/11837552737537', 'http://pbs.twimg.com/profile_images/12356362801652', 'http://pbs.twimg.com/profile_images/13703060708459', 'http://pbs.twimg.com/profile_images/2566078294/rkk', 'http://pbs.twimg.com/profile_images/12523769466730']}, {'property': 'screen_name', 'type': 'STRING', 'values': ['neo4j', 'NASAPersevere', 'pranitahakim1', 'galeister', 'rhema_beth']}, {'property': 'name', 'type': 'STRING', 'values': ['Neo4j', ""NASA's Perseverance Mars Rover"", 'pranitahakim', 'Galeister', 'Amosun BethRhema']}, {'property': 'url', 'type': 'STRING', 'values': ['https://t.co/JSIaZFJEaE', 'https://t.co/GpTOmL7zGl']}, {'property': 'statuses', 'type': 'INTEGER', 'values': ['512']}], 'Me': [{'property': 'profile_image_url', 'type': 'STRING', 'values': ['http://pbs.twimg.com/profile_images/11837552737537'], 'distinct_count': 1}, {'property': 'betweenness', 'type': 'FLOAT', 'min': '3.49332601E8', 'max': '3.49332601E8', 'distinct_count': 1}, {'property': 'following', 'type': 'INTEGER', 'min': '10124', 'max': '10124', 'distinct_count': 1}, {'property': 'url', 'type': 'STRING', 'values': ['https://t.co/JSIaZFJEaE'], 'distinct_count': 1}, {'property': 'location', 'type': 'STRING', 'values': ['Graphs Are Everywhere'], 'distinct_count': 1}, {'property': 'followers', 'type': 'INTEGER', 'min': '34507', 'max': '34507', 'distinct_count': 1}, {'property': 'screen_name', 'type': 'STRING', 'values': ['neo4j'], 'distinct_count': 1}, {'property': 'name', 'type': 'STRING', 'values': ['Neo4j'], 'distinct_count': 1}], 'Tweet': [{'property': 'created_at', 'type': 'DATE_TIME', 'min': '2020-12-06T05:12:02Z', 'max': '2021-03-16T15:30:07Z', 'distinct_count': 2146}, {'property': 'id', 'type': 'INTEGER', 'min': '690028662083612672', 'max': '1371846247913512966', 'distinct_count': 2407}, {'property': 'id_str', 'type': 'STRING', 'values': ['1371815021265747970', '1371778287970705408', '1371687808847519748', '1371787098945114113', '1371673079517171712', '1371773486348255233', '1371672671419826177', '1371846247913512966', '1371748138491510786', '1371627279936282624'], 'distinct_count': 2146}, {'property': 'text', 'type': 'STRING', 'values': ['Proud to help @educationgovuk deliver critical ser', '[Webinar] Produktdatenmanagement mit der Graphdate', '[Webinar] Graph Data Science with #Neo4j – Italy\n\n', 'RT @rotnroll666: Neo4j Cypher-DSL 2021.1 released ', 'Discover how financial institutions can use graph ', 'RT @ElLazal: Today at 3pm UTC @lyonwj and I are go', '[Virtual Conference] Javaland 2021 – Was macht SRE', '[Live Demo] Graph Algorithms Playground – Asia Pac', 'CASE STUDY // Automotive Manufacturer Reduces Time', ""@insideBigData features Neo4j's recently appointed""], 'distinct_count': 1670}, {'property': 'favorites', 'type': 'INTEGER', 'min': '0', 'max': '394', 'distinct_count': 44}, {'property': 'import_method', 'type': 'STRING', 'values': ['user'], 'distinct_count': 1}], 'Hashtag': [{'property': 'name', 'type': 'STRING', 'values': ['education', 'neo4jauraenterprise', 'neo4j', 'antimoneylaundering', 'graphdatabases', 'automotive', 'iam', 'auraenterprise', 'graphes', 'cloud'], 'distinct_count': 344}], 'Link': [{'property': 'url', 'type': 'STRING', 'values': ['https://twitter.com/i/web/status/13718150212657479', 'https://twitter.com/i/web/status/13717782879707054', 'https://twitter.com/i/web/status/13716878088475197', 'http://neo4j-contrib.github.io/cypher-dsl/current/', 'https://twitter.com/i/web/status/13717481384915107', 'https://twitter.com/i/web/status/13716730795171717', 'https://twitter.com/i/web/status/13718462479135129', 'https://twitter.com/i/web/status/13716726714198261', 'https://twitter.com/i/web/status/13716146925280256', 'https://buff.ly/39Zwfui'], 'distinct_count': 1548}], 'Source': [{'property': 'name', 'type': 'STRING', 'values': ['Buffer', 'Tweetbot for iΟS', 'TweetDeck', 'Twitter Web App', 'SocialPilot.co', 'startup.jobs', 'Twitter for Android', 'HubSpot', 'Tweetbot for Mac', 'Twitter for iPhone'], 'distinct_count': 27}]}, 'rel_props': {'SIMILAR_TO': [{'property': 'score', 'type': 'FLOAT', 'min': '0.0030581039755351682', 'max': '1.0', 'distinct_count': 71}]}, 'relationships': [{'start': 'User', 'type': 'FOLLOWS', 'end': 'User'}, {'start': 'User', 'type': 'FOLLOWS', 'end': 'Me'}, {'start': 'User', 'type': 'POSTS', 'end': 'Tweet'}, {'start': 'User', 'type': 'INTERACTS_WITH', 'end': 'User'}, {'start': 'User', 'type': 'SIMILAR_TO', 'end': 'User'}, {'start': 'User', 'type': 'SIMILAR_TO', 'end': 'Me'}, {'start': 'Me', 'type': 'FOLLOWS', 'end': 'User'}, {'start': 'Me', 'type': 'POSTS', 'end': 'Tweet'}, {'start': 'Me', 'type': 'INTERACTS_WITH', 'end': 'User'}, {'start': 'Me', 'type': 'RT_MENTIONS', 'end': 'User'}, {'start': 'Me', 'type': 'AMPLIFIES', 'end': 'User'}, {'start': 'Tweet', 'type': 'MENTIONS', 'end': 'User'}, {'start': 'Tweet', 'type': 'MENTIONS', 'end': 'Me'}, {'start': 'Tweet', 'type': 'USING', 'end': 'Source'}, {'start': 'Tweet', 'type': 'TAGS', 'end': 'Hashtag'}, {'start': 'Tweet', 'type': 'CONTAINS', 'end': 'Link'}, {'start': 'Tweet', 'type': 'RETWEETS', 'end': 'Tweet'}, {'start': 'Tweet', 'type': 'REPLY_TO', 'end': 'Tweet'}], 'metadata': {'constraint': [{'id': 19, 'name': 'constraint_189951f0', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Source'], 'properties': ['name'], 'ownedIndex': 'constraint_189951f0', 'propertyType': None}, {'id': 21, 'name': 'constraint_5f75e2f6', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Tweet'], 'properties': ['id'], 'ownedIndex': 'constraint_5f75e2f6', 'propertyType': None}, {'id': 17, 'name': 'constraint_71a506e6', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Hashtag'], 'properties': ['name'], 'ownedIndex': 'constraint_71a506e6', 'propertyType': None}, {'id': 15, 'name': 'constraint_9191d2a4', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['User'], 'properties': ['screen_name'], 'ownedIndex': 'constraint_9191d2a4', 'propertyType': None}, {'id': 23, 'name': 'constraint_d198d4ee', 'type': 'UNIQUENESS', 'entityType': 'NODE', 'labelsOrTypes': ['Link'], 'properties': ['url'], 'ownedIndex': 'constraint_d198d4ee', 'propertyType': None}], 'index': [{'label': 'Hashtag', 'properties': ['name'], 'size': 344, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 344.0}, {'label': 'Link', 'properties': ['url'], 'size': 1561, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 1561.0}, {'label': 'Source', 'properties': ['name'], 'size': 27, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 27.0}, {'label': 'Tweet', 'properties': ['id'], 'size': 2407, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 2407.0}, {'label': 'Tweet', 'properties': ['created_at'], 'size': 2146, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 2146.0}, {'label': 'User', 'properties': ['screen_name'], 'size': 38986, 'type': 'RANGE', 'valuesSelectivity': 1.0, 'distinctValues': 38986.0}]}}"
