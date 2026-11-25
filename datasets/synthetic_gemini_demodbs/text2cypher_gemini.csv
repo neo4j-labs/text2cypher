@@ -25689,9 +25689,9 @@ This query finds all `INTERACTED` relationships where the `ogWeight` property is
 MATCH ()-[:INTERACTED]->()
 WITH count(*) AS count
 RETURN count
-```",Complex Retrieval Queries,"MATCH ()-[:INTERACTED]->()
-WITH count(*) AS count
-RETURN count","This query finds all `INTERACTED` relationships where the `ogWeight` property is equal to the `weight` property and then counts them.
+```",Complex Retrieval Queries,"MATCH ()-[r:INTERACTED]->()
+WHERE r.ogWeight = r.weight
+RETURN count(r) AS count","This query finds all `INTERACTED` relationships where the `ogWeight` property is equal to the `weight` property and then counts them.
 
 1. **MATCH**: We start by matching all `INTERACTED` relationships in the graph.
 2. **WHERE**: We filter these relationships to only include those where the `ogWeight` property is equal to the `weight` property.
